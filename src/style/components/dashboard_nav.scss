@@ -1,0 +1,97 @@
+.link-circle {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  margin: 0 .5rem;
+  outline: none;
+  
+  &:focus{
+    outline: none;
+  }
+}
+
+.link-d-none{
+  transform: translatex(200%);
+  opacity: 0;
+  transition: transform .9s, opacity 1.3s cubic-bezier(.49,.77,1,.83);
+  
+  &.activeShow {
+    transform: translatex(0);
+    opacity: 1;
+  }
+}
+
+button.navbar-burger{
+  background: transparent;
+  border: none;
+  padding: 0;
+  padding-top: .70rem;
+  display: inline-block;
+  transition-timing-function: linear;
+  transition-duration: .12s;
+  transition-property: opacity, filter;
+
+  &:focus{
+    border: none;
+    outline: none;
+  }
+
+  .burger{
+    position: relative;
+    display: inline-block;
+    width: 33px;
+    height: 20px;
+    transform: rotate(180deg);
+  
+    .burger-icon::before, .burger-icon::after{
+      content: '';
+      display: block;
+    }
+  
+    .burger-icon, .burger-icon::before, .burger-icon::after {
+      position: absolute;
+      width: 23px;
+      height: 3px;
+      background-color: $warning;
+      transition-timing-function: ease;
+      transition-duration: .6s;
+      transition-property: transform;
+      border-radius: 50px;
+      transform: translateX(0);
+    }
+    
+    .burger-icon{
+      transition-timing-function: cubic-bezier(.55, .055, .675, .19);
+      top: 50%;
+    }
+  
+    .burger-icon::before{
+      top: -9px;
+      width: 33px;
+    }
+    .burger-icon::after{
+      bottom: -9px;
+      width: 33px;
+    }
+  }
+
+  &.activate{
+    transform: translateX(900%);
+    transition-property: transform;
+    transition-delay: 1s;
+    .burger{
+      .burger-icon{
+        transition: transform cubic-bezier(1,.65,.32,.75) .6s;
+        transform: translateX(-900%);
+      }
+      .burger-icon::before{
+        transition: transform cubic-bezier(1,.65,.32,.75) .3s;
+        transform: translateX(-400%);
+      }
+      .burger-icon::after{
+        transition: transform cubic-bezier(1,.65,.32,.75) .3s;
+        transform: translateX(-400%);
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+.Menu-account {
+  top: auto;
+  bottom: 0;
+  background: transparent linear-gradient(180deg, #FFFF0D 0%, #FFC909 100%) 0% 0% no-repeat padding-box;
+
+  &.radius-top{
+    border-top-right-radius: 27px;
+    border-top-left-radius: 27px;
+  }
+  &.t-0 {
+    top: 0;
+  }
+  .circle-img{
+    border-radius: 50px;
+  }
+
+  .verticalText{
+    margin: 0;
+  }
+
+  .btn-dark{
+    color: $white;
+  }
+
+  .closeMenuBtn{
+    transform: rotate(-90deg);
+  }
+}
+
+@media #{$medium-up} {
+  .Menu-account {
+    top: 0;
+    right: auto;
+    bottom: auto;
+    left: 0;
+    border-bottom-right-radius: 27px;
+
+    &.radius-top{
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    }
+  
+    .verticalText{
+      margin: 0;
+  
+      &.verticalActive{
+        writing-mode: vertical-lr;
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

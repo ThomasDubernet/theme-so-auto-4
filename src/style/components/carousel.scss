@@ -1,0 +1,28 @@
+.carousel__container{
+  height: 500px;
+}
+.carousel__item{
+  width: 302px;
+  margin: 0 5px;
+  padding: 26px 32px;
+  background: transparent linear-gradient(180deg, #FFFF0D 0%, #FFC909 100%) 0% 0% no-repeat padding-box;
+  border-radius: 27px;
+  box-shadow:0px 5px 50px 0px rgba(0, 0, 0, 0.1);
+
+  h3{
+    display: block;
+  }
+}
+
+@media #{$medium-up} {
+  .carousel__container{
+    height: 350px;
+  }
+  .carousel__item{
+    width: 468px;
+
+    h3{
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,80 @@
+.calendars {
+  display: flex;
+  justify-content: space-between;
+  .calendar {
+    width: 30%;
+    background: #FFF;
+    border: 3px solid #000000;
+    border-radius: 27px;
+    padding: 17px;
+    position: relative;
+    &.current {
+      border: 3px solid $warning;
+    }
+    .weekValue p {
+      width: calc(100% / 7);
+      height: 44px;
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+    }
+    .day{
+      width: calc(100% / 7);
+      height: 44px;
+      display: inline-block;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      cursor: pointer;
+      z-index: 1;
+  
+      .selected{
+        background: $warning;
+        border-radius: 24px;
+        margin: 0 auto;
+      }
+    }
+    .hours{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      border-radius: 27px;
+      padding: 12px;
+      transform: scale(1.2);
+      background: $warning;
+
+      button.close{
+        font-size: 17px;
+      }
+    }
+  }
+}
+
+.btn-calendar{
+  border: none;
+  background: none;
+
+  &:enabled:hover {
+    color: $warning;
+    transform: scale(1.07);
+  }
+  &:focus{
+    outline: none;
+  }
+}
+
+.calendarWeek {
+  display: flex;
+  // justify-content: space-around;
+  width: 100%;
+  .column-day{
+    width: 14.27%;
+    border-radius: 27px;
+    &.gray{
+      background: rgba(209, 209, 209, 0.3);
+    }
+  }
+}

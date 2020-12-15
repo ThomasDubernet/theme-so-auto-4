@@ -1,0 +1,29 @@
+.img-persons-drive{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(10%, -25%);
+  z-index: -1;
+  img{
+    transform: scale(1.1);
+  }
+}
+
+.count-credits{
+  border-radius: 10px;
+  background: rgb(240, 240, 240);
+}
+
+.card-lessons{
+  border-radius: 27px;
+  background: rgb(245, 245, 245);
+
+  button{
+    border-radius: 10px
+  }
+}
+
+.passed-lesson {
+  border-radius: 27px;
+  background: rgb(245, 245, 245);
+}

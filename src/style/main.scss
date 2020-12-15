@@ -1,0 +1,61 @@
+// --------- Perso
+@import 'libs/responsive';
+
+// --------- Bootstrap
+@import 'libs/variables';
+@import "bootstrap/bootstrap";
+
+// --------- Fonts
+@import 'libs/fonts';
+
+html, body{
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+
+  svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  button.noStyle {
+    border: none;
+    background: none;
+    &:focus {
+      outline: none;
+    }
+  }  
+
+  @media #{$medium-up}{
+    .w-md-75{
+      width: 75% !important;
+    }
+  }
+
+// --------- Components
+@import './components/menu_account.scss';
+@import './components/dashboard_nav.scss';
+@import './components/form.scss';
+@import './components/map.scss';
+@import './components/carousel.scss';
+@import './components/livret.scss';
+@import './components/calendar.scss';
+
+// --------- Views
+@import './app';
+@import 'views/homepage';
+@import 'views/code';
+@import 'views/conduite.scss';

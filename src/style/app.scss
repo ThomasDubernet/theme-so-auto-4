@@ -1,0 +1,66 @@
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.App-link.navbar-brand {
+  transform: translatex(-200%);
+  opacity: 0;
+  transition: transform .9s, opacity 1.3s cubic-bezier(.49,.77,1,.83);
+  
+  &.showing {
+    transform: translatex(0);
+    opacity: 1;
+  }
+}
+
+.App-header a {
+  margin: 0 10px;
+}
+
+button.App-link {
+  color: none;
+  background: none;
+  border: none;
+  
+  &:focus{
+    outline: none;
+  }
+}
+button.Btn-link {
+  background: none;
+  border: none;
+  text-decoration: underline;
+}
+
+a.App-link {
+  font-family: 'OpenSans Bold';
+  text-decoration: none;
+}
+
+#login{
+  width: 100vw;
+  height: 100vh;
+  background:linear-gradient(180deg, #FFFF0D 0%, #FFC909 100%) 0% 0%;
+
+  .formSignConnect{
+    border-radius: 50px;
+    box-shadow:0px 5px 50px 0px rgba(0, 0, 0, 0.1); 
+    background: #fff;
+  }
+}
+
+.btn-outline-warning{
+  color: $warning;
+  &:hover{
+    color: $white !important;
+  } 
+}
+
+.btn-warning:hover{
+  color: #fff;
+}
+
+.btn-outline-warning.btn-warning{
+  background: $warning;
+  color: $white !important;
+}

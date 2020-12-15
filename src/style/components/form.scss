@@ -1,0 +1,68 @@
+.tooltipform{
+  position: relative;
+  display: inline-block;
+  .tooltiptext{
+    width: 100%;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: -25%;
+    opacity: 1;
+    transition: opacity 0.3s;
+
+    &::after{
+      content: "";
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent #555 transparent;
+    }
+  }
+}
+
+input.form-control, select.form-control{
+  border-radius: 50px;
+
+  &::placeholder{
+    text-align: center;
+    font-weight: 500;
+    opacity: .4;
+  }
+  &[type=radio]{
+    background: transparent;
+    appearance: none;
+  }
+  &.input-sexe-male{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  &.input-sexe-femelle{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.male-label, .femelle-label{
+  position: relative;
+  input{
+    z-index: 9;
+  }
+  span{
+    z-index: -1;
+    position: absolute;
+    color: #495057;
+    font-weight: 600;
+    opacity: .3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+  }
+}

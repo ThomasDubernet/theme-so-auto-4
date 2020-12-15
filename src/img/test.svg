@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="47" height="47" viewBox="0 0 47 47">
+  <g id="Groupe_1623" data-name="Groupe 1623" transform="translate(-1071 -46)">
+    <g id="Groupe_1622" data-name="Groupe 1622" transform="translate(2474 388)">
+      <g id="Groupe_1539" data-name="Groupe 1539" transform="translate(-2655 -388)">
+        <g id="Groupe_1416" data-name="Groupe 1416" transform="translate(991 1)">
+          <g id="Ellipse_34" data-name="Ellipse 34" transform="translate(261 45)" fill="#fec92e" stroke="#fec92e" stroke-width="2">
+            <circle cx="23.5" cy="23.5" r="23.5" stroke="none"/>
+            <circle cx="23.5" cy="23.5" r="22.5" fill="none"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <path id="Icon_awesome-map-signs" data-name="Icon awesome-map-signs" d="M19.817,3.308,18.125,1.616a1.25,1.25,0,0,0-.884-.366H11.25V.625A.625.625,0,0,0,10.625,0H9.375A.625.625,0,0,0,8.75.625V1.25H2.188a.938.938,0,0,0-.938.938V5.313a.938.938,0,0,0,.938.938H17.241a1.251,1.251,0,0,0,.884-.366l1.692-1.692A.625.625,0,0,0,19.817,3.308ZM8.75,19.375A.625.625,0,0,0,9.375,20h1.25a.625.625,0,0,0,.625-.625V15H8.75ZM17.813,8.75H11.25V7.5H8.75V8.75H2.759a1.251,1.251,0,0,0-.884.366L.183,10.808a.625.625,0,0,0,0,.884l1.692,1.692a1.25,1.25,0,0,0,.884.366H17.813a.938.938,0,0,0,.938-.938V9.688A.938.938,0,0,0,17.813,8.75Z" transform="translate(1084 60)" fill="#fff"/>
+  </g>
+</svg>

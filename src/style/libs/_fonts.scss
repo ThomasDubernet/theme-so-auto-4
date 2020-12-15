@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'OpenSans Regular';
+    src: url("../fonts/OpenSans-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'OpenSans bold';
+    src: url("../fonts/OpenSans-Bold.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Quicksand Bold';
+    src: url("../fonts/Quicksand-Bold.ttf") format("truetype");
+}
+
+@for $i from 1 through 6 {
+    h#{$i}, .h#{$i} {
+        font-family: 'Quicksand Bold' !important;
+    }
+}
+
+h1, h2, .h1, .h2 {
+    font-size: 48px;
+}
+h3, h4, .h3, .h4 {
+    font-size: 30px;
+}
+h5, h6, .h5, .h6 {
+    font-size: 26px;
+}
+p, a, li, span {
+    color: black;
+    font-size: 20px;
+    font-family: 'OpenSans Regular';
+}
+a:hover {
+    color: $warning;
+    font-family: 'OpenSans Bold';
+    text-decoration: none;
+}
+button, .pbtn {
+    font-family: 'OpenSans Bold';
+    font-size: 16px;
+}
+*[class*="btn-"]{
+    border-radius: 50px;
+}
+.text-line-through{
+    text-decoration: line-through;
+}
+.ft-bold{
+    font-family: 'OpenSans Bold';
+}
+.sm{
+    font-size: 12px;
+}
+
+// Footer
+footer.App-footer {
+    a, li {
+        font-family: 'OpenSans Bold';
+    }
+    li.links {
+        font-size: 12px;
+        opacity: 0.5;
+        a {
+            font-size: 12px;
+        }
+    }
+    li.infos {
+        font-size: 16px;
+        opacity: 1;
+    }
+    h5 {
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+}

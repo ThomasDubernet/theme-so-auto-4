@@ -1,0 +1,13 @@
+.percent {
+  background-image: url("../../img/bkg-yellow.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 720px;
+}
+
+@media #{$medium-up} {
+  .percent {
+  background-image: url("../../img/bkg-yellow.svg");
+    height: 1010px;
+  }
+}
