@@ -17,38 +17,55 @@ function BuildHour(props) {
 
   let bookings = useRef([])
   
-  fetch(`${window.location.origin}/wp-json/so-auto/v1/availabilities?date_available=${props.day}`, {
-    method: 'GET',
-    redirect: 'follow'
-  })
-    .then(response => response.json())
-    .then(result => {
-      bookings.current = result
+  useEffect( () => {
+    fetch(`${window.location.origin}/wp-json/so-auto/v1/availabilities?date_available=${props.day}`, {
+      method: 'GET',
+      redirect: 'follow'
     })
-    .catch(error => console.log('error', error));
+      .then(response => response.json())
+      .then(result => {
+        bookings.current = result
+      })
+      .catch(error => console.log('error', error));
+  }, [props])
 
-  // let books = []
+  let books = []
   bookings.current.forEach(book => {
-      const hours = JSON.parse(book.hours)
-      hours.forEach( ()=> {
-        console.log('test');
-        // books.push(new Date(props.day + hour))
+      const hours = book.hours
+      hours.forEach(hour => {
+        const jsonBook = {
+          "date": new Date(props.day + " " + hour),
+          "teacher_id": book.teacher_id
+        }
+        books.push(jsonBook)
       })
   })
 
-  
-
+  books.sort(function(a, b) {
+    return a.date - b.date
+  })
 
   return (
     <React.Fragment>
-      <ul>
-        
-      </ul>
+      <div className="d-flex flex-column text-center">
+        {
+          books.map((book, i) => (
+            <div key={i} className="cube-book mx-3">
+              <div>
+                {book.date.getHours()}:00
+              </div>
+              <div>
+                {book.teacher_id}
+              </div>
+            </div>
+          ))
+        }
+      </div>
     </React.Fragment>
   )
 }
 
-export default function DriveBookings() {
+export default function DriveBookings(props) {
 
   const [teachers, setTeachers] = useState([])
   const [value, setValue] = useState(moment())
@@ -64,9 +81,10 @@ export default function DriveBookings() {
         setTeachers(result)
       })
       .catch(error => console.log('error', error));
-  }, [])
+  }, [props])
 
   useEffect(() => {
+    // debugger
     setCalendar(BuildCalendar(value))
   }, [value])
 
