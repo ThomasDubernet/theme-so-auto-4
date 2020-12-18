@@ -9,6 +9,7 @@ import Teacher from '../views/Teacher';
 
 export default function Site(props) {
 
+
   const setUserFormat = (userOldFormat) => {
     const userKeys = Object.keys(userOldFormat)
     const userOld = []
@@ -46,9 +47,7 @@ export default function Site(props) {
     userType: type,
     updateUser: updateUser,
     updateUserType: setType,
-    fetchUser: fetchUser,
-    codeProducts: "test",
-    driveProducts: "test"
+    fetchUser: fetchUser
   }
 
   return (

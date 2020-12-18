@@ -5,7 +5,5 @@ export default React.createContext({
   userType: '',
   updateUser: () => {},
   updateUserType: () => {},
-  fetchUser: () => {},
-  codeProducts: [],
-  driveProducts: []
+  fetchUser: () => {}
 })

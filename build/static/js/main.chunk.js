@@ -448,23 +448,25 @@ class DashboardNav extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   }
 
   componentDidUpdate() {
-    const linksNav = document.querySelectorAll('.link-d-none');
+    if (this.context.userType !== "student" && this.context.user.activated > 0) {
+      const linksNav = document.querySelectorAll('.link-d-none');
 
-    if (this.state.openNav) {
-      linksNav.forEach(link => {
-        link.classList.add('activeShow');
-      });
-    } else if (!this.state.openNav) {
-      linksNav.forEach(link => {
-        link.classList.remove('activeShow');
-        const burger = document.querySelector('.navbar-burger');
-        burger.classList.remove('activate');
-      });
+      if (this.state.openNav) {
+        linksNav.forEach(link => {
+          link.classList.add('activeShow');
+        });
+      } else if (!this.state.openNav) {
+        linksNav.forEach(link => {
+          link.classList.remove('activeShow');
+          const burger = document.querySelector('.navbar-burger');
+          burger.classList.remove('activate');
+        });
+      }
     }
   }
 
   render() {
-    function TeacherNav() {
+    function TeacherNav(props) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
         className: "App-link my-2 my-md-0 btn btn-outline-warning link-d-none activeShow",
         activeClassName: "Active-link btn-warning",
@@ -521,16 +523,23 @@ class DashboardNav extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       className: "nav-right ml-md-auto mx-auto mx-md-0 d-flex flex-column flex-md-row d-block"
     }, this.context.userType === "student" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(StudentNav, {
       openNav: this.state.openNav
-    }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TeacherNav, {
+    }) : this.context.user.activated > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TeacherNav, {
       openNav: this.state.openNav
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    }) : ''), this.context.userType === "student" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "navbar-burger my-auto",
       onClick: this.activeNav
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "burger"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "burger-icon"
-    }))));
+    }))) : this.context.user.activated > 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "navbar-burger my-auto",
+      onClick: this.activeNav
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "burger"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "burger-icon"
+    }))) : '');
   }
 
 }
@@ -893,7 +902,7 @@ class MenuAccount extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component
       className: "verticalText pbtn btn btn-outline-dark " + (this.state.openMenu ? ' m-auto' : 'mx-auto my-md-2 py-md-4 px-md-2 verticalActive'),
       activeClassName: "Active-link btn-dark",
       exact: true,
-      to: "/teacher/planning"
+      to: this.context.user.activated > 0 ? "/teacher/planning" : "/teacher/folder"
     }, "Mon planning"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
       className: "verticalText pbtn btn btn-outline-dark " + (this.state.openMenu ? ' m-auto' : 'mx-auto my-md-2 py-md-4 px-md-2 verticalActive'),
       activeClassName: "Active-link btn-dark",
@@ -2348,9 +2357,7 @@ __webpack_require__.r(__webpack_exports__);
   userType: '',
   updateUser: () => {},
   updateUserType: () => {},
-  fetchUser: () => {},
-  codeProducts: [],
-  driveProducts: []
+  fetchUser: () => {}
 }));
 
 /***/ }),
@@ -2881,9 +2888,7 @@ function Site(props) {
     userType: type,
     updateUser: updateUser,
     updateUserType: setType,
-    fetchUser: fetchUser,
-    codeProducts: "test",
-    driveProducts: "test"
+    fetchUser: fetchUser
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_context_Context__WEBPACK_IMPORTED_MODULE_2__["default"].Provider, {
     value: contextValue
@@ -4345,5 +4350,5 @@ module.exports = __webpack_require__(/*! /Users/thomasdubernet/Projects/so_auto_
 
 /***/ })
 
-},[[0,"runtime-main",0]]]);
+},[[0,"runtime-main",1]]]);
 //# sourceMappingURL=main.chunk.js.map
