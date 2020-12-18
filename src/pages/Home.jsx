@@ -91,8 +91,8 @@ export default function Home(props) {
                 <p className="h3 text-warning">29, 90€</p>
                 <p>10 % moins chère</p>
                 <div className="d-flex">
-                  <button className="btn btn-outline-dark">En savoir plus</button>
-                  <button className="btn btn-outline-dark ml-4"><FontAwesomeIcon icon={faCaretRight} /></button>
+                  <button className="btn btn-outline-white">En savoir plus</button>
+                  <button className="btn btn-outline-white ml-4"><FontAwesomeIcon icon={faCaretRight} /></button>
                 </div>
               </div>
 
@@ -101,8 +101,8 @@ export default function Home(props) {
                 <p className="h3 text-warning">999€</p>
                 <p>Au lieu de <span className="text-line-through">1 099€</span></p>
                 <div className="d-flex">
-                  <button className="btn btn-outline-dark">En savoir plus</button>
-                  <button className="btn btn-outline-dark ml-4"> <FontAwesomeIcon icon={faCaretRight} /> </button>
+                  <button className="btn btn-outline-white">En savoir plus</button>
+                  <button className="btn btn-outline-white ml-4"> <FontAwesomeIcon icon={faCaretRight} /> </button>
                 </div>
               </div>
 
@@ -111,8 +111,8 @@ export default function Home(props) {
                 <p className="h3 text-warning">749€</p>
                 <p>30 % moins chère</p>
                 <div className="d-flex">
-                  <button className="btn btn-outline-dark">En savoir plus</button>
-                  <button className="btn btn-outline-dark ml-4"><FontAwesomeIcon icon={faCaretRight} /></button>
+                  <button className="btn btn-outline-white">En savoir plus</button>
+                  <button className="btn btn-outline-white ml-4"><FontAwesomeIcon icon={faCaretRight} /></button>
                 </div>
               </div>
 
@@ -145,7 +145,7 @@ export default function Home(props) {
           <TextIllus
             order= "2"
             imgSrc = {code}
-            title = "Permis<br/>de condurie"
+            title = "Permis<br/>de conduire"
             textWarning = "Apprenez à conduire selon votre planning, avec un moniteur qui accompagnera jusqu'à obtention de votre permis."
             content = "Un plan de formation et un livret pédagogique sûr-mesure, une équipe à votre écoute, pour favoriser votre résussite."
             contentClasse="d-none d-md-block"
@@ -157,12 +157,12 @@ export default function Home(props) {
         <div className="mb-5 my-md-8 mx-md-6 align-self-md-start">
           <h3>95 %<br/>de réussite au<br />Code de la route</h3>
           <p className="mt-5 d-none d-md-block">Des outils en ligne, un enseignement pédagogue et un accompagnement sans faille pour une satisfaction record !</p>
-          <button className="mt-4 btn btn-outline-dark d-block d-md-none">En savoir plus</button>
+          <button className="mt-4 btn btn-outline-white d-block d-md-none">En savoir plus</button>
         </div>
         <div className="my-4 my-md-8 mx-md-6 align-self-md-end">
           <h3>75 %<br/>de réussite au<br />Permis de conduire</h3>
           <p className="mt-5 d-none d-md-block">Des outils en ligne, un enseignement pédagogue et un accompagnement sans faille pour une satisfaction record !</p>
-          <button className="mt-4 btn btn-outline-dark d-block d-md-none">En savoir plus</button>
+          <button className="mt-4 btn btn-outline-white d-block d-md-none">En savoir plus</button>
         </div>
       </div>
       
@@ -184,21 +184,21 @@ export default function Home(props) {
             <div className="col-md-2">
               <h5 className="my-4">Sitemap</h5>
               <ul className="list-unstyled">
-                <li className="links my-2">Home</li>
-                <li className="links my-2">A propos</li>
-                <li className="links my-2">Services</li>
-                <li className="links my-2">Carrières</li>
-                <li className="links my-2">Tarifications</li>
-                <li className="links my-2">Infos</li>
+                <li className="links my-3">Home</li>
+                <li className="links my-3">A propos</li>
+                <li className="links my-3">Services</li>
+                <li className="links my-3">Carrières</li>
+                <li className="links my-3">Tarifications</li>
+                <li className="links my-3">Infos</li>
               </ul>
             </div>
             <div className="col-md-3">
               <h5 className="my-4">Services</h5>
               <ul className="list-unstyled">
-                <li className="links my-2">Code de la route</li>
-                <li className="links my-2">Conduite accompagnée</li>
-                <li className="links my-2">Permis de conduire</li>
-                <li className="links my-2">
+                <li className="links my-3">Code de la route</li>
+                <li className="links my-3">Conduite accompagnée</li>
+                <li className="links my-3">Permis de conduire</li>
+                <li className="links my-3">
                   <NavLink
                     activeClassName="Active-link"
                     exact to={{

@@ -194,7 +194,7 @@ export default function Livret() {
 
   return (
     <React.Fragment>
-      <h2>Mon livret</h2>
+      <h3>Mon livret</h3>
 
       <h6 className="text-warning mt-5">Mon livret d'apprentissage</h6>
       <p className="sm">Ce livret vous permet de suivre pas à pas les étapes de formation, du code de la route jusqu'au permis de conduire.<br />il vous sert également de justificatif de formation routière lors d'un contrôle de police.</p>
@@ -204,7 +204,7 @@ export default function Livret() {
           return (
             <div className="my-4" key={i} >
               <p className="text-center text-secondary">Compétence {i+1} </p>
-              <h4 className="text-center mx-5 mb-4"> {competence.subject} </h4>
+              <h6 className="text-center mx-5 mb-4"> {competence.subject} </h6>
               {competence.datas.map( (item, index) => {
                 return (<Competence title={item.title} lvl={item.lvlAcquisiton} key={index} />)
               })}

@@ -868,13 +868,13 @@ class MenuAccount extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "d-flex flex-column"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: "btn btn-outline-dark my-2 mx-4"
+      className: "btn btn-outline-warning my-2 mx-4"
     }, "Mon dossier"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: "btn btn-outline-dark my-2 mx-4"
+      className: "btn btn-outline-warning my-2 mx-4"
     }, "Mon contrat"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "containerbtn "
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "Row-btn-desktop d-flex " + (this.state.openMenu ? '' : 'flex-md-column')
+      className: "row-desktop d-flex " + (this.state.openMenu ? '' : 'flex-md-column')
     }, this.context.userType === "student" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
       className: "verticalText pbtn btn btn-outline-dark " + (this.state.openMenu ? ' m-auto' : 'mx-auto my-md-2 py-md-4 px-md-2 verticalActive'),
       activeClassName: "Active-link btn-dark",
@@ -882,7 +882,7 @@ class MenuAccount extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component
       to: "/student/livret"
     }, "Mon livret") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
       className: "verticalText pbtn btn btn-outline-dark " + (this.state.openMenu ? ' m-auto' : 'mx-auto my-md-2 py-md-4 px-md-2 verticalActive'),
-      activeClassName: "Active-link btn-dark",
+      activeClassName: "Active-link btn-outline-dark",
       exact: true,
       to: "/teacher/planning"
     }, "Mon planning"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
@@ -1282,7 +1282,7 @@ class TextIllus extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "d-flex mt-4"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: 'btn btn-outline-dark ' + (typeof this.props.btnClasse == 'undefined' ? '' : this.props.btnClasse)
+      className: 'btn btn-outline-white ' + (typeof this.props.btnClasse == 'undefined' ? '' : this.props.btnClasse)
     }, typeof this.props.textBtn == 'undefined' ? 'En savoir plus' : this.props.textBtn), typeof this.props.secondBtn == 'undefined' ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: typeof this.props.secondBtnClasse == 'undefined' ? '' : this.props.secondBtnClasse
     }, typeof this.props.textSecondBtn == 'undefined' ? '' : typeof this.props.linkSecondBtn != 'undefined' ? '' : this.props.textSecondBtn, typeof this.props.linkSecondBtn == 'undefined' ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
@@ -1290,7 +1290,7 @@ class TextIllus extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       exact: true,
       to: "/test"
     }, this.props.textSecondBtn)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: 'btn btn-outline-dark ml-4 ' + (typeof this.props.btnPlayClasse == 'undefined' ? '' : this.props.btnPlayClasse)
+      className: 'btn btn-outline-white ml-4 ' + (typeof this.props.btnPlayClasse == 'undefined' ? '' : this.props.btnPlayClasse)
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
       icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faCaretRight"]
     }))))));
@@ -1461,7 +1461,7 @@ function AdressForm() {
       className: "text-warning"
     }, " ", props.title, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       type: "submit",
-      className: "btn btn-outline-dark ml-auto"
+      className: "btn btn-outline-white ml-auto"
     }, "Enregistrer")), typeof props.text ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "sm",
       dangerouslySetInnerHTML: {
@@ -1575,7 +1575,7 @@ function AutoForm() {
       className: "text-warning"
     }, " ", props.title, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       type: "submit",
-      className: "btn btn-outline-dark ml-auto"
+      className: "btn btn-outline-white ml-auto"
     }, "Enregistrer")), typeof props.text ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "sm",
       dangerouslySetInnerHTML: {
@@ -1730,7 +1730,7 @@ function CivilForm() {
       className: "text-warning"
     }, " ", props.title, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       type: "submit",
-      className: "btn btn-outline-dark ml-auto"
+      className: "btn btn-outline-white ml-auto"
     }, "Enregistrer")), typeof props.text ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "sm",
       dangerouslySetInnerHTML: {
@@ -1879,7 +1879,7 @@ function DocsStudentForm() {
       className: "text-warning"
     }, " ", props.title, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       type: "submit",
-      className: "btn btn-outline-dark ml-auto"
+      className: "btn btn-outline-white ml-auto"
     }, "Enregistrer")), typeof props.text ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "sm",
       dangerouslySetInnerHTML: {
@@ -1988,7 +1988,7 @@ function DocsTeacherForm() {
       className: "text-warning"
     }, " ", props.title, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       type: "submit",
-      className: "btn btn-outline-dark ml-auto"
+      className: "btn btn-outline-white ml-auto"
     }, "Enregistrer")), typeof props.text ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "sm",
       dangerouslySetInnerHTML: {
@@ -2123,7 +2123,7 @@ function EntrepriseForm() {
       className: "text-warning"
     }, " ", props.title, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       type: "submit",
-      className: "btn btn-outline-dark ml-auto"
+      className: "btn btn-outline-white ml-auto"
     }, "Enregistrer")), typeof props.text ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "sm",
       dangerouslySetInnerHTML: {
@@ -2254,7 +2254,7 @@ function InfosForm() {
       className: "text-warning"
     }, " ", props.title, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       type: "submit",
-      className: "btn btn-outline-dark ml-auto"
+      className: "btn btn-outline-white ml-auto"
     }, "Enregistrer")), typeof props.text ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "sm",
       dangerouslySetInnerHTML: {
@@ -2565,9 +2565,9 @@ function Home(props) {
   }, "29, 90\u20AC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "10 % moins ch\xE8re"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-outline-dark"
+    className: "btn btn-outline-white"
   }, "En savoir plus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-outline-dark ml-4"
+    className: "btn btn-outline-white ml-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_5__["FontAwesomeIcon"], {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faCaretRight"]
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2581,9 +2581,9 @@ function Home(props) {
   }, "1 099\u20AC")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-outline-dark"
+    className: "btn btn-outline-white"
   }, "En savoir plus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-outline-dark ml-4"
+    className: "btn btn-outline-white ml-4"
   }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_5__["FontAwesomeIcon"], {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faCaretRight"]
   }), " "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2595,9 +2595,9 @@ function Home(props) {
   }, "749\u20AC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "30 % moins ch\xE8re"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-outline-dark"
+    className: "btn btn-outline-white"
   }, "En savoir plus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-outline-dark ml-4"
+    className: "btn btn-outline-white ml-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_5__["FontAwesomeIcon"], {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faCaretRight"]
   })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2625,7 +2625,7 @@ function Home(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_TextIllus__WEBPACK_IMPORTED_MODULE_2__["default"], {
     order: "2",
     imgSrc: _img_code_svg__WEBPACK_IMPORTED_MODULE_9___default.a,
-    title: "Permis<br/>de condurie",
+    title: "Permis<br/>de conduire",
     textWarning: "Apprenez \xE0 conduire selon votre planning, avec un moniteur qui accompagnera jusqu'\xE0 obtention de votre permis.",
     content: "Un plan de formation et un livret p\xE9dagogique s\xFBr-mesure, une \xE9quipe \xE0 votre \xE9coute, pour favoriser votre r\xE9sussite.",
     contentClasse: "d-none d-md-block",
@@ -2637,13 +2637,13 @@ function Home(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "95 %", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "de r\xE9ussite au", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Code de la route"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "mt-5 d-none d-md-block"
   }, "Des outils en ligne, un enseignement p\xE9dagogue et un accompagnement sans faille pour une satisfaction record !"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "mt-4 btn btn-outline-dark d-block d-md-none"
+    className: "mt-4 btn btn-outline-white d-block d-md-none"
   }, "En savoir plus")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "my-4 my-md-8 mx-md-6 align-self-md-end"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "75 %", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "de r\xE9ussite au", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Permis de conduire"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "mt-5 d-none d-md-block"
   }, "Des outils en ligne, un enseignement p\xE9dagogue et un accompagnement sans faille pour une satisfaction record !"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "mt-4 btn btn-outline-dark d-block d-md-none"
+    className: "mt-4 btn btn-outline-white d-block d-md-none"
   }, "En savoir plus"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Map__WEBPACK_IMPORTED_MODULE_3__["default"], {
     container: "ApiMapbox",
     home: true,
@@ -2678,17 +2678,17 @@ function Home(props) {
   }, "Sitemap"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "list-unstyled"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "A propos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Services"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Carri\xE8res"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Tarifications"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Infos"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
@@ -2696,13 +2696,13 @@ function Home(props) {
   }, "Services"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "list-unstyled"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Code de la route"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Conduite accompagn\xE9e"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Permis de conduire"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
     activeClassName: "Active-link",
     exact: true,
@@ -3111,7 +3111,7 @@ function Drive() {
     btnPlayClasse: "d-none",
     secondBtn: "true",
     linkSecondBtn: "true",
-    secondBtnClasse: "btn btn-outline-dark ml-4 ",
+    secondBtnClasse: "btn btn-outline-white ml-4 ",
     textSecondBtn: "Les avis de nos \xE9l\xE8ves"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container position-relative carousel__container"
@@ -3518,7 +3518,7 @@ function Livret() {
     }, props.title));
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Mon livret"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Mon livret"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
     className: "text-warning mt-5"
   }, "Mon livret d'apprentissage"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "sm"
@@ -3530,7 +3530,7 @@ function Livret() {
       key: i
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       className: "text-center text-secondary"
-    }, "Comp\xE9tence ", i + 1, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+    }, "Comp\xE9tence ", i + 1, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
       className: "text-center mx-5 mb-4"
     }, " ", competence.subject, " "), competence.datas.map((item, index) => {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Competence, {
@@ -3881,31 +3881,35 @@ function Student() {
   }, "Sitemap"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "list-unstyled"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "A propos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Services"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Carri\xE8res"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "links my-2"
   }, "Tarifications"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
-  }, "Infos"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "links my-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    activeClassName: "Active-link",
+    exact: true,
+    to: "/infos-test"
+  }, "Infos")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "my-4"
   }, "Services"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "list-unstyled"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Code de la route"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Conduite accompagn\xE9e"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Permis de conduire"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Devenir moniteur"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
@@ -3913,11 +3917,11 @@ function Student() {
   }, "Connect"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "list-unstyled"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Facebook"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Twitter"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Linkedin"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row bg-light"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -4016,17 +4020,17 @@ function Teacher() {
   }, "Sitemap"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "list-unstyled"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "A propos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Services"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Carri\xE8res"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Tarifications"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Infos"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
@@ -4034,13 +4038,13 @@ function Teacher() {
   }, "Services"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "list-unstyled"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Code de la route"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Conduite accompagn\xE9e"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Permis de conduire"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Devenir moniteur"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
@@ -4048,11 +4052,11 @@ function Teacher() {
   }, "Connect"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
     className: "list-unstyled"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Facebook"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Twitter"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-2"
+    className: "links my-3"
   }, "Linkedin"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row bg-light"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {

@@ -1,3 +1,4 @@
+// Navbar
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -17,6 +18,29 @@
   margin: 0 10px;
 }
 
+// Connexion
+#login{
+  width: 100vw;
+  height: 100vh;
+  background:linear-gradient(180deg, #FFFF0D 0%, $warning 100%) 0% 0%;
+
+  .formSignConnect{
+    border-radius: 50px;
+    box-shadow:0px 5px 50px 0px rgba(0, 0, 0, 0.1); 
+    background: #fff;
+  }
+}
+
+// Btn
+button, .pbtn {
+  font-family: Arial Bold, 'OpenSans Bold';
+  font-size: 16px;
+}
+*[class*="btn-"]{
+  border-radius: 50px;
+  border: 2px solid;
+}
+
 button.App-link {
   color: none;
   background: none;
@@ -33,34 +57,97 @@ button.Btn-link {
 }
 
 a.App-link {
-  font-family: 'OpenSans Bold';
-  text-decoration: none;
+  font-family: Arial Bold, 'OpenSans Bold';
+  text-decoration: none; 
 }
 
-#login{
-  width: 100vw;
-  height: 100vh;
-  background:linear-gradient(180deg, #FFFF0D 0%, #FFC909 100%) 0% 0%;
-
-  .formSignConnect{
-    border-radius: 50px;
-    box-shadow:0px 5px 50px 0px rgba(0, 0, 0, 0.1); 
-    background: #fff;
-  }
-}
-
-.btn-outline-warning{
+// Btn yellow => Navbar Site
+.btn-outline-warning {
   color: $warning;
-  &:hover{
-    color: $white !important;
-  } 
+  border-color: $warning; }
+  .btn-outline-warning:hover {
+    color: white;
+    background-color: $warning;
+    border-color: $warning; }
+  .btn-outline-warning:focus, .btn-outline-warning.focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 201, 9, 0.5); }
+  .btn-outline-warning.disabled, .btn-outline-warning:disabled {
+    color: white;
+    background-color: transparent; }
+  .btn-outline-warning:not(:disabled):not(.disabled):active, .btn-outline-warning:not(:disabled):not(.disabled).active,
+  .show > .btn-outline-warning.dropdown-toggle {
+    color: white;
+    background-color: $warning;
+    border-color: $warning; }
+    .btn-outline-warning:not(:disabled):not(.disabled):active:focus, .btn-outline-warning:not(:disabled):not(.disabled).active:focus,
+    .show > .btn-outline-warning.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(255, 201, 9, 0.5); 
 }
 
-.btn-warning:hover{
-  color: #fff;
+.btn-warning{
+  color: white;
+  background-color: $warning;
+  border-color: $warning;
 }
 
-.btn-outline-warning.btn-warning{
-  background: $warning;
-  color: $white !important;
+// Btn white => Content
+.btn-outline-white {
+  color: $dark;
+  background-color: transparent;
+  border-color: $dark; }
+  .btn-outline-white:hover {
+    color: $dark;
+    background-color: $warning;
+    border-color: $dark; }
+  .btn-outline-white:focus, .btn-outline-white.focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 201, 9, 0.5); }
+  .btn-outline-white.disabled, .btn-outline-white:disabled {
+    color: $dark;
+    background-color: transparent; }
+  .btn-outline-white:not(:disabled):not(.disabled):active, .btn-outline-white:not(:disabled):not(.disabled).active,
+  .show > .btn-outline-white.dropdown-toggle {
+    color: $dark;
+    background-color: $warning;
+    border-color: $dark; }
+    .btn-outline-white:not(:disabled):not(.disabled):active:focus, .btn-outline-white:not(:disabled):not(.disabled).active:focus,
+    .show > .btn-outline-white.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(255, 201, 9, 0.5); 
 }
+
+.btn-white {
+  color: $dark;
+  background-color: $warning;
+  border-color: $dark; 
+}
+
+// Btn dark => MenuAccount Account Student/Teacher
+.btn-outline-dark {
+  color: $dark;
+  background-color: transparent;
+  border-color: $dark; }
+  .btn-outline-dark:hover {
+    color: $warning;
+    background-color: $dark;
+    border-color: $dark; }
+  .btn-outline-dark:focus, .btn-outline-dark.focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 201, 9, 0.5); }
+  .btn-outline-dark.disabled, .btn-outline-dark:disabled {
+    color: $warning;
+    background-color: transparent; }
+  .btn-outline-dark:not(:disabled):not(.disabled):active, .btn-outline-dark:not(:disabled):not(.disabled).active,
+  .show > .btn-outline-dark.dropdown-toggle {
+    color: $warning;
+    background-color: $dark;
+    border-color: $dark; }
+    .btn-outline-dark:not(:disabled):not(.disabled):active:focus, .btn-outline-dark:not(:disabled):not(.disabled).active:focus,
+    .show > .btn-outline-dark.dropdown-toggle:focus {
+      box-shadow: 0 0 0 0.2rem rgba(255, 201, 9, 0.5); 
+}
+
+.btn-dark {
+  color: $warning;
+  background-color: $dark;
+  border-color: $dark; 
+}
+
+

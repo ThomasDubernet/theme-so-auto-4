@@ -27,7 +27,7 @@ export default function DocsStudentForm() {
       <React.Fragment>
       <div className="d-flex mt-5">
         <h6 className="text-warning"> {props.title} </h6>
-        <button type="submit" className="btn btn-outline-dark ml-auto">Enregistrer</button>
+        <button type="submit" className="btn btn-outline-white ml-auto">Enregistrer</button>
       </div>
       {typeof props.text ? <p className="sm" dangerouslySetInnerHTML={{__html: props.text}} ></p> : ''}
     </React.Fragment>

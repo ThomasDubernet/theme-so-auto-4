@@ -188,17 +188,17 @@ export default class MenuAccount extends React.Component{
               </div>
               <div className={"d-md-none my-2 "  + (this.state.openMenu ? 'd-block ' : 'd-none')}>
                 <div className="d-flex flex-column">
-                  <button className="btn btn-outline-dark my-2 mx-4">Mon dossier</button>
-                  <button className="btn btn-outline-dark my-2 mx-4">Mon contrat</button>
+                  <button className="btn btn-outline-warning my-2 mx-4">Mon dossier</button>
+                  <button className="btn btn-outline-warning my-2 mx-4">Mon contrat</button>
                 </div>
               </div>
 
               <div className={"containerbtn "}>
 
-                <div className={"Row-btn-desktop d-flex "  + (this.state.openMenu ? '' : 'flex-md-column')}>
+                <div className={"row-desktop d-flex "  + (this.state.openMenu ? '' : 'flex-md-column')}>
 
                   {
-                    this.context.userType === "student" ? <NavLink className={"verticalText pbtn btn btn-outline-dark " + (this.state.openMenu ? ' m-auto' : 'mx-auto my-md-2 py-md-4 px-md-2 verticalActive' )} activeClassName="Active-link btn-dark" exact to="/student/livret" >Mon livret</NavLink> : <NavLink className={"verticalText pbtn btn btn-outline-dark " + (this.state.openMenu ? ' m-auto' : 'mx-auto my-md-2 py-md-4 px-md-2 verticalActive' )} activeClassName="Active-link btn-dark" exact to="/teacher/planning" >Mon planning</NavLink>
+                    this.context.userType === "student" ? <NavLink className={"verticalText pbtn btn btn-outline-dark " + (this.state.openMenu ? ' m-auto' : 'mx-auto my-md-2 py-md-4 px-md-2 verticalActive' )} activeClassName="Active-link btn-dark" exact to="/student/livret" >Mon livret</NavLink> : <NavLink className={"verticalText pbtn btn btn-outline-dark " + (this.state.openMenu ? ' m-auto' : 'mx-auto my-md-2 py-md-4 px-md-2 verticalActive' )} activeClassName="Active-link btn-outline-dark" exact to="/teacher/planning" >Mon planning</NavLink>
                   }
                   
                   <NavLink className={"verticalText pbtn btn btn-outline-dark " + (this.state.openMenu ? ' m-auto' : 'mx-auto my-md-2 py-md-4 px-md-2 verticalActive' )} activeClassName="Active-link btn-dark" exact to="/teacher/help" >Aide</NavLink>
