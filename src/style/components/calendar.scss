@@ -68,13 +68,25 @@
 
 .calendarWeek {
   display: flex;
-  // justify-content: space-around;
   width: 100%;
   .column-day{
     width: 14.27%;
     border-radius: 27px;
     &.gray{
       background: rgba(209, 209, 209, 0.3);
+    }
+  }
+  .cube-book {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    .imgBooking {
+      img {
+        width: 80%;
+        display: block;
+        margin: auto;
+        border-radius: 10px;
+      }
     }
   }
 }

@@ -6,29 +6,39 @@ import Context from '../../context/Context'
 function Form(props) {
   const { register, handleSubmit} = useForm()
 
+  /* eslint-disable no-unused-vars */
   const context = useContext(Context)
+/* eslint-enable no-unused-vars */
+
+async function postBookings(datasJson) {
+  await fetch(`${window.location.origin}/wp-json/so-auto/v1/bookings`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(datasJson),
+    redirect: 'follow'
+  })
+}
 
   const onSubmit = (datas) => {
-    const datasJson = {
-      "date_available": props.day,
-      "teacher_id": context.user.id,
-      "boite": "manuelle",
-      "hours": datas
+
+    let newDatas = []
+
+    for(var item in datas) {
+      if(datas[item] === 'true') {
+        newDatas.push(item)
+      }
     }
 
-    fetch(`${window.location.origin}/wp-json/so-auto/v1/availabilities`, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(datasJson),
-      redirect: 'follow'
+    newDatas.forEach( data => {
+      const datasJson = {
+        "date_available": props.day + " " + data,
+        "teacher_id": context.user.id,
+        "boite": "manuelle"
+      }
+      postBookings(datasJson)
     })
-      .then(response => response.json())
-      .then(result => {
-        console.log(result)
-      })
-      .catch(error => console.log('error', error));
   }
 
   return (

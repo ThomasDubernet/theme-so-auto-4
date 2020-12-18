@@ -25,7 +25,7 @@ export default function ConnectForm(props) {
     </div>
   )
 
-  const onSubmitConnect = async (data) => {
+  const onSubmitConnect = (data) => {
     var passwordHash = require('password-hash');
     if(data.username && data.password) {
       props.users.students.forEach( student => {

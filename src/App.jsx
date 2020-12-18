@@ -50,20 +50,30 @@ export default function App() {
 
 
   useEffect(() => {
+    const abortController = new AbortController()
     const user_id = Cookies.get("so_auto_user_id")
     const userType = Cookies.get("so_auto_user_type")
     if(user_id && userType){
-      fetch(`${window.location.origin}/wp-json/so-auto/v1/${userType}s/${user_id}`, {
-        method: 'GET',
-        redirect: 'follow'
-      }).then(response => response.json())
-        .then(result => {
-          onConnect.current = true
-          redirect.current = true
-          setUser(result[0])
+      async function getUser() {
+        let response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/${userType}s/${user_id}`, {
+          method: 'GET',
+          redirect: 'follow',
+          signal: abortController.signal
         })
-        .catch(error => console.log('error', error));
+        let data = await response.json()
+
+        onConnect.current = true
+        redirect.current = true
+        setUser(data[0])
+      }
+
+      getUser()
     }
+
+    return () => {
+      abortController.abort()
+    }
+
   }, [])
 
   const ProtectedRoute = ({component: Component, ...rest}) => {
