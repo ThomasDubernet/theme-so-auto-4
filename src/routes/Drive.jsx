@@ -1,8 +1,9 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import TextIllus from '../components/TextIllus'
 import Map from '../components/Map'
 import Slider from '../components/Slider'
 // import Product from '../components/Product'
+import Cookies from 'js-cookie'
 
 import Context from '../context/Context'
 
@@ -12,8 +13,29 @@ import persons from '../img/persons.svg'
 import { NavLink } from 'react-router-dom'
 
 export default function Drive() {
-
   const context = useContext(Context)
+  const [lessonspassed, setLessonspassed] = useState([])
+
+  useEffect( () => {
+    const abortController = new AbortController()
+    const student_id = Cookies.get("so_auto_user_id")
+
+    async function fetchLessonsPassed() {
+      let response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/bookings?student_id=${student_id}`, {
+        meth: 'GET',
+        signal: abortController.signal,
+        redirect: 'follow'
+      })
+      let data = await response.json()
+      setLessonspassed(data)
+    }
+    fetchLessonsPassed()
+    
+    return () => {
+      abortController.abort()
+    }
+  }, [])
+  console.log(lessonspassed);
 
   const avisUsers = [
     {

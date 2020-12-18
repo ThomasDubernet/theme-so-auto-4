@@ -80,8 +80,17 @@ export default class DashboardNav extends Component {
             </button>
           
         </div>
-        
+
         <div className="nav-right ml-md-auto mx-auto mx-md-0 d-flex flex-column flex-md-row d-block">
+          {(this.context.userType === "student") ? <StudentNav openNav={this.state.openNav} /> : <TeacherNav openNav={this.state.openNav} />}
+        </div>
+        <button className="navbar-burger my-auto" onClick={this.activeNav}>
+          <div className="burger">
+            <div className="burger-icon"></div>
+          </div>
+        </button>
+        
+        {/* <div className="nav-right ml-md-auto mx-auto mx-md-0 d-flex flex-column flex-md-row d-block">
           {this.context.userType === "student" ? <StudentNav openNav={this.state.openNav} /> : (
             this.context.user.activated > 0 ? <TeacherNav  openNav={this.state.openNav} /> : ''
           )}
@@ -102,7 +111,7 @@ export default class DashboardNav extends Component {
               </button>
             : ''
             )
-        }
+        } */}
         
       </React.Fragment>
     )
