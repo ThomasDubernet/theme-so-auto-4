@@ -63,7 +63,7 @@ export default class DashboardNav extends Component {
           
               <NavLink className="App-link my-2 my-md-0 btn btn-outline-warning link-d-none activeShow" activeClassName="Active-link btn-warning" exact to="/student/drive" >Conduite</NavLink>
 
-              <NavLink className="App-link my-2 my-md-0 btn btn-outline-warning link-d-none activeShow" activeClassName="Active-link btn-warning" exact to="/student/shop" >Boutique</NavLink>
+              <a className="App-link my-2 my-md-0 btn btn-outline-warning link-d-none activeShow" href="/boutique/" >Boutique</a>
         </React.Fragment>
       )
     }

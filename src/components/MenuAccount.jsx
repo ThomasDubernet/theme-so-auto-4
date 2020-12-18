@@ -173,7 +173,7 @@ export default class MenuAccount extends React.Component{
                 <NavLink className={"App-link navbar-brand " + (this.state.openMenu ? '' : 'd-none') } activeClassName="Active-link" exact to="/">
                   <h5>S<span className="h5 text-warning">o</span>'aut<span className="h5 text-warning">o</span></h5>
                 </NavLink>
-                <button className={"btn btn-outline-dark " + (this.state.openMenu ? 'ml-auto mr-2' : 'mx-auto mb-3') }><FontAwesomeIcon icon={faShoppingCart} /></button>
+                <a className={"btn btn-outline-dark " + (this.state.openMenu ? 'ml-auto mr-2' : 'mx-auto mb-3') } href="/panier/" ><FontAwesomeIcon icon={faShoppingCart} /></a>
                 <button className={"btn btn-outline-dark " + (this.state.openMenu ? ' mx-2' : 'mx-auto mb-3 order-first') } onClick={this.logoutConfirm}><FontAwesomeIcon icon={faTimes} /></button>
               </div>
 

@@ -33,11 +33,20 @@ export default function Site(props) {
     setUser(setUserFormat(oldUser))
   }
 
+  const fetchUser = async (id) => {
+    let response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/students/${id}`)
+    let user = await response.json()
+    if(response.status >= 200 && response.status < 299) {
+      updateUser(user[0])
+    }
+  }
+
   const contextValue = {
     user,
     userType: type,
     updateUser: updateUser,
     updateUserType: setType,
+    fetchUser: fetchUser,
     codeProducts: "test",
     driveProducts: "test"
   }

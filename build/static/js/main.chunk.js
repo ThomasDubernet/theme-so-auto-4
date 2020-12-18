@@ -68,19 +68,29 @@ function App() {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    const abortController = new AbortController();
     const user_id = js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.get("so_auto_user_id");
     const userType = js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.get("so_auto_user_type");
 
     if (user_id && userType) {
-      fetch(`${window.location.origin}/wp-json/so-auto/v1/${userType}s/${user_id}`, {
-        method: 'GET',
-        redirect: 'follow'
-      }).then(response => response.json()).then(result => {
+      async function getUser() {
+        let response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/${userType}s/${user_id}`, {
+          method: 'GET',
+          redirect: 'follow',
+          signal: abortController.signal
+        });
+        let data = await response.json();
         onConnect.current = true;
         redirect.current = true;
-        setUser(result[0]);
-      }).catch(error => console.log('error', error));
+        setUser(data[0]);
+      }
+
+      getUser();
     }
+
+    return () => {
+      abortController.abort();
+    };
   }, []);
 
   const ProtectedRoute = ({
@@ -325,7 +335,7 @@ function ConnectForm(props) {
     })
   }));
 
-  const onSubmitConnect = async data => {
+  const onSubmitConnect = data => {
     var passwordHash = __webpack_require__(/*! password-hash */ "./node_modules/password-hash/lib/password-hash.js");
 
     if (data.username && data.password) {
@@ -479,11 +489,9 @@ class DashboardNav extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
         activeClassName: "Active-link btn-warning",
         exact: true,
         to: "/student/drive"
-      }, "Conduite"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+      }, "Conduite"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "App-link my-2 my-md-0 btn btn-outline-warning link-d-none activeShow",
-        activeClassName: "Active-link btn-warning",
-        exact: true,
-        to: "/student/shop"
+        href: "/boutique/"
       }, "Boutique"));
     }
 
@@ -846,8 +854,9 @@ class MenuAccount extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component
       className: "h5 text-warning"
     }, "o"), "'aut", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
       className: "h5 text-warning"
-    }, "o"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: "btn btn-outline-dark " + (this.state.openMenu ? 'ml-auto mr-2' : 'mx-auto mb-3')
+    }, "o"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      className: "btn btn-outline-dark " + (this.state.openMenu ? 'ml-auto mr-2' : 'mx-auto mb-3'),
+      href: "/panier/"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
       icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faShoppingCart"]
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -1324,25 +1333,39 @@ function Form(props) {
     register,
     handleSubmit
   } = Object(react_hook_form__WEBPACK_IMPORTED_MODULE_1__["useForm"])();
-  const context = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_Context__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  /* eslint-disable no-unused-vars */
 
-  const onSubmit = datas => {
-    const datasJson = {
-      "date_available": props.day,
-      "teacher_id": context.user.id,
-      "boite": "manuelle",
-      "hours": datas
-    };
-    fetch(`${window.location.origin}/wp-json/so-auto/v1/availabilities`, {
+  const context = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_Context__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  /* eslint-enable no-unused-vars */
+
+  async function postBookings(datasJson) {
+    await fetch(`${window.location.origin}/wp-json/so-auto/v1/bookings`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(datasJson),
       redirect: 'follow'
-    }).then(response => response.json()).then(result => {
-      console.log(result);
-    }).catch(error => console.log('error', error));
+    });
+  }
+
+  const onSubmit = datas => {
+    let newDatas = [];
+
+    for (var item in datas) {
+      if (datas[item] === 'true') {
+        newDatas.push(item);
+      }
+    }
+
+    newDatas.forEach(data => {
+      const datasJson = {
+        "date_available": props.day + " " + data,
+        "teacher_id": context.user.id,
+        "boite": "manuelle"
+      };
+      postBookings(datasJson);
+    });
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -2325,6 +2348,7 @@ __webpack_require__.r(__webpack_exports__);
   userType: '',
   updateUser: () => {},
   updateUserType: () => {},
+  fetchUser: () => {},
   codeProducts: [],
   driveProducts: []
 }));
@@ -2625,7 +2649,7 @@ function Home(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_TextIllus__WEBPACK_IMPORTED_MODULE_2__["default"], {
     order: "2",
     imgSrc: _img_code_svg__WEBPACK_IMPORTED_MODULE_9___default.a,
-    title: "Permis<br/>de condurie",
+    title: "Permis<br/>de conduire",
     textWarning: "Apprenez \xE0 conduire selon votre planning, avec un moniteur qui accompagnera jusqu'\xE0 obtention de votre permis.",
     content: "Un plan de formation et un livret p\xE9dagogique s\xFBr-mesure, une \xE9quipe \xE0 votre \xE9coute, pour favoriser votre r\xE9sussite.",
     contentClasse: "d-none d-md-block",
@@ -2843,11 +2867,21 @@ function Site(props) {
     setUser(setUserFormat(oldUser));
   };
 
+  const fetchUser = async id => {
+    let response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/students/${id}`);
+    let user = await response.json();
+
+    if (response.status >= 200 && response.status < 299) {
+      updateUser(user[0]);
+    }
+  };
+
   const contextValue = {
     user,
     userType: type,
     updateUser: updateUser,
     updateUserType: setType,
+    fetchUser: fetchUser,
     codeProducts: "test",
     driveProducts: "test"
   };
@@ -3176,7 +3210,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/src/js.cookie.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _context_Context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../context/Context */ "./src/context/Context.js");
 var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/DriveBookings.jsx";
+
+
 
 
 
@@ -3195,52 +3234,127 @@ function BuildCalendar(value) {
 }
 
 function BuildHour(props) {
-  let bookings = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])([]);
+  const [bookings, setBookings] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const [books, setBooks] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const [updateState, setUpdateState] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  const context = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_Context__WEBPACK_IMPORTED_MODULE_3__["default"]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    fetch(`${window.location.origin}/wp-json/so-auto/v1/availabilities?date_available=${props.day}`, {
-      method: 'GET',
-      redirect: 'follow'
-    }).then(response => response.json()).then(result => {
-      bookings.current = result;
-    }).catch(error => console.log('error', error));
+    const abortController = new AbortController();
+
+    async function fetchBookings() {
+      const response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/bookings?date=${props.day}`, {
+        signal: abortController.signal
+      });
+      const result = await response.json();
+      setBookings(result);
+    }
+
+    fetchBookings();
+    return () => {
+      abortController.abort();
+    };
   }, [props]);
-  let books = [];
-  bookings.current.forEach(book => {
-    const hours = book.hours;
-    hours.forEach(hour => {
-      const jsonBook = {
-        "date": new Date(props.day + " " + hour),
-        "teacher_id": book.teacher_id
-      };
-      books.push(jsonBook);
-    });
-  });
-  books.sort(function (a, b) {
-    return a.date - b.date;
-  });
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    const tempBooks = [];
+
+    if (Object.keys(bookings).length > 0) {
+      bookings.forEach(book => {
+        if (book.reserved === "0") {
+          const jsonBook = {
+            "id": book.id,
+            "date": new Date(book.date_available),
+            "teacher_id": book.teacher_id
+          };
+          tempBooks.push(jsonBook);
+        }
+      });
+    }
+
+    setBooks(tempBooks);
+  }, [bookings, props]);
+
+  const updateBooking = (book, teacher_id) => {
+    const student_id = js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.get("so_auto_user_id");
+
+    async function downCredits() {
+      const newCredits = parseInt(context.user.credits);
+      fetch(`${window.location.origin}/wp-json/so-auto/v1/students/${student_id}`, {
+        method: 'PUT',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          "credits": newCredits - 1
+        }),
+        redirect: 'follow'
+      });
+    }
+
+    async function update(json) {
+      let response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/bookings/${book.id}`, {
+        method: 'PUT',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(json),
+        redirect: 'follow'
+      });
+
+      if (response.status >= 200 && response.status < 299) {
+        downCredits();
+        context.fetchUser(student_id);
+        setUpdateState(!updateState);
+      }
+    }
+
+    const jsonData = {
+      "date_available": moment__WEBPACK_IMPORTED_MODULE_1___default()(book.date).format('YYYY-MM-DD hh:mm'),
+      "teacher_id": teacher_id,
+      "student_id": student_id,
+      "reserved": "1"
+    };
+    update(jsonData);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex flex-column text-center"
   }, books.map((book, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     key: i,
-    className: "cube-book mx-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, book.date.getHours(), ":00"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, book.teacher_id)))));
+    className: "cube-book mx-3 mb-3",
+    onClick: () => updateBooking(book)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "imgBooking"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "https://picsum.photos/id/0/80/80",
+    alt: ""
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, book.date.getHours(), ":00")))));
 }
 
-function DriveBookings(props) {
+function DriveBookings() {
   const [teachers, setTeachers] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
   const [value, setValue] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(moment__WEBPACK_IMPORTED_MODULE_1___default()());
   const [calendar, setCalendar] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    fetch(`${window.location.origin}/wp-json/so-auto/v1/teachers`, {
-      method: 'GET',
-      redirect: 'follow'
-    }).then(response => response.json()).then(result => {
-      setTeachers(result);
-    }).catch(error => console.log('error', error));
-  }, [props]);
+    const abortController = new AbortController();
+
+    async function fetchTeachers() {
+      let response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/teachers`, {
+        method: 'GET',
+        redirect: 'follow',
+        signal: abortController.signal
+      });
+      let data = await response.json();
+      setTeachers(data);
+    }
+
+    fetchTeachers();
+    return () => {
+      abortController.abort();
+    };
+  }, []);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
-    // debugger
     setCalendar(BuildCalendar(value));
+    return;
   }, [value]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "R\xE9server une le\xE7on"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "navFilter mt-4 d-flex"
@@ -3849,15 +3963,19 @@ function Student() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mr-md-4 mr-xll-8"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
     path: "/student/livret",
     component: _routes_Livret__WEBPACK_IMPORTED_MODULE_3__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
     path: "/student/folder",
     component: _routes_Folder__WEBPACK_IMPORTED_MODULE_4__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
     path: "/student/contract",
     component: _routes_Contract__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
     path: "/student/code",
     component: _routes_Code__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
@@ -3865,6 +3983,7 @@ function Student() {
     path: "/student/drive",
     component: _routes_Drive__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
     path: "/student/drive/bookings",
     component: _routes_DriveBookings__WEBPACK_IMPORTED_MODULE_8__["default"]
   }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
@@ -3988,18 +4107,23 @@ function Teacher() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mr-md-4 mr-xll-8"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
     path: "/teacher/planning",
     component: _routes_Planning__WEBPACK_IMPORTED_MODULE_3__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
     path: "/teacher/folder",
     component: _routes_Folder__WEBPACK_IMPORTED_MODULE_4__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
     path: "/teacher/contract",
     component: _routes_Contract__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
     path: "/teacher/sector",
     component: _routes_Sector__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
     path: "/teacher/students",
     component: _routes_Students__WEBPACK_IMPORTED_MODULE_7__["default"]
   }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {

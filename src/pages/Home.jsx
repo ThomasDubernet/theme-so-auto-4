@@ -73,7 +73,6 @@ export default function Home(props) {
               >Connexion</NavLink>
             </ul>
           </div>
-
         </nav>        
       </header>
 
@@ -145,7 +144,7 @@ export default function Home(props) {
           <TextIllus
             order= "2"
             imgSrc = {code}
-            title = "Permis<br/>de condurie"
+            title = "Permis<br/>de conduire"
             textWarning = "Apprenez à conduire selon votre planning, avec un moniteur qui accompagnera jusqu'à obtention de votre permis."
             content = "Un plan de formation et un livret pédagogique sûr-mesure, une équipe à votre écoute, pour favoriser votre résussite."
             contentClasse="d-none d-md-block"
