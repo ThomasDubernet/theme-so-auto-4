@@ -129,7 +129,7 @@ export default function Drive() {
               btnPlayClasse="d-none"
               secondBtn= 'true'
               linkSecondBtn= 'true'
-              secondBtnClasse="btn btn-outline-dark ml-4 "
+              secondBtnClasse="btn btn-outline-white ml-4 "
               textSecondBtn="Les avis de nos élèves"
             />
           </div>

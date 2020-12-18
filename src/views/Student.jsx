@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, NavLink } from 'react-router-dom'
 import Context from '../context/Context'
 
 import Livret from '../routes/Livret';
@@ -54,29 +54,34 @@ export default function Student() {
               <div className="col-md-2">
                 <h5 className="my-4">Sitemap</h5>
                 <ul className="list-unstyled">
-                  <li className="links my-2">Home</li>
-                  <li className="links my-2">A propos</li>
-                  <li className="links my-2">Services</li>
-                  <li className="links my-2">Carrières</li>
+                  <li className="links my-3">Home</li>
+                  <li className="links my-3">A propos</li>
+                  <li className="links my-3">Services</li>
+                  <li className="links my-3">Carrières</li>
                   <li className="links my-2">Tarifications</li>
-                  <li className="links my-2">Infos</li>
+                  <li className="links my-3">
+                    <NavLink
+                      activeClassName="Active-link"
+                      exact to={"/infos-test"}
+                     >Infos</NavLink>
+                  </li>
                 </ul>
               </div>
               <div className="col-md-3">
                 <h5 className="my-4">Services</h5>
                 <ul className="list-unstyled">
-                  <li className="links my-2">Code de la route</li>
-                  <li className="links my-2">Conduite accompagnée</li>
-                  <li className="links my-2">Permis de conduire</li>
-                  <li className="links my-2">Devenir moniteur</li>
+                  <li className="links my-3">Code de la route</li>
+                  <li className="links my-3">Conduite accompagnée</li>
+                  <li className="links my-3">Permis de conduire</li>
+                  <li className="links my-3">Devenir moniteur</li>
                 </ul>
               </div>
               <div className="col-md-2">
                 <h5 className="my-4">Connect</h5>
                 <ul className="list-unstyled">
-                  <li className="links my-2">Facebook</li>
-                  <li className="links my-2">Twitter</li>
-                  <li className="links my-2">Linkedin</li>
+                  <li className="links my-3">Facebook</li>
+                  <li className="links my-3">Twitter</li>
+                  <li className="links my-3">Linkedin</li>
                 </ul>
               </div>
             </div>

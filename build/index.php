@@ -39,7 +39,7 @@
         Learn how to configure a non-root public URL by running `npm run wpbuild`.
     -->
     <title>React WordPress Theme</title>
-<link href="/wp-content/themes/so_auto_v4/static/css/0.chunk.css?9094193f7b07de36686f" rel="stylesheet"><link href="/wp-content/themes/so_auto_v4/static/css/main.chunk.css?9094193f7b07de36686f" rel="stylesheet"></head>
+<link href="/wp-content/themes/so_auto_v4/static/css/1.chunk.css?4a1f262cc4f31f2062da" rel="stylesheet"><link href="/wp-content/themes/so_auto_v4/static/css/main.chunk.css?4a1f262cc4f31f2062da" rel="stylesheet"></head>
     <body>
     <noscript>
         You need to enable JavaScript to run this app.
@@ -55,5 +55,5 @@
         To begin the development, run `npm run wpstart` or `yarn wpstart`.
         To create a production bundle, use `npm run wpbuild` or `yarn wpbuild`.
     -->
-    <script src="/wp-content/themes/so_auto_v4/static/js/bundle.js?9094193f7b07de36686f"></script><script src="/wp-content/themes/so_auto_v4/static/js/0.chunk.js?9094193f7b07de36686f"></script><script src="/wp-content/themes/so_auto_v4/static/js/main.chunk.js?9094193f7b07de36686f"></script></body>
+    <script src="/wp-content/themes/so_auto_v4/static/js/bundle.js?4a1f262cc4f31f2062da"></script><script src="/wp-content/themes/so_auto_v4/static/js/1.chunk.js?4a1f262cc4f31f2062da"></script><script src="/wp-content/themes/so_auto_v4/static/js/main.chunk.js?4a1f262cc4f31f2062da"></script></body>
 </html>

@@ -21,7 +21,7 @@ export default class TextIllus extends Component {
 
             <div className="d-flex mt-4">
 
-              <button className={'btn btn-outline-dark ' + (typeof this.props.btnClasse == 'undefined' ? '' : this.props.btnClasse)}>
+              <button className={'btn btn-outline-white ' + (typeof this.props.btnClasse == 'undefined' ? '' : this.props.btnClasse)}>
                 {typeof this.props.textBtn == 'undefined' ? 'En savoir plus' : this.props.textBtn}
               </button>
 
@@ -35,7 +35,7 @@ export default class TextIllus extends Component {
                 </button>
               }
 
-              <button className={'btn btn-outline-dark ml-4 ' + (typeof this.props.btnPlayClasse == 'undefined' ? '' : this.props.btnPlayClasse)}><FontAwesomeIcon icon={faCaretRight} /></button>
+              <button className={'btn btn-outline-white ml-4 ' + (typeof this.props.btnPlayClasse == 'undefined' ? '' : this.props.btnPlayClasse)}><FontAwesomeIcon icon={faCaretRight} /></button>
             </div>
           </div>
         </div>
