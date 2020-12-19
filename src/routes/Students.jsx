@@ -8,7 +8,7 @@ export default function Students() {
     <React.Fragment>
       <h2>Suivre le parcours<br />de vos élèves en un clique !</h2>
       <div className="mr-md-4 mr-xll-8">
-        <Followup/>
+        <Followup />
       </div>
 
       <h6 className="text-warning mt-5">Retrouvez vos élèves So'auto</h6>

@@ -1,5 +1,4 @@
 import React from 'react'
-import Learning from '../components/Learning'
 
 export default function Followup() {
   return (
