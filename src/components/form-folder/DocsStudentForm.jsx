@@ -7,19 +7,20 @@ export default function DocsStudentForm() {
   const context = useContext(Context)
   
   const onSubmit = (data) => {
-    var requestOptions = {
-      method: 'PUT',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data),
-      redirect: 'follow'
-    };
+    console.log(data);
+  //   var requestOptions = {
+  //     method: 'PUT',
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify(data),
+  //     redirect: 'follow'
+  //   };
     
-      fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s/${context.user.id}`, requestOptions)
-      .then(response => response.json() )
-      .then(result => context.updateUser(result[0]))
-      .catch(error => console.log('error', error));
+  //     fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s/${context.user.id}`, requestOptions)
+  //     .then(response => response.json() )
+  //     .then(result => context.updateUser(result[0]))
+  //     .catch(error => console.log('error', error));
   }
   const { register, handleSubmit} = useForm()  
   function TitleGroupInput(props) {
@@ -46,13 +47,13 @@ export default function DocsStudentForm() {
         <TitleGroupInput title='Documents complémentaires' text="Ces documents nous permettent de remplir le dossier nécessaire à votre inscription en préfécture.<br/>Rendez-vous sur <span class='font-weight-bold sm'>examen</span> pour plus d’informations !" />
         <div className="row">
           <div className="col-md-4">
-            <Input name={"id_card"} label="Pièce d'identité" type="text" value={context.user.id_card} placeholder="Format pdf" />
+            <Input name={"id_card"} label="Pièce d'identité" type="file" value={context.user.id_card} placeholder="Format pdf" />
           </div>
           <div className="col-md-4">
-            <Input name={"jdc"} label="Certificat JDC" type="text" value={context.user.jdc} placeholder="Format pdf" />
+            <Input name={"jdc"} label="Certificat JDC" type="file" value={context.user.jdc} placeholder="Format pdf" />
           </div>
           <div className="col-md-4">
-            <Input name={"assr"} label="Attestation ASSR ou ASSR2" type="text" value={context.user.assr} placeholder="Format pdf" />
+            <Input name={"assr"} label="Attestation ASSR ou ASSR2" type="file" value={context.user.assr} placeholder="Format pdf" />
           </div>
         </div>
       </form>
