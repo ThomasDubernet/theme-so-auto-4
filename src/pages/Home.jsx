@@ -82,13 +82,13 @@ export default function Home(props) {
       <div className="container mt-4">
         <div className="d-flex">
           
-          <div className="col-12 col-md-9 px-0">
+          <div className="col-12 col-md-9 py-6 px-0">
             <h1>L'auto-école en ligne,<br/>plus réelle que jamais !</h1>
             <div className="row">
 
               <div className="col-md-4">
                 <h3 className="my-3">Code<br/>de la route</h3>
-                <p className="h3 text-warning">29, 90€</p>
+                <p className="h3 text-warning">29,90 €</p>
                 <p>10 % moins chère</p>
                 <div className="d-flex">
                   <button className="btn btn-outline-white">En savoir plus</button>
@@ -98,8 +98,8 @@ export default function Home(props) {
 
               <div className="col-md-4 d-none d-md-block">
                 <h3 className="my-3">Conduite<br/>accompagnée</h3>
-                <p className="h3 text-warning">999€</p>
-                <p>Au lieu de <span className="text-line-through">1 099€</span></p>
+                <p className="h3 text-warning">999 €</p>
+                <p>Au lieu de <span className="text-line-through">1 099 €</span></p>
                 <div className="d-flex">
                   <button className="btn btn-outline-white">En savoir plus</button>
                   <button className="btn btn-outline-white ml-4"> <FontAwesomeIcon icon={faCaretRight} /> </button>
@@ -108,7 +108,7 @@ export default function Home(props) {
 
               <div className="col-md-4 d-none d-md-block">
                 <h3 className="my-3">Permis<br/>de conduire</h3>
-                <p className="h3 text-warning">749€</p>
+                <p className="h3 text-warning">749 €</p>
                 <p>30 % moins chère</p>
                 <div className="d-flex">
                   <button className="btn btn-outline-white">En savoir plus</button>

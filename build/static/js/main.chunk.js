@@ -2553,7 +2553,7 @@ function Home(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-12 col-md-9 px-0"
+    className: "col-12 col-md-9 py-6 px-0"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "L'auto-\xE9cole en ligne,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "plus r\xE9elle que jamais !"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2562,7 +2562,7 @@ function Home(props) {
     className: "my-3"
   }, "Code", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "de la route"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "h3 text-warning"
-  }, "29, 90\u20AC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "10 % moins ch\xE8re"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "29,90 \u20AC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "10 % moins ch\xE8re"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-outline-white"
@@ -2576,9 +2576,9 @@ function Home(props) {
     className: "my-3"
   }, "Conduite", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "accompagn\xE9e"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "h3 text-warning"
-  }, "999\u20AC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Au lieu de ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, "999 \u20AC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Au lieu de ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "text-line-through"
-  }, "1 099\u20AC")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "1 099 \u20AC")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-outline-white"
@@ -2592,7 +2592,7 @@ function Home(props) {
     className: "my-3"
   }, "Permis", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "de conduire"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "h3 text-warning"
-  }, "749\u20AC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "30 % moins ch\xE8re"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "749 \u20AC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "30 % moins ch\xE8re"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-outline-white"
@@ -2899,7 +2899,7 @@ function Code() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container mb-6"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_TextIllus__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    title: "Obtenez votre code de la route pour moins de <span class='h2 text-warning'>30, 00 \u20AC</span>",
+    title: "Obtenez votre code de la route pour moins de <span class='h2 text-warning'>30,00 \u20AC</span>",
     textWarningClasse: "w-md-75",
     textWarning: "R\xE9viser votre code partout en illimit\xE9 gr\xE2ce \xE0 notre formation en ligne.",
     content: "2000 questions d'entra\xEEnements, cours, et s\xE9ries th\xE9matiques \xE0 votre disposition, histoire de se pr\xE9parer en toute s\xE9curit\xE9.",
@@ -3349,6 +3349,42 @@ function Folder(props) {
 
 /***/ }),
 
+/***/ "./src/routes/Followup.jsx":
+/*!*********************************!*\
+  !*** ./src/routes/Followup.jsx ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Followup; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+!(function webpackMissingModule() { var e = new Error("Cannot find module '../components/Learning'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+var _jsxFileName = "/Users/JohnVy/Desktop/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/Followup.jsx";
+
+
+function Followup() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Mon planning"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+    className: "text-warning mt-5"
+  }, "Vos \xE9l\xE8ves So'auto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "sm"
+  }, "Les derniers \xE9l\xE8ves que vous avez vu en conduite s'affichent ici. Pensez \xE0 remplir leur suivi p\xE9dagogique \xE0 chaque fin de cours.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Rendez-vous sur aide pour plus d'informations."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    class: "dropholder"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    class: "dropdown"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    class: "h6"
+  }), "Pierre C.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    class: "learntab"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    class: "h6"
+  }), "Livret P\xE9dagogique"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(!(function webpackMissingModule() { var e = new Error("Cannot find module '../components/Learning'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), null));
+}
+
+/***/ }),
+
 /***/ "./src/routes/Livret.jsx":
 /*!*******************************!*\
   !*** ./src/routes/Livret.jsx ***!
@@ -3651,15 +3687,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Map */ "./src/components/Map.jsx");
+/* harmony import */ var _routes_Followup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../routes/Followup */ "./src/routes/Followup.jsx");
 var _jsxFileName = "/Users/JohnVy/Desktop/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/Students.jsx";
 
 
+
 function Students() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Suivre le parcours", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "de vos \xE9l\xE8ves en un clique !"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-    className: "text-warning mt-5"
-  }, "Vos \xE9l\xE8ves So'auto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "sm"
-  }, "Les derniers \xE9l\xE8ves que vous avez vu en conduite s'affichent ici. Pensez \xE0 remplir leur suivi p\xE9dagogique \xE0 chaque fin de cours.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Rendez-vous sur aide pour plus d'informations."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Suivre le parcours", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "de vos \xE9l\xE8ves en un clique !"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "mr-md-4 mr-xll-8"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_routes_Followup__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
     className: "text-warning mt-5"
   }, "Retrouvez vos \xE9l\xE8ves So'auto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "sm"
@@ -3830,7 +3866,7 @@ function Student() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-12 col-md-2"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-12 col-md-10"
+    className: "col-12 col-md-10 py-6"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mr-md-4 mr-xll-8"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
@@ -3973,7 +4009,7 @@ function Teacher() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-12 col-md-2"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-12 col-md-10"
+    className: "col-12 col-md-10 py-6"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mr-md-4 mr-xll-8"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {

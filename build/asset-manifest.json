@@ -11,6 +11,7 @@
     "runtime-main.js": "/wp-content/themes/so_auto_v4/static/js/bundle.js",
     "runtime-main.js.map": "/wp-content/themes/so_auto_v4/static/js/bundle.js.map",
     "index.php": "/wp-content/themes/so_auto_v4/index.php",
+    "static/media/main.scss": "/wp-content/themes/so_auto_v4/static/media/bkg-yellow.9f5775ad.svg",
     "static/media/caret-right-solid.svg": "/wp-content/themes/so_auto_v4/static/media/caret-right-solid.3ea90339.svg",
     "static/media/code.svg": "/wp-content/themes/so_auto_v4/static/media/code.8de0580b.svg",
     "static/media/fille.svg": "/wp-content/themes/so_auto_v4/static/media/fille.95248c21.svg",
