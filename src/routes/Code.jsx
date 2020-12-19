@@ -16,7 +16,7 @@ export default function Code() {
       <div className="position-relative">
         <div className="container mb-6">
           <TextIllus
-            title = "Obtenez votre code de la route pour moins de <span class='h2 text-warning'>30, 00 €</span>"
+            title = "Obtenez votre code de la route pour moins de <span class='h2 text-warning'>30,00 €</span>"
             textWarningClasse="w-md-75"
             textWarning = "Réviser votre code partout en illimité grâce à notre formation en ligne."
             content = "2000 questions d'entraînements, cours, et séries thématiques à votre disposition, histoire de se préparer en toute sécurité."

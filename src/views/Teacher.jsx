@@ -19,7 +19,7 @@ export default function Teacher() {
         <div className="container">
           <div className="row">
             <div className="col-12 col-md-2"></div>
-            <div className="col-12 col-md-10">
+            <div className="col-12 col-md-10 py-6">
               <div className="mr-md-4 mr-xll-8">
                 <Route exact path="/teacher/planning" component={Planning} />
                 {/* <Route exact path="/teacher/help" component={Help} /> */}
