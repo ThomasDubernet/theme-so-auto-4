@@ -1,12 +1,18 @@
 import React, {useState, useEffect, useRef} from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Cookies from 'js-cookie'
+import moment from 'moment'
+import localization from 'moment/locale/fr';
+
+
 
 import Home from './pages/Home'
 import Login from "./pages/Login";
 import Site from "./pages/Site";
 
 export default function App() {
+
+  moment.updateLocale('fr', localization);
   
   const [token, setToken] = useState('')
   const [user, setUser] = useState({})

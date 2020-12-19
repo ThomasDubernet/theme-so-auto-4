@@ -1,10 +1,11 @@
-import React, {useContext, useState, useEffect} from 'react'
+import React, {useContext, useState, useEffect, useRef} from 'react'
 import TextIllus from '../components/TextIllus'
+import Cookies from 'js-cookie'
+import moment from 'moment'
+
 import Map from '../components/Map'
 import Slider from '../components/Slider'
 // import Product from '../components/Product'
-import Cookies from 'js-cookie'
-
 import Context from '../context/Context'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,28 +15,42 @@ import { NavLink } from 'react-router-dom'
 
 export default function Drive() {
   const context = useContext(Context)
-  const [lessonspassed, setLessonspassed] = useState([])
+  const [lessons, setLessons] = useState([])
+
+  let lessonsToCome = useRef([])
+  let lessonsPassed = useRef([])
 
   useEffect( () => {
     const abortController = new AbortController()
     const student_id = Cookies.get("so_auto_user_id")
 
-    async function fetchLessonsPassed() {
+    async function fetchLessons() {
       let response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/bookings?student_id=${student_id}`, {
         meth: 'GET',
         signal: abortController.signal,
         redirect: 'follow'
       })
       let data = await response.json()
-      setLessonspassed(data)
+      setLessons(data)
     }
-    fetchLessonsPassed()
+    fetchLessons()
     
     return () => {
       abortController.abort()
     }
   }, [])
-  console.log(lessonspassed);
+
+useEffect(() => {
+
+  lessons.forEach(lesson => {
+    if(moment(lesson.date_available).isBefore(moment())) {
+      lessonsPassed.current.push(lesson)
+    } else if (moment(lesson.date_available).isAfter(moment()) || moment(lesson.date_available).isSame(moment())) {
+      lessonsToCome.current.push(lesson)
+    }
+  })
+}, [lessons])
+  console.log(lessons);
 
   const avisUsers = [
     {
@@ -69,11 +84,10 @@ export default function Drive() {
       description: `"J'ai obtenu mon permis ! Présent pour répondre à mes questions et donner suite à mes interrogations, l'équipe était super !"`
     }
   ]
-  const countPassedLessons = 42
 
   return (
     <React.Fragment>
-      {context.user.credits < 1 ?
+      {context.user.first_connect === "true" ?
         <React.Fragment>
           <div className="container mb-6 position-relative">
             <TextIllus
@@ -176,32 +190,48 @@ export default function Drive() {
               </React.Fragment>
             :
               <React.Fragment>
-                <p>Vous n'avez pas de leçons à venir.</p>
+                { 
+                  lessonsToCome.current.length > 0 ?
+                    lessonsToCome.current.map((lesson, id) => (
+                      <div key={id} className="d-flex justify-content-between">
+                        <p> {moment(lesson.date_available).format('dddd DD MMMM')} </p>
+                        <p>{moment(lesson.date_available).format('hh:mm')} <FontAwesomeIcon icon={faArrowRight} /> {moment(lesson.date_available).add(1, 'hours').format('hh:mm')}</p>
+                        <p> {lesson.teacher_id} </p>
+                      </div>
+                    ))
+                  : <p>Vous n'avez pas de leçons à venir.</p>
+                }
+                
                 <NavLink className="App-link btn btn-warning text-white" exact to="/student/drive/bookings">Réserver une leçon</NavLink>
               </React.Fragment>
             }
           </div>
-          <h5>Leçons passées [{countPassedLessons}]</h5>
-          <div className="passed-lesson">
-            <div className="row px-4 py-3">
-              <div className="col-5">
-                <p className="font-weight-bold">Samedi 5 Décembre</p>
-              </div>
-              <div className="col-7">
-                <p className="font-weight-bold">9h00 <FontAwesomeIcon icon={faArrowRight} /> 10h00 </p>
-              </div>
-            </div>
-            <div className="row px-4 py-3 ">
-              <div className="col-5">
-                <div className="d-flex">
-                  <p className="text-secondary">Jessica Millet<br/>06 47 17 78 55</p>
+          <h5>Leçons passées [{lessonsPassed.current.length}]</h5>
+
+          {
+            lessonsPassed.current.map((lesson, index) => (
+              <div key={index} className="passed-lesson my-3">
+                <div className="row px-4 py-3">
+                  <div className="col-5">
+                    <p className="font-weight-bold"> {moment(lesson.date_available).format('dddd DD MMMM')} </p>
+                  </div>
+                  <div className="col-7">
+                    <p className="font-weight-bold">{moment(lesson.date_available).format('hh:mm')} <FontAwesomeIcon icon={faArrowRight} /> {moment(lesson.date_available).add(1, 'hours').format('hh:mm')}</p>
+                  </div>
+                </div>
+                <div className="row px-4 py-3 ">
+                  <div className="col-5">
+                    <div className="d-flex">
+                      <p className="text-secondary">Jessica Millet<br/>06 47 17 78 55</p>
+                    </div>
+                  </div>
+                  <div className="col-7">
+                    <p className="text-secondary"> {lesson.message} </p>
+                  </div>
                 </div>
               </div>
-              <div className="col-7">
-                <p className="text-secondary">On a vu tous les statios et CG comme demandé, qqls difficulté à manœuvrer en marche arrière donc refaire pour perfectionnement. ! aux freinages un peu sec... ! aux reprise 1ère intempestives! ! aux démarrages en 2ème. Revoir statios et VR pour allure adéquate Voir rues etroites si le temps</p>
-              </div>
-            </div>
-          </div>
+            ))
+          }
         </React.Fragment>
       }
     </React.Fragment>

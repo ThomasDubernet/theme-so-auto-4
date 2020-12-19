@@ -15,9 +15,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/src/js.cookie.js");
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _pages_Home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Home */ "./src/pages/Home.jsx");
-/* harmony import */ var _pages_Login__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/Login */ "./src/pages/Login.jsx");
-/* harmony import */ var _pages_Site__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/Site */ "./src/pages/Site.jsx");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var moment_locale_fr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment/locale/fr */ "./node_modules/moment/locale/fr.js");
+/* harmony import */ var moment_locale_fr__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment_locale_fr__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _pages_Home__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/Home */ "./src/pages/Home.jsx");
+/* harmony import */ var _pages_Login__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/Login */ "./src/pages/Login.jsx");
+/* harmony import */ var _pages_Site__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/Site */ "./src/pages/Site.jsx");
 var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/App.jsx";
 
 
@@ -25,7 +29,10 @@ var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/
 
 
 
+
+
 function App() {
+  moment__WEBPACK_IMPORTED_MODULE_3___default.a.updateLocale('fr', moment_locale_fr__WEBPACK_IMPORTED_MODULE_4___default.a);
   const [token, setToken] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('');
   const [user, setUser] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({});
   let onConnect = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(false);
@@ -108,18 +115,18 @@ function App() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
       exact: true,
       path: "/",
-      component: () => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Home__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      component: () => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Home__WEBPACK_IMPORTED_MODULE_5__["default"], {
         gps: gpsInfos
       })
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
       exact: true,
       path: "/log",
-      component: props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Login__WEBPACK_IMPORTED_MODULE_4__["default"], Object.assign({}, props, {
+      component: props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Login__WEBPACK_IMPORTED_MODULE_6__["default"], Object.assign({}, props, {
         setUser: fetchUser
       }))
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProtectedRoute, {
       path: ["/student", "/teacher"],
-      component: () => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Site__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      component: () => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Site__WEBPACK_IMPORTED_MODULE_7__["default"], {
         user: user,
         userType: user_type,
         gps: gpsInfos,
@@ -893,7 +900,7 @@ class MenuAccount extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component
       to: "/student/livret"
     }, "Mon livret") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
       className: "verticalText pbtn btn btn-outline-dark " + (this.state.openMenu ? ' m-auto' : 'mx-auto my-md-2 py-md-4 px-md-2 verticalActive'),
-      activeClassName: "Active-link btn-outline-dark",
+      activeClassName: "Active-link btn-dark",
       exact: true,
       to: this.context.user.activated > 0 ? "/teacher/planning" : "/teacher/folder"
     }, "Mon planning"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
@@ -1364,6 +1371,8 @@ function Form(props) {
       const datasJson = {
         "date_available": props.day + " " + data,
         "teacher_id": context.user.id,
+        "teacher_name": context.user.firstname + " " + context.user.lastname,
+        "teacher_number": context.user.number,
         "boite": "manuelle"
       };
       postBookings(datasJson);
@@ -3035,26 +3044,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_TextIllus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/TextIllus */ "./src/components/TextIllus.jsx");
-/* harmony import */ var _components_Map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Map */ "./src/components/Map.jsx");
-/* harmony import */ var _components_Slider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Slider */ "./src/components/Slider.jsx");
-<<<<<<< HEAD
-/* harmony import */ var _context_Context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../context/Context */ "./src/context/Context.js");
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var _img_persons_svg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../img/persons.svg */ "./src/img/persons.svg");
-/* harmony import */ var _img_persons_svg__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_img_persons_svg__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-=======
-/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/src/js.cookie.js");
-/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _context_Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../context/Context */ "./src/context/Context.js");
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var _img_persons_svg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../img/persons.svg */ "./src/img/persons.svg");
-/* harmony import */ var _img_persons_svg__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_img_persons_svg__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
->>>>>>> thomas
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/src/js.cookie.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _components_Map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Map */ "./src/components/Map.jsx");
+/* harmony import */ var _components_Slider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Slider */ "./src/components/Slider.jsx");
+/* harmony import */ var _context_Context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../context/Context */ "./src/context/Context.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _img_persons_svg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../img/persons.svg */ "./src/img/persons.svg");
+/* harmony import */ var _img_persons_svg__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_img_persons_svg__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/Drive.jsx";
+
+
 
 
 
@@ -3065,30 +3069,40 @@ var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/
 
 
 
-
 function Drive() {
-  const context = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_Context__WEBPACK_IMPORTED_MODULE_5__["default"]);
-  const [lessonspassed, setLessonspassed] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const context = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_Context__WEBPACK_IMPORTED_MODULE_6__["default"]);
+  const [lessons, setLessons] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  let lessonsToCome = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])([]);
+  let lessonsPassed = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])([]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     const abortController = new AbortController();
-    const student_id = js_cookie__WEBPACK_IMPORTED_MODULE_4___default.a.get("so_auto_user_id");
+    const student_id = js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.get("so_auto_user_id");
 
-    async function fetchLessonsPassed() {
+    async function fetchLessons() {
       let response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/bookings?student_id=${student_id}`, {
         meth: 'GET',
         signal: abortController.signal,
         redirect: 'follow'
       });
       let data = await response.json();
-      setLessonspassed(data);
+      setLessons(data);
     }
 
-    fetchLessonsPassed();
+    fetchLessons();
     return () => {
       abortController.abort();
     };
   }, []);
-  console.log(lessonspassed);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    lessons.forEach(lesson => {
+      if (moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).isBefore(moment__WEBPACK_IMPORTED_MODULE_3___default()())) {
+        lessonsPassed.current.push(lesson);
+      } else if (moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).isAfter(moment__WEBPACK_IMPORTED_MODULE_3___default()()) || moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).isSame(moment__WEBPACK_IMPORTED_MODULE_3___default()())) {
+        lessonsToCome.current.push(lesson);
+      }
+    });
+  }, [lessons]);
+  console.log(lessons);
   const avisUsers = [{
     name: "Nelly D.",
     ville: "La Rochelle",
@@ -3115,8 +3129,7 @@ function Drive() {
     comment: "Merdique !",
     description: `"J'ai obtenu mon permis ! Présent pour répondre à mes questions et donner suite à mes interrogations, l'équipe était super !"`
   }];
-  const countPassedLessons = 42;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, context.user.credits < 1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, context.user.first_connect === "true" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container mb-6 position-relative"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_TextIllus__WEBPACK_IMPORTED_MODULE_1__["default"], {
     title: "En route, l\u2019examen au permis<br/>de conduire vous attends !",
@@ -3133,7 +3146,7 @@ function Drive() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "img-persons-drive d-none d-md-block"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: _img_persons_svg__WEBPACK_IMPORTED_MODULE_8___default.a,
+    src: _img_persons_svg__WEBPACK_IMPORTED_MODULE_9___default.a,
     alt: ""
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container mb-3"
@@ -3161,7 +3174,7 @@ function Drive() {
     btnPlayClasse: "d-none"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container mb-6"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Map__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Map__WEBPACK_IMPORTED_MODULE_4__["default"], {
     container: "ApiMapboxDrive",
     home: "mb-6"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3180,7 +3193,7 @@ function Drive() {
     textSecondBtn: "Les avis de nos \xE9l\xE8ves"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container position-relative carousel__container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Slider__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Slider__WEBPACK_IMPORTED_MODULE_5__["default"], {
     slides: avisUsers
   }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "mb-4"
@@ -3192,25 +3205,31 @@ function Drive() {
     className: "text-center font-weight-bold m-auto px-3 py-2"
   }, context.user.credits ? context.user.credits : 0, " heures disponibles"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-lessons p-4 mb-4"
-  }, context.user.futurHour ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Voici la future le\xE7ons")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Vous n'avez pas de le\xE7ons \xE0 venir."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__["NavLink"], {
+  }, context.user.futurHour ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Voici la future le\xE7ons")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, lessonsToCome.current.length > 0 ? lessonsToCome.current.map((lesson, id) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    key: id,
+    className: "d-flex justify-content-between"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('dddd DD MMMM'), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('hh:mm'), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faArrowRight"]
+  }), " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).add(1, 'hours').format('hh:mm')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", lesson.teacher_id, " "))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Vous n'avez pas de le\xE7ons \xE0 venir."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["NavLink"], {
     className: "App-link btn btn-warning text-white",
     exact: true,
     to: "/student/drive/bookings"
-  }, "R\xE9server une le\xE7on"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Le\xE7ons pass\xE9es [", countPassedLessons, "]"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "passed-lesson"
+  }, "R\xE9server une le\xE7on"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Le\xE7ons pass\xE9es [", lessonsPassed.current.length, "]"), lessonsPassed.current.map((lesson, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    key: index,
+    className: "passed-lesson my-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row px-4 py-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-5"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "font-weight-bold"
-  }, "Samedi 5 D\xE9cembre")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('dddd DD MMMM'), " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-7"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "font-weight-bold"
-  }, "9h00 ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_6__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faArrowRight"]
-  }), " 10h00 "))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('hh:mm'), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faArrowRight"]
+  }), " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).add(1, 'hours').format('hh:mm')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row px-4 py-3 "
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-5"
@@ -3222,7 +3241,7 @@ function Drive() {
     className: "col-7"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "text-secondary"
-  }, "On a vu tous les statios et CG comme demand\xE9, qqls difficult\xE9 \xE0 man\u0153uvrer en marche arri\xE8re donc refaire pour perfectionnement. ! aux freinages un peu sec... ! aux reprise 1\xE8re intempestives! ! aux d\xE9marrages en 2\xE8me. Revoir statios et VR pour allure ad\xE9quate Voir rues etroites si le temps"))))));
+  }, " ", lesson.message, " ")))))));
 }
 
 /***/ }),
@@ -3241,16 +3260,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
-<<<<<<< HEAD
-var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/DriveBookings.jsx";
-=======
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/src/js.cookie.js");
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _context_Context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../context/Context */ "./src/context/Context.js");
 var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/DriveBookings.jsx";
 
 
->>>>>>> thomas
 
 
 
@@ -4384,5 +4399,5 @@ module.exports = __webpack_require__(/*! /Users/thomasdubernet/Projects/so_auto_
 
 /***/ })
 
-},[[0,"runtime-main",1]]]);
+},[[0,"runtime-main",0]]]);
 //# sourceMappingURL=main.chunk.js.map
