@@ -73,7 +73,6 @@ export default function Home(props) {
               >Connexion</NavLink>
             </ul>
           </div>
-
         </nav>        
       </header>
 

@@ -39,7 +39,19 @@
         Learn how to configure a non-root public URL by running `npm run wpbuild`.
     -->
     <title>React WordPress Theme</title>
+<<<<<<< HEAD
 <link href="/wp-content/themes/so_auto_v4/static/css/1.chunk.css?45afd4459053f5080202" rel="stylesheet"><link href="/wp-content/themes/so_auto_v4/static/css/main.chunk.css?45afd4459053f5080202" rel="stylesheet"></head>
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<link href="/wp-content/themes/so_auto_v4/static/css/1.chunk.css?680306a56102a31ee9b7" rel="stylesheet"><link href="/wp-content/themes/so_auto_v4/static/css/main.chunk.css?680306a56102a31ee9b7" rel="stylesheet"></head>
+=======
+<link href="/wp-content/themes/so_auto_v4/static/css/1.chunk.css?4a1f262cc4f31f2062da" rel="stylesheet"><link href="/wp-content/themes/so_auto_v4/static/css/main.chunk.css?4a1f262cc4f31f2062da" rel="stylesheet"></head>
+>>>>>>> d125cbe589682f5a5a7bc1e09a80d0409c343198
+=======
+<link href="/wp-content/themes/so_auto_v4/static/css/1.chunk.css?f2e97d4f9b1ba021429f" rel="stylesheet"><link href="/wp-content/themes/so_auto_v4/static/css/main.chunk.css?f2e97d4f9b1ba021429f" rel="stylesheet"></head>
+>>>>>>> thomas
+>>>>>>> 08260432375a59dbd756290464b5b00927fb8339
     <body>
     <noscript>
         You need to enable JavaScript to run this app.
@@ -55,5 +67,17 @@
         To begin the development, run `npm run wpstart` or `yarn wpstart`.
         To create a production bundle, use `npm run wpbuild` or `yarn wpbuild`.
     -->
+<<<<<<< HEAD
     <script src="/wp-content/themes/so_auto_v4/static/js/bundle.js?45afd4459053f5080202"></script><script src="/wp-content/themes/so_auto_v4/static/js/1.chunk.js?45afd4459053f5080202"></script><script src="/wp-content/themes/so_auto_v4/static/js/main.chunk.js?45afd4459053f5080202"></script></body>
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <script src="/wp-content/themes/so_auto_v4/static/js/bundle.js?680306a56102a31ee9b7"></script><script src="/wp-content/themes/so_auto_v4/static/js/1.chunk.js?680306a56102a31ee9b7"></script><script src="/wp-content/themes/so_auto_v4/static/js/main.chunk.js?680306a56102a31ee9b7"></script></body>
+=======
+    <script src="/wp-content/themes/so_auto_v4/static/js/bundle.js?4a1f262cc4f31f2062da"></script><script src="/wp-content/themes/so_auto_v4/static/js/1.chunk.js?4a1f262cc4f31f2062da"></script><script src="/wp-content/themes/so_auto_v4/static/js/main.chunk.js?4a1f262cc4f31f2062da"></script></body>
+>>>>>>> d125cbe589682f5a5a7bc1e09a80d0409c343198
+=======
+    <script src="/wp-content/themes/so_auto_v4/static/js/bundle.js?f2e97d4f9b1ba021429f"></script><script src="/wp-content/themes/so_auto_v4/static/js/1.chunk.js?f2e97d4f9b1ba021429f"></script><script src="/wp-content/themes/so_auto_v4/static/js/main.chunk.js?f2e97d4f9b1ba021429f"></script></body>
+>>>>>>> thomas
+>>>>>>> 08260432375a59dbd756290464b5b00927fb8339
 </html>

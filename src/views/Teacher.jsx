@@ -21,12 +21,12 @@ export default function Teacher() {
             <div className="col-12 col-md-2"></div>
             <div className="col-12 col-md-10 py-6">
               <div className="mr-md-4 mr-xll-8">
-                <Route path="/teacher/planning" component={Planning} />
-                {/* <Route path="/teacher/help" component={Help} /> */}
-                <Route path="/teacher/folder" component={Folder} />
-                <Route path="/teacher/contract" component={Contract} />
-                <Route path="/teacher/sector" component={Sector} />
-                <Route path="/teacher/students" component={Students} />
+                <Route exact path="/teacher/planning" component={Planning} />
+                {/* <Route exact path="/teacher/help" component={Help} /> */}
+                <Route exact path="/teacher/folder" component={Folder} />
+                <Route exact path="/teacher/contract" component={Contract} />
+                <Route exact path="/teacher/sector" component={Sector} />
+                <Route exact path="/teacher/students" component={Students} />
               </div>
             </div>
           </div>

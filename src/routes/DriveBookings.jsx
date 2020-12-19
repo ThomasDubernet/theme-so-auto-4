@@ -1,5 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import moment from 'moment'
+import Cookies from 'js-cookie'
+
+import Context from '../context/Context'
 
 function BuildCalendar(value) {
   const startDay = value.clone().startOf('week')
@@ -15,35 +18,103 @@ function BuildCalendar(value) {
 
 function BuildHour(props) {
 
-  let bookings = useRef([])
-  
-  fetch(`${window.location.origin}/wp-json/so-auto/v1/availabilities?date_available=${props.day}`, {
-    method: 'GET',
-    redirect: 'follow'
-  })
-    .then(response => response.json())
-    .then(result => {
-      bookings.current = result
-    })
-    .catch(error => console.log('error', error));
+  const [bookings, setBookings] = useState([])
+  const [books, setBooks] = useState([])
+  const [updateState, setUpdateState] = useState(false)
 
-  // let books = []
-  bookings.current.forEach(book => {
-      const hours = JSON.parse(book.hours)
-      hours.forEach( ()=> {
-        console.log('test');
-        // books.push(new Date(props.day + hour))
+  const context = useContext(Context)
+  
+  useEffect( () => {
+    const abortController = new AbortController()
+    async function fetchBookings () {
+      const response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/bookings?date=${props.day}`, {signal: abortController.signal})
+      const result = await response.json()
+      
+      setBookings(result)
+    }
+
+    fetchBookings()
+    
+    return () => {
+      abortController.abort()
+    }
+  }, [props])
+
+  useEffect( () => {
+    const tempBooks = []
+    if(Object.keys(bookings).length > 0) {
+      bookings.forEach( book => {
+        if (book.reserved === "0") {
+          const jsonBook = {
+            "id": book.id,
+            "date": new Date(book.date_available),
+            "teacher_id": book.teacher_id
+          }
+          tempBooks.push(jsonBook)
+        }
       })
-  })
+    }
+    setBooks(tempBooks)
+  }, [bookings, props])
 
-  
+  const updateBooking = (book, teacher_id) => {
+    const student_id = Cookies.get("so_auto_user_id")
 
+    async function downCredits() {
+      const newCredits = parseInt(context.user.credits)
+      fetch(`${window.location.origin}/wp-json/so-auto/v1/students/${student_id}`, {
+        method: 'PUT',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          "credits": newCredits - 1
+        }),
+        redirect: 'follow'
+      })
+    }
+    async function update(json) {
+      let response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/bookings/${book.id}`, {
+        method: 'PUT',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(json),
+        redirect: 'follow'
+      })
+      if (response.status >= 200 && response.status < 299) {
+        downCredits()
+        context.fetchUser(student_id)
+        setUpdateState(!updateState)
+      }
+    }
+
+    const jsonData = {
+      "date_available": moment(book.date).format('YYYY-MM-DD hh:mm'),
+      "teacher_id": teacher_id,
+      "student_id": student_id,
+      "reserved": "1"
+    }
+    
+    update(jsonData)
+  }
 
   return (
     <React.Fragment>
-      <ul>
-        
-      </ul>
+      <div className="d-flex flex-column text-center">
+        {
+          books.map((book, i) => (
+            <div key={i} className="cube-book mx-3 mb-3" onClick={() => updateBooking(book)}>
+              <div className="imgBooking">
+                <img src="https://picsum.photos/id/0/80/80" alt=""/>
+              </div>
+              <div>
+                {book.date.getHours()}:00
+              </div>
+            </div>
+          ))
+        }
+      </div>
     </React.Fragment>
   )
 }
@@ -55,19 +126,28 @@ export default function DriveBookings() {
   const [calendar, setCalendar] = useState([])
 
   useEffect(() => {
-    fetch(`${window.location.origin}/wp-json/so-auto/v1/teachers`, {
-      method: 'GET',
-      redirect: 'follow'
-    })
-      .then(response => response.json())
-      .then(result => {
-        setTeachers(result)
+    const abortController = new AbortController()
+    async function fetchTeachers() {
+      let response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/teachers`, {
+        method: 'GET',
+        redirect: 'follow',
+        signal: abortController.signal
       })
-      .catch(error => console.log('error', error));
+
+      let data = await response.json()
+      setTeachers(data)
+    }
+    
+    fetchTeachers()
+    
+    return () => {
+      abortController.abort()
+    }
   }, [])
 
   useEffect(() => {
     setCalendar(BuildCalendar(value))
+    return;
   }, [value])
 
   return (

@@ -8454,6 +8454,15 @@ input.form-control, select.form-control {
     border-radius: 27px; }
     .calendarWeek .column-day.gray {
       background: rgba(209, 209, 209, 0.3); }
+  .calendarWeek .cube-book {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer; }
+    .calendarWeek .cube-book .imgBooking img {
+      width: 80%;
+      display: block;
+      margin: auto;
+      border-radius: 10px; }
 
 .App-logo {
   height: 40vmin;

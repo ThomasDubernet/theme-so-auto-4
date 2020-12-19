@@ -25,13 +25,13 @@ export default function Student() {
             <div className="col-12 col-md-2"></div>
             <div className="col-12 col-md-10 py-6">
               <div className="mr-md-4 mr-xll-8">
-                <Route path="/student/livret" component={Livret} />
-                {/* <Route path="/student/help" component={Help} /> */}
-                <Route path="/student/folder" component={Folder} />
-                <Route path="/student/contract" component={Contract} />
-                <Route path="/student/code" component={Code} />
+                <Route exact path="/student/livret" component={Livret} />
+                {/* <Route exact path="/student/help" component={Help} /> */}
+                <Route exact path="/student/folder" component={Folder} />
+                <Route exact path="/student/contract" component={Contract} />
+                <Route exact path="/student/code" component={Code} />
                 <Route exact path="/student/drive" component={Drive} />
-                <Route path="/student/drive/bookings" component={DriveBookings} />
+                <Route exact path="/student/drive/bookings" component={DriveBookings} />
                 {/* <Route path="/student/shop" component={Shop} /> */}
               </div>
             </div>
