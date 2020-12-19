@@ -125,7 +125,7 @@ export default function Home(props) {
         </div>
       </div>
       
-      <div  className="container position-relative carousel__container mt-6">
+      <div className="container position-relative carousel__container mt-6">
         <Slider slides={avisUser} />
       </div>
       
