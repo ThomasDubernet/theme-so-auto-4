@@ -26,7 +26,7 @@ export default function Teacher() {
                 <Route exact path="/teacher/folder" component={Folder} />
                 <Route exact path="/teacher/contract" component={Contract} />
                 <Route exact path="/teacher/sector" component={Sector} />
-                <Route exact path="/teacher/students" component={Students} />
+                <Route path="/teacher/students" component={Students} />
               </div>
             </div>
           </div>

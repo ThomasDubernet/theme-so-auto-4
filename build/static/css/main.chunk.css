@@ -8472,69 +8472,7 @@ input.form-control, select.form-control {
   border-radius: 27px;
   padding: 17px;
   position: relative;
-<<<<<<< HEAD
   box-shadow: 0px 5px 50px 0px rgba(0, 0, 0, 0.1); }
-=======
-  box-sizing: border-box;
-  border: 1px solid #FFC909;
-  position: relative; }
-
-.dropholder:after {
-  content: "";
-  position: absolute;
-  width: 250px;
-  height: 5px;
-  background: rgba(0, 0, 0, 0);
-  display: block;
-  top: 100px;
-  left: 37px;
-  margin: auto;
-  border-radius: 50%;
-  box-shadow: 0 15px 10px rgba(0, 0, 0, 0.4); }
-
-.studenttab, .dropholder {
-  background: linear-gradient(#FFFF0D, #FFC909); }
-
-.studenttab {
-  margin-left: 20px;
-  float: left;
-  width: 208px;
-  padding: 0 0 0 20px;
-  border-radius: 0 10px 10px 0;
-  cursor: pointer;
-  height: 58px;
-  border-left: 1px solid #FFFF0D;
-  position: relative; }
-
-.studenttab:hover {
-  background: linear-gradient(#FFFF0D, #FFC909); }
-
-.studenttab:after {
-  content: "▾";
-  font-size: 18px;
-  position: absolute;
-  right: 20px;
-  top: 18px;
-  display: block; }
-
-.learntab {
-  position: absolute;
-  right: 0;
-  top: 70px;
-  width: 228px;
-  cursor: pointer;
-  opacity: 0;
-  transform-style: preserve-3d;
-  transform: rotatey(180deg) rotateX(5deg) translatey(100px);
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  background: linear-gradient(#FFFF0D, #FFC909);
-  border: 2px solid #FFFF0D;
-  border-radius: 10px;
-  transition: all 0.8s;
-  z-index: 5;
-  overflow: hidden; }
->>>>>>> f9a69dea486584600f50ab1981575d72124305fc
 
 .nav-pills > .nav-link > .student > .address {
   font-size: 12px; }
