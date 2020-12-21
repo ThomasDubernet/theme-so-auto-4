@@ -2355,6 +2355,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/img/btnArrow.svg":
+/*!******************************!*\
+  !*** ./src/img/btnArrow.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "static/media/btnArrow.b694161f.svg";
+
+/***/ }),
+
 /***/ "./src/img/caret-right-solid.svg":
 /*!***************************************!*\
   !*** ./src/img/caret-right-solid.svg ***!
@@ -3512,7 +3523,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Followup; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../img/btnArrow.svg */ "./src/img/btnArrow.svg");
+/* harmony import */ var _img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1__);
 var _jsxFileName = "/Users/JohnVy/Desktop/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/Followup.jsx";
+
 
 function Followup() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
@@ -3520,12 +3534,155 @@ function Followup() {
   }, "Vos \xE9l\xE8ves So'auto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "sm"
   }, "Les derniers \xE9l\xE8ves que vous avez vu en conduite s'affichent ici. Pensez \xE0 remplir leur suivi p\xE9dagogique \xE0 chaque fin de cours.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Rendez-vous sur aide pour plus d'informations."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    class: "dropholder"
+    className: "d-flex align-items-start"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    class: "dropdown studenttab"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Pierre C.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    class: "learntab"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret P\xE9dagogique")))));
+    className: "nav flex-column nav-pills mr-3",
+    id: "v-pills-tab",
+    role: "tablist",
+    "aria-orientation": "vertical"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "nav-link my-2 d-flex active",
+    id: "v-pills-first-tab",
+    "data-bs-toggle": "pill",
+    href: "#v-pills-first",
+    role: "tab",
+    "aria-controls": "v-pills-first",
+    "aria-selected": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "circle-img my-auto mr-3",
+    src: "https://picsum.photos/id/0/48/48",
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "student my-auto"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+    className: "studentname"
+  }, "Pierre C."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "address"
+  }, "10 Av. du Pr\xE9sident Wilson,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "17 000 La Rochelle")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-outline-white ml-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: _img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1___default.a,
+    alt: ""
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "nav-link my-2 d-flex",
+    id: "v-pills-second-tab",
+    "data-bs-toggle": "pill",
+    href: "#v-pills-second",
+    role: "tab",
+    "aria-controls": "v-pills-second",
+    "aria-selected": "false"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "circle-img my-auto mr-3",
+    src: "https://picsum.photos/id/0/48/48",
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "student my-auto"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+    className: "studentname"
+  }, "Pierre C."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "address"
+  }, "10 Av. du Pr\xE9sident Wilson,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "17 000 La Rochelle")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-outline-white ml-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: _img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1___default.a,
+    alt: ""
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "nav-link my-2 d-flex",
+    id: "v-pills-third-tab",
+    "data-bs-toggle": "pill",
+    href: "#v-pills-third",
+    role: "tab",
+    "aria-controls": "v-pills-third",
+    "aria-selected": "false"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "circle-img my-auto mr-3",
+    src: "https://picsum.photos/id/0/48/48",
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "student my-auto"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+    className: "studentname"
+  }, "Pierre C."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "address"
+  }, "10 Av. du Pr\xE9sident Wilson,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "17 000 La Rochelle")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-outline-white ml-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: _img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1___default.a,
+    alt: ""
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "nav-link my-2 d-flex",
+    id: "v-pills-fourth-tab",
+    "data-bs-toggle": "pill",
+    href: "#v-pills-fourth",
+    role: "tab",
+    "aria-controls": "v-pills-fourth",
+    "aria-selected": "false"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "circle-img my-auto mr-3",
+    src: "https://picsum.photos/id/0/48/48",
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "student my-auto"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+    className: "studentname"
+  }, "Pierre C."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "address"
+  }, "10 Av. du Pr\xE9sident Wilson,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "17 000 La Rochelle")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-outline-white ml-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: _img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1___default.a,
+    alt: ""
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "nav-link my-2 d-flex",
+    id: "v-pills-fifth-tab",
+    "data-bs-toggle": "pill",
+    href: "#v-pills-fifth",
+    role: "tab",
+    "aria-controls": "v-pills-fifth",
+    "aria-selected": "false"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "circle-img my-auto mr-3",
+    src: "https://picsum.photos/id/0/48/48",
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "student my-auto"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+    className: "studentname"
+  }, "Pierre C."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "address"
+  }, "10 Av. du Pr\xE9sident Wilson,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "17 000 La Rochelle")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "btn btn-outline-white ml-4",
+    src: _img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1___default.a,
+    alt: ""
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tab-content",
+    id: "v-pills-tabContent"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tab-pane my-2 fade show active",
+    id: "v-pills-first",
+    role: "tabpanel",
+    "aria-labelledby": "v-pills-first-tab"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tab-pane my-2 fade",
+    id: "v-pills-second",
+    role: "tabpanel",
+    "aria-labelledby": "v-pills-second-tab"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tab-pane my-2 fade",
+    id: "v-pills-third",
+    role: "tabpanel",
+    "aria-labelledby": "v-pills-third-tab"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tab-pane my-2 fade",
+    id: "v-pills-fourth",
+    role: "tabpanel",
+    "aria-labelledby": "v-pills-fourth-tab"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tab-pane my-2 fade",
+    id: "v-pills-fifth",
+    role: "tabpanel",
+    "aria-labelledby": "v-pills-fifth-tab"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique")))));
 }
 
 /***/ }),

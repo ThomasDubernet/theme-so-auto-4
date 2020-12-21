@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -8058,7 +8057,7 @@ a.text-dark:hover, a.text-dark:focus {
   src: url(/wp-content/themes/so_auto_v4/static/media/OpenSans-Regular.3ed9575d.ttf) format("truetype"); }
 
 @font-face {
-  font-family: 'OpenSans bold';
+  font-family: 'OpenSans Bold';
   src: url(/wp-content/themes/so_auto_v4/static/media/OpenSans-Bold.1025a6e0.ttf) format("truetype"); }
 
 @font-face {
@@ -8399,7 +8398,7 @@ input.form-control, select.form-control {
   .calendars .calendar {
     width: 30%;
     background: #FFF;
-    border: 3px solid #000000;
+    border: 4px solid #000000;
     border-radius: 27px;
     padding: 17px;
     position: relative; }
@@ -8465,90 +8464,36 @@ input.form-control, select.form-control {
       margin: auto;
       border-radius: 10px; }
 
-.dropholder {
+.nav-pills > .nav-link {
+  font-family: 'Quicksand Bold';
   width: 348px;
   height: 130px;
-  margin: 100px auto;
-  padding: 0 0 0 20px;
-  border-radius: 10px;
-  color: #fff;
+  background: #fff;
+  border-radius: 27px;
+  padding: 17px;
   position: relative;
-  box-sizing: border-box;
-  border: 1px solid #FFC909;
-  position: relative; }
+  box-shadow: 0px 5px 50px 0px rgba(0, 0, 0, 0.1); }
 
-.dropholder:after {
-  content: "";
-  position: absolute;
-  width: 250px;
-  height: 5px;
-  background: rgba(0, 0, 0, 0);
-  display: block;
-  top: 100px;
-  left: 37px;
-  margin: auto;
-  border-radius: 50%;
-  box-shadow: 0 15px 10px rgba(0, 0, 0, 0.4); }
+.nav-pills > .nav-link > .student > .address {
+  font-size: 12px; }
 
-.studenttab, .dropholder {
-  background: linear-gradient(#FFFF0D, #FFC909); }
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #041231;
+  background: linear-gradient(180deg, #FFFF0D 0%, #FFC909 100%) 0% 0%; }
 
-.studenttab {
-  margin-left: 20px;
-  float: left;
-  width: 208px;
-  padding: 0 0 0 20px;
-  border-radius: 0 10px 10px 0;
-  cursor: pointer;
-  height: 58px;
-  border-left: 1px solid #FFFF0D;
-  position: relative; }
+.tab-content > .active {
+  color: #041231;
+  width: 444px;
+  height: 590px;
+  border-radius: 27px;
+  padding: 17px;
+  position: relative;
+  box-shadow: 0px 5px 50px 0px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(180deg, #FFFF0D 0%, #FFC909 100%) 0% 0%; }
 
-.studenttab:hover {
-  background: linear-gradient(#FFFF0D, #FFC909); }
-
-.studenttab:after {
-  content: "▾";
-  font-size: 18px;
-  position: absolute;
-  right: 20px;
-  top: 18px;
-  display: block; }
-
-.learntab {
-  position: absolute;
-  right: 0;
-  top: 70px;
-  width: 228px;
-  cursor: pointer;
-  opacity: 0;
-  transform-style: preserve-3d;
-  transform: rotatey(180deg) rotateX(5deg) translatey(100px);
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  background: linear-gradient(#FFFF0D, #FFC909);
-  border: 2px solid #FFFF0D;
-  border-radius: 10px;
-  transition: all 0.8s;
-  z-index: 5;
-  overflow: hidden; }
-
-.learntab li {
-  padding: 10px 10px;
-  border-bottom: 1px dotted #fff;
-  color: #e8f8ff;
-  transition: all 0.3s; }
-
-.learntab li:hover {
-  background: #FFFF0D;
-  padding-left: 20px; }
-
-.learntab li:last-child {
-  border: none; }
-
-.showLearntab {
-  opacity: 1;
-  transform: rotateX(0deg) translatey(0px); }
+.circle-img {
+  border-radius: 50px; }
 
 .App-logo {
   height: 40vmin;
