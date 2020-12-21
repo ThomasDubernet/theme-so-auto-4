@@ -144,6 +144,36 @@ function App() {
 
 /***/ }),
 
+/***/ "./src/api/createListOfStudents.js":
+/*!*****************************************!*\
+  !*** ./src/api/createListOfStudents.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return createListOfStudents; });
+function createListOfStudents(allBooks) {
+  let listOfBooks = [];
+  let listOfStudents = [];
+  allBooks.forEach(book => {
+    if (book.student_id != null) {
+      listOfBooks.push(book);
+
+      if (!listOfStudents.includes(book.student_id)) {
+        listOfStudents.push(book.student_id);
+      }
+    }
+  });
+  let datas = [];
+  datas.books = listOfBooks;
+  datas.students = listOfStudents;
+  return datas;
+}
+
+/***/ }),
+
 /***/ "./src/api/verifyUsers.js":
 /*!********************************!*\
   !*** ./src/api/verifyUsers.js ***!
@@ -3579,7 +3609,29 @@ __webpack_require__.r(__webpack_exports__);
 var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/Followup.jsx";
 
 
-function Followup() {
+function Followup(props) {
+  const [users, setUsers] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+
+  async function fetchUserInfos(id) {
+    let response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/students/${id}`);
+    let data = await response.json();
+    const userJson = {
+      "name": data[0].student_firstname + " " + data[0].student_lastname,
+      "addresse": data[0].student_address_number + " " + data[0].student_address_name + " ",
+      "city": data[0].student_address_zipcode + " " + +data[0].student_address_city
+    };
+
+    if (users.filter(user => user.name === userJson.name).length === 0) {
+      const newUsers = users.slice();
+      newUsers.push(userJson);
+      setUsers(newUsers);
+    }
+  }
+
+  for (let index = 0; index < props.students.length; index++) {
+    fetchUserInfos(props.students[index]);
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
     className: "text-warning mt-5"
   }, "Vos \xE9l\xE8ves So'auto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -3591,13 +3643,14 @@ function Followup() {
     id: "v-pills-tab",
     role: "tablist",
     "aria-orientation": "vertical"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+  }, users.map((user, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    key: index,
     className: "nav-link my-2 d-flex active",
-    id: "v-pills-first-tab",
+    id: "v-pills-" + index + "-tab",
     "data-toggle": "pill",
-    href: "#v-pills-first",
+    href: "#v-pills-" + index,
     role: "tab",
-    "aria-controls": "v-pills-first",
+    "aria-controls": "v-pills-" + index,
     "aria-selected": "true"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "circle-img my-auto mr-3",
@@ -3607,133 +3660,22 @@ function Followup() {
     className: "student my-auto"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
     className: "studentname"
-  }, "Pierre C."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }, " ", user.name, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "address"
-  }, "10 Av. du Pr\xE9sident Wilson,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "17 000 La Rochelle")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, " ", user.addresse, ", ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", user.city, " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-outline-white ml-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: _img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1___default.a,
     alt: ""
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "nav-link my-2 d-flex",
-    id: "v-pills-second-tab",
-    "data-toggle": "pill",
-    href: "#v-pills-second",
-    role: "tab",
-    "aria-controls": "v-pills-second",
-    "aria-selected": "false"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "circle-img my-auto mr-3",
-    src: "https://picsum.photos/id/0/48/48",
-    alt: ""
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "student my-auto"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-    className: "studentname"
-  }, "Pierre C."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "address"
-  }, "10 Av. du Pr\xE9sident Wilson,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "17 000 La Rochelle")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-outline-white ml-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: _img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1___default.a,
-    alt: ""
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "nav-link my-2 d-flex",
-    id: "v-pills-third-tab",
-    "data-toggle": "pill",
-    href: "#v-pills-third",
-    role: "tab",
-    "aria-controls": "v-pills-third",
-    "aria-selected": "false"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "circle-img my-auto mr-3",
-    src: "https://picsum.photos/id/0/48/48",
-    alt: ""
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "student my-auto"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-    className: "studentname"
-  }, "Pierre C."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "address"
-  }, "10 Av. du Pr\xE9sident Wilson,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "17 000 La Rochelle")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-outline-white ml-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: _img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1___default.a,
-    alt: ""
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "nav-link my-2 d-flex",
-    id: "v-pills-fourth-tab",
-    "data-toggle": "pill",
-    href: "#v-pills-fourth",
-    role: "tab",
-    "aria-controls": "v-pills-fourth",
-    "aria-selected": "false"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "circle-img my-auto mr-3",
-    src: "https://picsum.photos/id/0/48/48",
-    alt: ""
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "student my-auto"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-    className: "studentname"
-  }, "Pierre C."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "address"
-  }, "10 Av. du Pr\xE9sident Wilson,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "17 000 La Rochelle")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-outline-white ml-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: _img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1___default.a,
-    alt: ""
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "nav-link my-2 d-flex",
-    id: "v-pills-fifth-tab",
-    "data-toggle": "pill",
-    href: "#v-pills-fifth",
-    role: "tab",
-    "aria-controls": "v-pills-fifth",
-    "aria-selected": "false"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "circle-img my-auto mr-3",
-    src: "https://picsum.photos/id/0/48/48",
-    alt: ""
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "student my-auto"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-    className: "studentname"
-  }, "Pierre C."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "address"
-  }, "10 Av. du Pr\xE9sident Wilson,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "17 000 La Rochelle")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "btn btn-outline-white ml-4",
-    src: _img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1___default.a,
-    alt: ""
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "tab-content",
     id: "v-pills-tabContent"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "tab-pane my-2 fade show active",
-    id: "v-pills-first",
+  }, users.map((user, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tab-pane my-2 fade " + (index === 0 ? 'show active' : ''),
+    id: "v-pills-" + index,
     role: "tabpanel",
-    "aria-labelledby": "v-pills-first-tab"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique 1")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "tab-pane my-2 fade",
-    id: "v-pills-second",
-    role: "tabpanel",
-    "aria-labelledby": "v-pills-second-tab"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique 2")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "tab-pane my-2 fade",
-    id: "v-pills-third",
-    role: "tabpanel",
-    "aria-labelledby": "v-pills-third-tab"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique3")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "tab-pane my-2 fade",
-    id: "v-pills-fourth",
-    role: "tabpanel",
-    "aria-labelledby": "v-pills-fourth-tab"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique 4")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "tab-pane my-2 fade",
-    id: "v-pills-fifth",
-    role: "tabpanel",
-    "aria-labelledby": "v-pills-fifth-tab"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique 5")))));
+    "aria-labelledby": "v-pills-" + index + "-tab"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret de ", user.name, " 1"))))));
 }
 
 /***/ }),
@@ -4039,20 +3981,58 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Students; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_Map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Map */ "./src/components/Map.jsx");
-/* harmony import */ var _routes_Followup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../routes/Followup */ "./src/routes/Followup.jsx");
+/* harmony import */ var _api_createListOfStudents_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../api/createListOfStudents.js */ "./src/api/createListOfStudents.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/src/js.cookie.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_Map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Map */ "./src/components/Map.jsx");
+/* harmony import */ var _routes_Followup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../routes/Followup */ "./src/routes/Followup.jsx");
 var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/Students.jsx";
 
 
 
+
+
 function Students() {
+  const [allBooks, setAllBooks] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const [students, setstudents] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  const [books, setbooks] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    const abortController = new AbortController();
+    const user_id = js_cookie__WEBPACK_IMPORTED_MODULE_2___default.a.get('so_auto_user_id');
+
+    const fetchBookings = async () => {
+      let response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/bookings?teacher_id=${user_id}`, {
+        meth: 'GET',
+        redirect: 'follow',
+        signal: abortController.signal
+      });
+      let data = await response.json();
+      setAllBooks(data);
+    };
+
+    fetchBookings();
+    return () => {
+      abortController.abort();
+    };
+  }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    setstudents(Object(_api_createListOfStudents_js__WEBPACK_IMPORTED_MODULE_1__["default"])(allBooks).students);
+    setbooks(Object(_api_createListOfStudents_js__WEBPACK_IMPORTED_MODULE_1__["default"])(allBooks).books);
+  }, [allBooks]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    console.log(students);
+    console.log(books);
+  }, [students, books]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Suivre le parcours", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "de vos \xE9l\xE8ves en un clique !"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "mr-md-4 mr-xll-8"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_routes_Followup__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_routes_Followup__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    students: students,
+    books: books
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
     className: "text-warning mt-5"
   }, "Retrouvez vos \xE9l\xE8ves So'auto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "sm"
-  }, "Les \xE9l\xE8ves qui ont rendez-vous avec vous cette semaine apparaissent sur la carte."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Map__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, "Les \xE9l\xE8ves qui ont rendez-vous avec vous cette semaine apparaissent sur la carte."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Map__WEBPACK_IMPORTED_MODULE_3__["default"], {
     container: "ApiMapboxStudents"
   }));
 }
@@ -4357,7 +4337,7 @@ function Teacher() {
   const context = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_Context__WEBPACK_IMPORTED_MODULE_2__["default"]);
   const [redirect] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(context.user.first_connect === 'true' ? true : false);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, redirect ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
-    to: `/${context.userType}/folder`
+    to: `/${context.userType}/students`
   }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
     to: `/${context.userType}/planning`
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -4608,5 +4588,5 @@ module.exports = __webpack_require__(/*! /Users/thomasdubernet/Projects/so_auto_
 
 /***/ })
 
-},[[0,"runtime-main",1]]]);
+},[[0,"runtime-main",0]]]);
 //# sourceMappingURL=main.chunk.js.map

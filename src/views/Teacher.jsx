@@ -15,7 +15,7 @@ export default function Teacher() {
 
   return (
     <React.Fragment>
-      {redirect ? <Redirect to={`/${context.userType}/folder`} /> : <Redirect to={`/${context.userType}/planning`} />}
+      {redirect ? <Redirect to={`/${context.userType}/students`} /> : <Redirect to={`/${context.userType}/planning`} />}
         <div className="container">
           <div className="row">
             <div className="col-12 col-md-2"></div>
