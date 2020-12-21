@@ -35,6 +35,8 @@ async function postBookings(datasJson) {
       const datasJson = {
         "date_available": props.day + " " + data,
         "teacher_id": context.user.id,
+        "teacher_name": context.user.firstname + " " + context.user.lastname,
+        "teacher_number": context.user.number,
         "boite": "manuelle"
       }
       postBookings(datasJson)
