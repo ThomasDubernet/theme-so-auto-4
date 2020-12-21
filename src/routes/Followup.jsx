@@ -1,8 +1,30 @@
-import React from 'react'
+import React, { useState} from 'react'
 
 import btnArrow from '../img/btnArrow.svg'
 
-export default function Followup() {
+export default function Followup(props) {
+
+  const [users, setUsers] = useState([])
+
+  async function fetchUserInfos(id) {
+    let response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/students/${id}`)
+    let data = await response.json()
+    const userJson = {
+      "name": data[0].student_firstname + " " + data[0].student_lastname,
+      "addresse": data[0].student_address_number + " " + data[0].student_address_name + " ",
+      "city": data[0].student_address_zipcode + " " +  + data[0].student_address_city
+    }
+    
+    if((users.filter(user => (user.name === userJson.name)).length === 0 )) {
+      const newUsers = users.slice()
+      newUsers.push(userJson)
+      setUsers(newUsers)
+    }
+  }
+
+  for (let index = 0; index < props.students.length; index++) {
+    fetchUserInfos(props.students[index]) 
+  }
 
   return (
     <React.Fragment>
@@ -10,63 +32,32 @@ export default function Followup() {
       <p className="sm">Les derniers élèves que vous avez vu en conduite s'affichent ici. Pensez à remplir leur suivi pédagogique à chaque fin de cours.<br/>Rendez-vous sur aide pour plus d'informations.</p>
       <div className="d-flex align-items-start">
         <div className="nav flex-column nav-pills mr-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-          <a className="nav-link my-2 d-flex active" id="v-pills-first-tab" data-toggle="pill" href="#v-pills-first" role="tab" aria-controls="v-pills-first" aria-selected="true">
-            <img className="circle-img my-auto mr-3" src="https://picsum.photos/id/0/48/48" alt="" />
-            <div className="student my-auto">
-              <h6 className="studentname">Pierre C.</h6>
-              <p className="address">10 Av. du Président Wilson,<br />17 000 La Rochelle</p>
-            </div>
-            <button className="btn btn-outline-white ml-4"><img src={btnArrow} alt=""/></button>
-          </a>
-          <a className="nav-link my-2 d-flex" id="v-pills-second-tab" data-toggle="pill" href="#v-pills-second" role="tab" aria-controls="v-pills-second" aria-selected="false">
-            <img className="circle-img my-auto mr-3" src="https://picsum.photos/id/0/48/48" alt="" />
-            <div className="student my-auto">
-              <h6 className="studentname">Pierre C.</h6>
-              <p className="address">10 Av. du Président Wilson,<br />17 000 La Rochelle</p>
-            </div>
-            <button className="btn btn-outline-white ml-4"><img src={btnArrow} alt=""/></button>
-          </a>
-          <a className="nav-link my-2 d-flex" id="v-pills-third-tab" data-toggle="pill" href="#v-pills-third" role="tab" aria-controls="v-pills-third" aria-selected="false">
-            <img className="circle-img my-auto mr-3" src="https://picsum.photos/id/0/48/48" alt="" />
-            <div className="student my-auto">
-              <h6 className="studentname">Pierre C.</h6>
-              <p className="address">10 Av. du Président Wilson,<br />17 000 La Rochelle</p>
-            </div>
-            <button className="btn btn-outline-white ml-4"><img src={btnArrow} alt=""/></button>
-          </a>
-          <a className="nav-link my-2 d-flex" id="v-pills-fourth-tab" data-toggle="pill" href="#v-pills-fourth" role="tab" aria-controls="v-pills-fourth" aria-selected="false">
-            <img className="circle-img my-auto mr-3" src="https://picsum.photos/id/0/48/48" alt="" />
-            <div className="student my-auto">
-              <h6 className="studentname">Pierre C.</h6>
-              <p className="address">10 Av. du Président Wilson,<br />17 000 La Rochelle</p>
-            </div>
-            <button className="btn btn-outline-white ml-4"><img src={btnArrow} alt=""/></button>
-          </a>
-          <a className="nav-link my-2 d-flex" id="v-pills-fifth-tab" data-toggle="pill" href="#v-pills-fifth" role="tab" aria-controls="v-pills-fifth" aria-selected="false">
-            <img className="circle-img my-auto mr-3" src="https://picsum.photos/id/0/48/48" alt="" />
-            <div className="student my-auto">
-              <h6 className="studentname">Pierre C.</h6>
-              <p className="address">10 Av. du Président Wilson,<br />17 000 La Rochelle</p>
-            </div>
-            <img className="btn btn-outline-white ml-4" src={btnArrow} alt=""/>
-          </a>
+
+          {
+            users.map( (user, index) => (
+              <a key={index} className="nav-link my-2 d-flex active" id={"v-pills-" + index +"-tab"} data-toggle="pill" href={"#v-pills-" + index} role="tab" aria-controls={"v-pills-" + index} aria-selected="true">
+                <img className="circle-img my-auto mr-3" src="https://picsum.photos/id/0/48/48" alt="" />
+                <div className="student my-auto">
+                  <h6 className="studentname"> {user.name} </h6>
+                  <p className="address"> {user.addresse}, <br /> {user.city} </p>
+                </div>
+                <button className="btn btn-outline-white ml-4"><img src={btnArrow} alt=""/></button>
+              </a>
+            ))
+          }
+
+  
         </div>
         <div className="tab-content" id="v-pills-tabContent">
-          <div className="tab-pane my-2 fade show active" id="v-pills-first" role="tabpanel" aria-labelledby="v-pills-first-tab">
-            <h6>Livret pédagogique 1</h6>
-          </div>
-          <div className="tab-pane my-2 fade" id="v-pills-second" role="tabpanel" aria-labelledby="v-pills-second-tab">
-            <h6>Livret pédagogique 2</h6>
-          </div>
-          <div className="tab-pane my-2 fade" id="v-pills-third" role="tabpanel" aria-labelledby="v-pills-third-tab">
-            <h6>Livret pédagogique3</h6>
-          </div>
-          <div className="tab-pane my-2 fade" id="v-pills-fourth" role="tabpanel" aria-labelledby="v-pills-fourth-tab">
-            <h6>Livret pédagogique 4</h6>
-          </div>
-          <div className="tab-pane my-2 fade" id="v-pills-fifth" role="tabpanel" aria-labelledby="v-pills-fifth-tab">
-            <h6>Livret pédagogique 5</h6>
-          </div>
+          
+          {
+            users.map( (user, index) => (
+              <div className={"tab-pane my-2 fade " + (index === 0 ? 'show active' : '')} id={"v-pills-" + index} role="tabpanel" aria-labelledby={"v-pills-" + index + "-tab"}>
+                <h6>Livret de {user.name} 1</h6>
+              </div>
+            ))
+          }
+
         </div>
       </div>
     </React.Fragment>
