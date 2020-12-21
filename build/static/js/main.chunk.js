@@ -1890,15 +1890,18 @@ function DocsStudentForm() {
   const context = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_Context__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
   const onSubmit = data => {
-    var requestOptions = {
-      method: 'PUT',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data),
-      redirect: 'follow'
-    };
-    fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s/${context.user.id}`, requestOptions).then(response => response.json()).then(result => context.updateUser(result[0])).catch(error => console.log('error', error));
+    console.log(data); //   var requestOptions = {
+    //     method: 'PUT',
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify(data),
+    //     redirect: 'follow'
+    //   };
+    //     fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s/${context.user.id}`, requestOptions)
+    //     .then(response => response.json() )
+    //     .then(result => context.updateUser(result[0]))
+    //     .catch(error => console.log('error', error));
   };
 
   const {
@@ -1953,7 +1956,7 @@ function DocsStudentForm() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "id_card",
     label: "Pi\xE8ce d'identit\xE9",
-    type: "text",
+    type: "file",
     value: context.user.id_card,
     placeholder: "Format pdf"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1961,7 +1964,7 @@ function DocsStudentForm() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "jdc",
     label: "Certificat JDC",
-    type: "text",
+    type: "file",
     value: context.user.jdc,
     placeholder: "Format pdf"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1969,7 +1972,7 @@ function DocsStudentForm() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "assr",
     label: "Attestation ASSR ou ASSR2",
-    type: "text",
+    type: "file",
     value: context.user.assr,
     placeholder: "Format pdf"
   })))));
@@ -1998,16 +2001,23 @@ var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/
 function DocsTeacherForm() {
   const context = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_Context__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
-  const onSubmit = data => {
+  const onSubmit = files => {
+    const formData = new FormData();
+
+    for (let index = 0; index < files.length; index++) {
+      const file = files[index];
+      formData.append('files[]', file);
+    }
+
     var requestOptions = {
       method: 'PUT',
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(data),
+      body: formData,
       redirect: 'follow'
     };
-    fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s/${context.user.id}`, requestOptions).then(response => response.json()).then(result => context.updateUser(result[0])).catch(error => console.log('error', error));
+    fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s/${context.user.id}?files=true`, requestOptions).then(response => response.json()).then(result => context.updateUser(result[0])).catch(error => console.log('error', error));
   };
 
   const {
@@ -2062,7 +2072,7 @@ function DocsTeacherForm() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "id_card",
     label: "Pi\xE8ce d'identit\xE9",
-    type: "text",
+    type: "file",
     value: context.user.id_card,
     placeholder: "Format pdf"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2070,7 +2080,7 @@ function DocsTeacherForm() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "permis",
     label: "Permis de conduire",
-    type: "text",
+    type: "file",
     value: context.user.permis,
     placeholder: "Format pdf"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2078,7 +2088,7 @@ function DocsTeacherForm() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "auth_work",
     label: "Autorisation d'enseigner",
-    type: "text",
+    type: "file",
     value: context.user.auth_work,
     placeholder: "Format pdf"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2088,7 +2098,7 @@ function DocsTeacherForm() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "criminal_record",
     label: "Casier judiciaire",
-    type: "text",
+    type: "file",
     value: context.user.criminal_record,
     placeholder: "Format pdf"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2096,7 +2106,7 @@ function DocsTeacherForm() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "statement_infos",
     label: "Relev\xE9 d'information",
-    type: "text",
+    type: "file",
     value: context.user.statement_infos,
     placeholder: "Format pdf"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2104,7 +2114,7 @@ function DocsTeacherForm() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "auth_medical",
     label: "Autorisation m\xE9dicale",
-    type: "text",
+    type: "file",
     value: context.user.auth_medical,
     placeholder: "Format pdf"
   })))));
@@ -3540,9 +3550,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Followup; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-!(function webpackMissingModule() { var e = new Error("Cannot find module '../components/Learning'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-var _jsxFileName = "/Users/JohnVy/Desktop/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/Followup.jsx";
-
+var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/Followup.jsx";
 
 function Followup() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Mon planning"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
@@ -3559,7 +3567,7 @@ function Followup() {
     class: "learntab"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     class: "h6"
-  }), "Livret P\xE9dagogique"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(!(function webpackMissingModule() { var e = new Error("Cannot find module '../components/Learning'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), null));
+  }), "Livret P\xE9dagogique"))));
 }
 
 /***/ }),
@@ -3866,12 +3874,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Map */ "./src/components/Map.jsx");
-<<<<<<< HEAD
 /* harmony import */ var _routes_Followup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../routes/Followup */ "./src/routes/Followup.jsx");
-var _jsxFileName = "/Users/JohnVy/Desktop/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/Students.jsx";
-=======
 var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/Students.jsx";
->>>>>>> 08260432375a59dbd756290464b5b00927fb8339
 
 
 

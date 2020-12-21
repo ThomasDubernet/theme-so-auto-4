@@ -6,17 +6,26 @@ export default function DocsTeacherForm() {
   
   const context = useContext(Context)
   
-  const onSubmit = (data) => {
+  const onSubmit = (files) => {
+    const formData = new FormData()
+
+    for (let index = 0; index < files.length; index++) {
+      const file = files[index];
+
+      formData.append('files[]', file)
+      
+    }
+
     var requestOptions = {
       method: 'PUT',
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(data),
+      body: formData,
       redirect: 'follow'
     };
     
-      fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s/${context.user.id}`, requestOptions)
+      fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s/${context.user.id}?files=true`, requestOptions)
       .then(response => response.json() )
       .then(result => context.updateUser(result[0]))
       .catch(error => console.log('error', error));
@@ -46,24 +55,24 @@ export default function DocsTeacherForm() {
         <TitleGroupInput title='Documents complémentaires' text="Ces documents nous permettent de remplir le dossier nécessaire à votre inscription en préfécture.<br/>Rendez-vous sur <span class='font-weight-bold sm'>examen</span> pour plus d’informations !" />
         <div className="row">
           <div className="col-md-4">
-            <Input name={"id_card"} label="Pièce d'identité" type="text" value={context.user.id_card} placeholder="Format pdf" />
+            <Input name={"id_card"} label="Pièce d'identité" type="file" value={context.user.id_card} placeholder="Format pdf" />
           </div>
           <div className="col-md-4">
-            <Input name={"permis"} label="Permis de conduire" type="text" value={context.user.permis} placeholder="Format pdf" />
+            <Input name={"permis"} label="Permis de conduire" type="file" value={context.user.permis} placeholder="Format pdf" />
           </div>
           <div className="col-md-4">
-            <Input name={"auth_work"} label="Autorisation d'enseigner" type="text" value={context.user.auth_work} placeholder="Format pdf" />
+            <Input name={"auth_work"} label="Autorisation d'enseigner" type="file" value={context.user.auth_work} placeholder="Format pdf" />
           </div>
         </div>
         <div className="row">
           <div className="col-md-4">
-            <Input name={"criminal_record"} label="Casier judiciaire" type="text" value={context.user.criminal_record} placeholder="Format pdf" />
+            <Input name={"criminal_record"} label="Casier judiciaire" type="file" value={context.user.criminal_record} placeholder="Format pdf" />
           </div>
           <div className="col-md-4">
-            <Input name={"statement_infos"} label="Relevé d'information" type="text" value={context.user.statement_infos} placeholder="Format pdf" />
+            <Input name={"statement_infos"} label="Relevé d'information" type="file" value={context.user.statement_infos} placeholder="Format pdf" />
           </div>
           <div className="col-md-4">
-            <Input name={"auth_medical"} label="Autorisation médicale" type="text" value={context.user.auth_medical} placeholder="Format pdf" />
+            <Input name={"auth_medical"} label="Autorisation médicale" type="file" value={context.user.auth_medical} placeholder="Format pdf" />
           </div>
         </div>
       </form>

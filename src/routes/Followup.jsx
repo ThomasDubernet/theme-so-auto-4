@@ -16,7 +16,6 @@ export default function Followup() {
         </ul>
       </div>
 
-      <Learning />
     </React.Fragment>
   )
 }
