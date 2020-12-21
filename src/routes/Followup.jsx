@@ -1,22 +1,20 @@
 import React from 'react'
 
 export default function Followup() {
+
   return (
     <React.Fragment>
-      <h2>Mon planning</h2>
-
       <h6 className="text-warning mt-5">Vos élèves So'auto</h6>
       <p className="sm">Les derniers élèves que vous avez vu en conduite s'affichent ici. Pensez à remplir leur suivi pédagogique à chaque fin de cours.<br/>Rendez-vous sur aide pour plus d'informations.</p>
       <div class="dropholder">
-        <div class="dropdown">
-          <p><i class="h6"></i>Pierre C.</p>
+        <div class="dropdown studenttab">
+          <h6>Pierre C.</h6>
         </div>
         <ul class="learntab">
-          <li><i class="h6"></i>Livret Pédagogique</li>
+          <li><h6>Livret Pédagogique</h6></li>
         </ul>
       </div>
 
-      <Learning />
     </React.Fragment>
   )
 }
