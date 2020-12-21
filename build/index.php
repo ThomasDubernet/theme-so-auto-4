@@ -39,11 +39,7 @@
         Learn how to configure a non-root public URL by running `npm run wpbuild`.
     -->
     <title>React WordPress Theme</title>
-<<<<<<< HEAD
-<link href="/wp-content/themes/so_auto_v4/static/css/1.chunk.css?3df2691d53dbcf823652" rel="stylesheet"><link href="/wp-content/themes/so_auto_v4/static/css/main.chunk.css?3df2691d53dbcf823652" rel="stylesheet"></head>
-=======
-<link href="/wp-content/themes/so_auto_v4/static/css/1.chunk.css?27f711362b8ee0f891f6" rel="stylesheet"><link href="/wp-content/themes/so_auto_v4/static/css/main.chunk.css?27f711362b8ee0f891f6" rel="stylesheet"></head>
->>>>>>> thomas
+<link href="/wp-content/themes/so_auto_v4/static/css/0.chunk.css?d37cd0596f1320b770fd" rel="stylesheet"><link href="/wp-content/themes/so_auto_v4/static/css/main.chunk.css?d37cd0596f1320b770fd" rel="stylesheet"></head>
     <body>
     <noscript>
         You need to enable JavaScript to run this app.
@@ -59,9 +55,5 @@
         To begin the development, run `npm run wpstart` or `yarn wpstart`.
         To create a production bundle, use `npm run wpbuild` or `yarn wpbuild`.
     -->
-<<<<<<< HEAD
-    <script src="/wp-content/themes/so_auto_v4/static/js/bundle.js?3df2691d53dbcf823652"></script><script src="/wp-content/themes/so_auto_v4/static/js/1.chunk.js?3df2691d53dbcf823652"></script><script src="/wp-content/themes/so_auto_v4/static/js/main.chunk.js?3df2691d53dbcf823652"></script></body>
-=======
-    <script src="/wp-content/themes/so_auto_v4/static/js/bundle.js?27f711362b8ee0f891f6"></script><script src="/wp-content/themes/so_auto_v4/static/js/1.chunk.js?27f711362b8ee0f891f6"></script><script src="/wp-content/themes/so_auto_v4/static/js/main.chunk.js?27f711362b8ee0f891f6"></script></body>
->>>>>>> thomas
+    <script src="/wp-content/themes/so_auto_v4/static/js/bundle.js?d37cd0596f1320b770fd"></script><script src="/wp-content/themes/so_auto_v4/static/js/0.chunk.js?d37cd0596f1320b770fd"></script><script src="/wp-content/themes/so_auto_v4/static/js/main.chunk.js?d37cd0596f1320b770fd"></script></body>
 </html>
