@@ -1,6 +1,7 @@
 import React from 'react'
 
-import btnArrow from '../img/btnArrow.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretRight } from '@fortawesome/free-solid-svg-icons'
 
 export default function Followup() {
 
@@ -16,7 +17,7 @@ export default function Followup() {
               <h6 className="studentname">Pierre C.</h6>
               <p className="address">10 Av. du Président Wilson,<br />17 000 La Rochelle</p>
             </div>
-            <button className="btn btn-outline-white ml-4"><img src={btnArrow} alt=""/></button>
+            <button className="btn btn-outline-white ml-4"><FontAwesomeIcon icon={faCaretRight} /></button>
           </a>
           <a className="nav-link my-2 d-flex" id="v-pills-second-tab" data-toggle="pill" href="#v-pills-second" role="tab" aria-controls="v-pills-second" aria-selected="false">
             <img className="circle-img my-auto mr-3" src="https://picsum.photos/id/0/48/48" alt="" />
@@ -24,7 +25,7 @@ export default function Followup() {
               <h6 className="studentname">Pierre C.</h6>
               <p className="address">10 Av. du Président Wilson,<br />17 000 La Rochelle</p>
             </div>
-            <button className="btn btn-outline-white ml-4"><img src={btnArrow} alt=""/></button>
+            <button className="btn btn-outline-white ml-4"><FontAwesomeIcon icon={faCaretRight} /></button>
           </a>
           <a className="nav-link my-2 d-flex" id="v-pills-third-tab" data-toggle="pill" href="#v-pills-third" role="tab" aria-controls="v-pills-third" aria-selected="false">
             <img className="circle-img my-auto mr-3" src="https://picsum.photos/id/0/48/48" alt="" />
@@ -32,7 +33,7 @@ export default function Followup() {
               <h6 className="studentname">Pierre C.</h6>
               <p className="address">10 Av. du Président Wilson,<br />17 000 La Rochelle</p>
             </div>
-            <button className="btn btn-outline-white ml-4"><img src={btnArrow} alt=""/></button>
+            <button className="btn btn-outline-white ml-4"><FontAwesomeIcon icon={faCaretRight} /></button>
           </a>
           <a className="nav-link my-2 d-flex" id="v-pills-fourth-tab" data-toggle="pill" href="#v-pills-fourth" role="tab" aria-controls="v-pills-fourth" aria-selected="false">
             <img className="circle-img my-auto mr-3" src="https://picsum.photos/id/0/48/48" alt="" />
@@ -40,7 +41,7 @@ export default function Followup() {
               <h6 className="studentname">Pierre C.</h6>
               <p className="address">10 Av. du Président Wilson,<br />17 000 La Rochelle</p>
             </div>
-            <button className="btn btn-outline-white ml-4"><img src={btnArrow} alt=""/></button>
+            <button className="btn btn-outline-white ml-4"><FontAwesomeIcon icon={faCaretRight} /></button>
           </a>
           <a className="nav-link my-2 d-flex" id="v-pills-fifth-tab" data-toggle="pill" href="#v-pills-fifth" role="tab" aria-controls="v-pills-fifth" aria-selected="false">
             <img className="circle-img my-auto mr-3" src="https://picsum.photos/id/0/48/48" alt="" />
@@ -48,7 +49,7 @@ export default function Followup() {
               <h6 className="studentname">Pierre C.</h6>
               <p className="address">10 Av. du Président Wilson,<br />17 000 La Rochelle</p>
             </div>
-            <img className="btn btn-outline-white ml-4" src={btnArrow} alt=""/>
+            <button className="btn btn-outline-white ml-4"><FontAwesomeIcon icon={faCaretRight} /></button>
           </a>
         </div>
         <div className="tab-content" id="v-pills-tabContent">
