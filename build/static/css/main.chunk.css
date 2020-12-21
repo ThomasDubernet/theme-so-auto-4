@@ -8475,8 +8475,17 @@ input.form-control, select.form-control {
   position: relative;
   box-sizing: border-box;
   border: 1px solid #FFC909;
+<<<<<<< HEAD
   position: relative; }
 
+=======
+  animation: move 3s ease-in-out infinite;
+  position: relative; }
+
+.dropholder:hover, .dropholder:hover:after {
+  animation-play-state: paused; }
+
+>>>>>>> thomas
 .dropholder:after {
   content: "";
   position: absolute;
@@ -8488,12 +8497,29 @@ input.form-control, select.form-control {
   left: 37px;
   margin: auto;
   border-radius: 50%;
+<<<<<<< HEAD
   box-shadow: 0 15px 10px rgba(0, 0, 0, 0.4); }
 
 .studenttab, .dropholder {
   background: linear-gradient(#FFFF0D, #FFC909); }
 
 .studenttab {
+=======
+  box-shadow: 0 15px 10px rgba(0, 0, 0, 0.4);
+  animation: moveShadow 3s ease-in-out infinite; }
+
+p {
+  float: left;
+  line-height: 60px; }
+
+.dropdown > p {
+  font-size: 16px; }
+
+.dropdown, .dropholder {
+  background: linear-gradient(#FFFF0D, #FFC909); }
+
+.dropdown {
+>>>>>>> thomas
   margin-left: 20px;
   float: left;
   width: 208px;
@@ -8504,10 +8530,17 @@ input.form-control, select.form-control {
   border-left: 1px solid #FFFF0D;
   position: relative; }
 
+<<<<<<< HEAD
 .studenttab:hover {
   background: linear-gradient(#FFFF0D, #FFC909); }
 
 .studenttab:after {
+=======
+.dropdown:hover {
+  background: linear-gradient(#FFFF0D, #FFC909); }
+
+.dropdown:after {
+>>>>>>> thomas
   content: "▾";
   font-size: 18px;
   position: absolute;
@@ -8550,6 +8583,35 @@ input.form-control, select.form-control {
   opacity: 1;
   transform: rotateX(0deg) translatey(0px); }
 
+<<<<<<< HEAD
+=======
+li > i {
+  float: left;
+  padding-top: 3px;
+  padding-right: 8px; }
+
+p > i {
+  position: relative;
+  top: 2px; }
+
+i {
+  opacity: 0.7; }
+
+@keyframes move {
+  0%, 100% {
+    transform: translateY(-10px); }
+  50% {
+    transform: translateY(0); } }
+
+@keyframes moveShadow {
+  0%, 100% {
+    transform: translateY(10px);
+    opacity: 0.4; }
+  50% {
+    transform: translateY(0);
+    opacity: 1; } }
+
+>>>>>>> thomas
 .App-logo {
   height: 40vmin;
   pointer-events: none; }
