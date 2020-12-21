@@ -3574,17 +3574,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Followup; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-<<<<<<< HEAD
-<<<<<<< HEAD
 /* harmony import */ var _img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../img/btnArrow.svg */ "./src/img/btnArrow.svg");
 /* harmony import */ var _img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1__);
-=======
-<<<<<<< HEAD
->>>>>>> f9a69dea486584600f50ab1981575d72124305fc
-var _jsxFileName = "/Users/JohnVy/Desktop/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/Followup.jsx";
-=======
-=======
->>>>>>> thomas
 var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/Followup.jsx";
 
 
@@ -3594,7 +3585,6 @@ function Followup() {
   }, "Vos \xE9l\xE8ves So'auto"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "sm"
   }, "Les derniers \xE9l\xE8ves que vous avez vu en conduite s'affichent ici. Pensez \xE0 remplir leur suivi p\xE9dagogique \xE0 chaque fin de cours.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "Rendez-vous sur aide pour plus d'informations."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-<<<<<<< HEAD
     className: "d-flex align-items-start"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "nav flex-column nav-pills mr-3",
@@ -3604,7 +3594,7 @@ function Followup() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "nav-link my-2 d-flex active",
     id: "v-pills-first-tab",
-    "data-bs-toggle": "pill",
+    "data-toggle": "pill",
     href: "#v-pills-first",
     role: "tab",
     "aria-controls": "v-pills-first",
@@ -3627,7 +3617,7 @@ function Followup() {
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "nav-link my-2 d-flex",
     id: "v-pills-second-tab",
-    "data-bs-toggle": "pill",
+    "data-toggle": "pill",
     href: "#v-pills-second",
     role: "tab",
     "aria-controls": "v-pills-second",
@@ -3650,7 +3640,7 @@ function Followup() {
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "nav-link my-2 d-flex",
     id: "v-pills-third-tab",
-    "data-bs-toggle": "pill",
+    "data-toggle": "pill",
     href: "#v-pills-third",
     role: "tab",
     "aria-controls": "v-pills-third",
@@ -3673,7 +3663,7 @@ function Followup() {
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "nav-link my-2 d-flex",
     id: "v-pills-fourth-tab",
-    "data-bs-toggle": "pill",
+    "data-toggle": "pill",
     href: "#v-pills-fourth",
     role: "tab",
     "aria-controls": "v-pills-fourth",
@@ -3696,7 +3686,7 @@ function Followup() {
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     className: "nav-link my-2 d-flex",
     id: "v-pills-fifth-tab",
-    "data-bs-toggle": "pill",
+    "data-toggle": "pill",
     href: "#v-pills-fifth",
     role: "tab",
     "aria-controls": "v-pills-fifth",
@@ -3719,51 +3709,31 @@ function Followup() {
     className: "tab-content",
     id: "v-pills-tabContent"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-<<<<<<< HEAD
     className: "tab-pane my-2 fade show active",
     id: "v-pills-first",
     role: "tabpanel",
     "aria-labelledby": "v-pills-first-tab"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique 1")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "tab-pane my-2 fade",
     id: "v-pills-second",
     role: "tabpanel",
     "aria-labelledby": "v-pills-second-tab"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique 2")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "tab-pane my-2 fade",
     id: "v-pills-third",
     role: "tabpanel",
     "aria-labelledby": "v-pills-third-tab"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique3")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "tab-pane my-2 fade",
     id: "v-pills-fourth",
     role: "tabpanel",
     "aria-labelledby": "v-pills-fourth-tab"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique 4")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "tab-pane my-2 fade",
     id: "v-pills-fifth",
     role: "tabpanel",
     "aria-labelledby": "v-pills-fifth-tab"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique")))));
-=======
-    class: "dropdown studenttab"
-=======
-    className: "dropholder"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dropdown studenttab"
->>>>>>> thomas
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Pierre C.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "learntab"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret P\xE9dagogique")))));
-<<<<<<< HEAD
-=======
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-    class: "h6"
-  }), "Livret P\xE9dagogique"))));
->>>>>>> thomas
->>>>>>> f9a69dea486584600f50ab1981575d72124305fc
-=======
->>>>>>> thomas
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret p\xE9dagogique 5")))));
 }
 
 /***/ }),
@@ -4417,7 +4387,6 @@ function Teacher() {
     path: "/teacher/sector",
     component: _routes_Sector__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    exact: true,
     path: "/teacher/students",
     component: _routes_Students__WEBPACK_IMPORTED_MODULE_7__["default"]
   }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
@@ -4639,5 +4608,5 @@ module.exports = __webpack_require__(/*! /Users/thomasdubernet/Projects/so_auto_
 
 /***/ })
 
-},[[0,"runtime-main",0]]]);
+},[[0,"runtime-main",1]]]);
 //# sourceMappingURL=main.chunk.js.map
