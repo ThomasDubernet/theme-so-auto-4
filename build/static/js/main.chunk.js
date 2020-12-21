@@ -1889,19 +1889,28 @@ var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/
 function DocsStudentForm() {
   const context = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_Context__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
-  const onSubmit = data => {
-    console.log(data); //   var requestOptions = {
-    //     method: 'PUT',
-    //     headers: {
-    //       "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify(data),
-    //     redirect: 'follow'
-    //   };
-    //     fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s/${context.user.id}`, requestOptions)
-    //     .then(response => response.json() )
-    //     .then(result => context.updateUser(result[0]))
-    //     .catch(error => console.log('error', error));
+  const onSubmit = async files => {
+    const formData = new FormData();
+
+    for (const [key, value] of Object.entries(files)) {
+      if (value.length > 0) {
+        formData.append(`${key}`, value[0], value[0].name);
+      }
+    }
+
+    var requestOptions = {
+      method: 'POST',
+      body: formData
+    };
+
+    try {
+      const response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s?student_id=${context.user.id}&student_name=${context.user.username}&files=true`, requestOptions);
+      const result = await response.json(); // context.updateUser(result[0])
+
+      console.log(result);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const {
@@ -2001,23 +2010,28 @@ var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/
 function DocsTeacherForm() {
   const context = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_Context__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
-  const onSubmit = files => {
+  const onSubmit = async files => {
     const formData = new FormData();
 
-    for (let index = 0; index < files.length; index++) {
-      const file = files[index];
-      formData.append('files[]', file);
+    for (const [key, value] of Object.entries(files)) {
+      if (value.length > 0) {
+        formData.append(`${key}`, value[0], value[0].name);
+      }
     }
 
     var requestOptions = {
-      method: 'PUT',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: formData,
-      redirect: 'follow'
+      method: 'POST',
+      body: formData
     };
-    fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s/${context.user.id}?files=true`, requestOptions).then(response => response.json()).then(result => context.updateUser(result[0])).catch(error => console.log('error', error));
+
+    try {
+      const response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s?teacher_id=${context.user.id}&teacher_name=${context.user.username}&files=true`, requestOptions);
+      const result = await response.json(); // context.updateUser(result[0])
+
+      console.log(result);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const {
@@ -2056,7 +2070,6 @@ function DocsTeacherForm() {
     type: type,
     name: name,
     placeholder: placeholder,
-    defaultValue: value,
     ref: register
   }));
 
@@ -4443,5 +4456,5 @@ module.exports = __webpack_require__(/*! /Users/thomasdubernet/Projects/so_auto_
 
 /***/ })
 
-},[[0,"runtime-main",0]]]);
+},[[0,"runtime-main",1]]]);
 //# sourceMappingURL=main.chunk.js.map

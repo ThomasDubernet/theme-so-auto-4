@@ -6,21 +6,27 @@ export default function DocsStudentForm() {
   
   const context = useContext(Context)
   
-  const onSubmit = (data) => {
-    console.log(data);
-  //   var requestOptions = {
-  //     method: 'PUT',
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify(data),
-  //     redirect: 'follow'
-  //   };
-    
-  //     fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s/${context.user.id}`, requestOptions)
-  //     .then(response => response.json() )
-  //     .then(result => context.updateUser(result[0]))
-  //     .catch(error => console.log('error', error));
+  const onSubmit = async (files) => {
+    const formData = new FormData()
+
+    for (const [key, value] of Object.entries(files)) {
+      if(value.length > 0) {
+        formData.append(`${key}`,value[0], value[0].name)
+      }
+    }
+
+    var requestOptions = {
+      method: 'POST',
+      body: formData
+    };
+    try {
+      const response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s?student_id=${context.user.id}&student_name=${context.user.username}&files=true`, requestOptions)
+      const result = await response.json()
+      // context.updateUser(result[0])
+      console.log(result);
+    } catch (e) {
+      console.log(e);
+    }
   }
   const { register, handleSubmit} = useForm()  
   function TitleGroupInput(props) {

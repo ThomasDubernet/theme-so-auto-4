@@ -6,29 +6,27 @@ export default function DocsTeacherForm() {
   
   const context = useContext(Context)
   
-  const onSubmit = (files) => {
+  const onSubmit = async (files) => {
     const formData = new FormData()
 
-    for (let index = 0; index < files.length; index++) {
-      const file = files[index];
-
-      formData.append('files[]', file)
-      
+    for (const [key, value] of Object.entries(files)) {
+      if(value.length > 0) {
+        formData.append(`${key}`,value[0], value[0].name)
+      }
     }
 
     var requestOptions = {
-      method: 'PUT',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: formData,
-      redirect: 'follow'
+      method: 'POST',
+      body: formData
     };
-    
-      fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s/${context.user.id}?files=true`, requestOptions)
-      .then(response => response.json() )
-      .then(result => context.updateUser(result[0]))
-      .catch(error => console.log('error', error));
+    try {
+      const response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s?teacher_id=${context.user.id}&teacher_name=${context.user.username}&files=true`, requestOptions)
+      const result = await response.json()
+      // context.updateUser(result[0])
+      console.log(result);
+    } catch (e) {
+      console.log(e);
+    }
   }
   const { register, handleSubmit} = useForm()  
   function TitleGroupInput(props) {
@@ -45,7 +43,7 @@ export default function DocsTeacherForm() {
   const Input = ({type, label, placeholder, name, value }) => (
     <div className="form-group">
       <label className="font-weight-bold">{label}</label>
-      <input className="form-control" type={type} name={name} placeholder={placeholder} defaultValue={value} ref={register} />
+      <input className="form-control" type={type} name={name} placeholder={placeholder} ref={register} />
     </div>
   )
 
