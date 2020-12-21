@@ -40,6 +40,7 @@
     -->
     <title>React WordPress Theme</title>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <link href="/wp-content/themes/so_auto_v4/static/css/1.chunk.css?b1e12c33d274d03738d4" rel="stylesheet"><link href="/wp-content/themes/so_auto_v4/static/css/main.chunk.css?b1e12c33d274d03738d4" rel="stylesheet"></head>
 =======
 <<<<<<< HEAD
@@ -48,6 +49,9 @@
 <link href="/wp-content/themes/so_auto_v4/static/css/1.chunk.css?27f711362b8ee0f891f6" rel="stylesheet"><link href="/wp-content/themes/so_auto_v4/static/css/main.chunk.css?27f711362b8ee0f891f6" rel="stylesheet"></head>
 >>>>>>> thomas
 >>>>>>> f9a69dea486584600f50ab1981575d72124305fc
+=======
+<link href="/wp-content/themes/so_auto_v4/static/css/0.chunk.css?d37cd0596f1320b770fd" rel="stylesheet"><link href="/wp-content/themes/so_auto_v4/static/css/main.chunk.css?d37cd0596f1320b770fd" rel="stylesheet"></head>
+>>>>>>> thomas
     <body>
     <noscript>
         You need to enable JavaScript to run this app.
@@ -64,6 +68,7 @@
         To create a production bundle, use `npm run wpbuild` or `yarn wpbuild`.
     -->
 <<<<<<< HEAD
+<<<<<<< HEAD
     <script src="/wp-content/themes/so_auto_v4/static/js/bundle.js?b1e12c33d274d03738d4"></script><script src="/wp-content/themes/so_auto_v4/static/js/1.chunk.js?b1e12c33d274d03738d4"></script><script src="/wp-content/themes/so_auto_v4/static/js/main.chunk.js?b1e12c33d274d03738d4"></script></body>
 =======
 <<<<<<< HEAD
@@ -72,4 +77,7 @@
     <script src="/wp-content/themes/so_auto_v4/static/js/bundle.js?27f711362b8ee0f891f6"></script><script src="/wp-content/themes/so_auto_v4/static/js/1.chunk.js?27f711362b8ee0f891f6"></script><script src="/wp-content/themes/so_auto_v4/static/js/main.chunk.js?27f711362b8ee0f891f6"></script></body>
 >>>>>>> thomas
 >>>>>>> f9a69dea486584600f50ab1981575d72124305fc
+=======
+    <script src="/wp-content/themes/so_auto_v4/static/js/bundle.js?d37cd0596f1320b770fd"></script><script src="/wp-content/themes/so_auto_v4/static/js/0.chunk.js?d37cd0596f1320b770fd"></script><script src="/wp-content/themes/so_auto_v4/static/js/main.chunk.js?d37cd0596f1320b770fd"></script></body>
+>>>>>>> thomas
 </html>

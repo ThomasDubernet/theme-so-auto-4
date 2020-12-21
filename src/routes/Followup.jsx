@@ -8,6 +8,7 @@ export default function Followup() {
     <React.Fragment>
       <h6 className="text-warning mt-5">Vos élèves So'auto</h6>
       <p className="sm">Les derniers élèves que vous avez vu en conduite s'affichent ici. Pensez à remplir leur suivi pédagogique à chaque fin de cours.<br/>Rendez-vous sur aide pour plus d'informations.</p>
+<<<<<<< HEAD
       <div className="d-flex align-items-start">
         <div className="nav flex-column nav-pills mr-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
           <a className="nav-link my-2 d-flex active" id="v-pills-first-tab" data-bs-toggle="pill" href="#v-pills-first" role="tab" aria-controls="v-pills-first" aria-selected="true">
@@ -68,6 +69,15 @@ export default function Followup() {
             <h6>Livret pédagogique</h6>
           </div>
         </div>
+=======
+      <div className="dropholder">
+        <div className="dropdown studenttab">
+          <h6>Pierre C.</h6>
+        </div>
+        <ul className="learntab">
+          <li><h6>Livret Pédagogique</h6></li>
+        </ul>
+>>>>>>> thomas
       </div>
     </React.Fragment>
   )
