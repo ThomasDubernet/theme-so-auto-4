@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import TextIllus from '../components/TextIllus'
-// import Product from '../components/Product'
+import Product from '../components/Product'
 import Context from '../context/Context'
 
 import tablet from '../img/tablet.svg'
@@ -9,7 +9,6 @@ import rousseau from '../img/rousseau.svg'
 export default function Code() {
   
   const context = useContext(Context)
-  console.log(context)
 
   return (
     <React.Fragment>
@@ -61,15 +60,15 @@ export default function Code() {
       <div className="container mb-6">
         <div className="row no-gutters">
           {
-            // context.codeProducts.map((item, index) => {
-            //   return(
-            //     <div key={index} className={"col-12 p-2 " + (index === (context.codeProducts.length - 1) ? 'col-md-12' : 'col-md-4')}>
-            //       <div className="cardProduct p-4 ">
-            //         <Product product={item} colfull={index === (context.codeProducts.length - 1) ? true : false} />
-            //       </div>
-            //     </div>
-            //   )
-            // })
+            context.codeProducts.map((item, index) => {
+              return(
+                <div key={index} className={"col-12 p-2 " + (index === (context.codeProducts.length - 1) ? 'col-md-12' : 'col-md-4')}>
+                  <div className="cardProduct p-4 ">
+                    <Product product={item} colfull={index === (context.codeProducts.length - 1) ? true : false} />
+                  </div>
+                </div>
+              )
+            })
           }
 
         </div>

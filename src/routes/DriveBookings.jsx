@@ -93,6 +93,9 @@ function BuildHour(props) {
       "date_available": moment(book.date).format('YYYY-MM-DD hh:mm'),
       "teacher_id": teacher_id,
       "student_id": student_id,
+      "student_name": context.user.firstname + " " + context.user.lastname,
+      "student_address": context.user.address_number + " " + context.user.address_name,
+      "student_city": context.user.address_zipcode + " " + context.user.address_city,
       "reserved": "1"
     }
     
@@ -155,7 +158,7 @@ export default function DriveBookings() {
       <h1>Réserver une leçon</h1>
 
       <div className="navFilter mt-4 d-flex">
-        <div className="dropdown mx-2">
+        <div className="dropdown d-none mx-2">
           <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownBoite" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Boîte</button>
           <div className="dropdown-menu" aria-labelledby="dropdownBoite">
             <li className="dropdown-item">
@@ -169,7 +172,7 @@ export default function DriveBookings() {
           </div>
         </div>
 
-        <div className="dropdown mx-2">
+        <div className="dropdown d-none mx-2">
           <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownTeachers" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Moniteurs</button>
           <div className="dropdown-menu" aria-labelledby="dropdownTeachers">
             

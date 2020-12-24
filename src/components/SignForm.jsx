@@ -73,19 +73,22 @@ export default function SignForm(props) {
       };
 
       if(props.teacher) {
+        console.log("teacher");
         fetch(`${window.location.origin}/wp-json/so-auto/v1/teachers`, requestOptionsSo)
         .then(response => response.json() )
         .then(result => {
           if(result){
+            console.log(result);
             props.setConnect(true)
           }
         })
         .catch(error => console.log('error', error));
-      } else if (!props.teacher) {
+      } else {
         fetch(`${window.location.origin}/wp-json/so-auto/v1/students`, requestOptionsSo)
         .then(response => response.json() )
         .then(result => {
           if(result){
+            console.log(result);
             props.setConnect(true)
           }
         })

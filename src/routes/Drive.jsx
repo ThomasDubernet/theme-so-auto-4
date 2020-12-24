@@ -5,7 +5,7 @@ import moment from 'moment'
 
 import Map from '../components/Map'
 import Slider from '../components/Slider'
-// import Product from '../components/Product'
+import Product from '../components/Product'
 import Context from '../context/Context'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -124,16 +124,16 @@ useEffect(() => {
             <div className="row no-gutters">
 
               {
-                // context.driveProducts.map((item, index) => {
-                //   return(
-                //     <div key={index} className="col-12 p-2 col-md-4">
-                //       <div className="cardProduct p-4 ">
-                //         <Product product={item} colfull={false} />
-                //       </div>
-                //     </div>
-                //   )
+                context.driveProducts.map((item, index) => {
+                  return(
+                    <div key={index} className="col-12 p-2 col-md-4">
+                      <div className="cardProduct p-4 ">
+                        <Product product={item} colfull={false} />
+                      </div>
+                    </div>
+                  )
                   
-                // })
+                })
               }
 
             </div>

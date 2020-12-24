@@ -28,7 +28,20 @@ export default class DashboardNav extends Component {
   }
 
   componentDidUpdate() {
-    if (this.context.userType !== "student" && this.context.user.activated > 0) {
+    if (this.context.userType !== "student" && this.context.user.activated > 0 ) {
+      const linksNav = document.querySelectorAll('.link-d-none')
+      if (this.state.openNav) {
+        linksNav.forEach(link => {
+          link.classList.add('activeShow')
+        })
+      } else if(!this.state.openNav) {
+        linksNav.forEach(link => {
+          link.classList.remove('activeShow')
+          const burger = document.querySelector('.navbar-burger')
+          burger.classList.remove('activate')
+        })
+      }
+    } else if (this.context.userType === "student") {
       const linksNav = document.querySelectorAll('.link-d-none')
       if (this.state.openNav) {
         linksNav.forEach(link => {

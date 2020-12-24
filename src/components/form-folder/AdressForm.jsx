@@ -9,9 +9,6 @@ export default function AdressForm() {
   const onSubmit = (data) => {
     var requestOptions = {
       method: 'PUT',
-      headers: {
-        "Content-Type": "application/json"
-      },
       body: JSON.stringify(data),
       redirect: 'follow'
     };
@@ -21,6 +18,7 @@ export default function AdressForm() {
       .then(result => context.updateUser(result[0]))
       .catch(error => console.log('error', error));
   }
+
   const { register, handleSubmit} = useForm()  
   function TitleGroupInput(props) {
     return (

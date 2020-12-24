@@ -174,32 +174,6 @@ function createListOfStudents(allBooks) {
 
 /***/ }),
 
-/***/ "./src/api/verifyUsers.js":
-/*!********************************!*\
-  !*** ./src/api/verifyUsers.js ***!
-  \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return verifyUsers; });
-function verifyUsers() {
-  let users = {};
-  const requestOptions = {
-    method: 'GET',
-    headers: {
-      "Content-Type": "application/json"
-    },
-    redirect: 'follow'
-  };
-  fetch(`${window.location.origin}/wp-json/so-auto/v1/students`, requestOptions).then(response => response.json()).then(result => users.students = result).catch(error => console.log('error', error));
-  fetch(`${window.location.origin}/wp-json/so-auto/v1/teachers`, requestOptions).then(response => response.json()).then(result => users.teachers = result).catch(error => console.log('error', error));
-  return users;
-}
-
-/***/ }),
-
 /***/ "./src/components/Calendar.jsx":
 /*!*************************************!*\
   !*** ./src/components/Calendar.jsx ***!
@@ -486,6 +460,20 @@ class DashboardNav extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
   componentDidUpdate() {
     if (this.context.userType !== "student" && this.context.user.activated > 0) {
+      const linksNav = document.querySelectorAll('.link-d-none');
+
+      if (this.state.openNav) {
+        linksNav.forEach(link => {
+          link.classList.add('activeShow');
+        });
+      } else if (!this.state.openNav) {
+        linksNav.forEach(link => {
+          link.classList.remove('activeShow');
+          const burger = document.querySelector('.navbar-burger');
+          burger.classList.remove('activate');
+        });
+      }
+    } else if (this.context.userType === "student") {
       const linksNav = document.querySelectorAll('.link-d-none');
 
       if (this.state.openNav) {
@@ -1007,6 +995,78 @@ function Navigation() {
 
 /***/ }),
 
+/***/ "./src/components/Product.jsx":
+/*!************************************!*\
+  !*** ./src/components/Product.jsx ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Product; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/components/Product.jsx";
+
+
+
+class Product extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(props) {
+    super(props);
+    this.product = props.product;
+  }
+
+  render() {
+    function NormalCard(props) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "my-3"
+      }, " ", props.product.name, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "h3 text-warning w-75"
+      }, " ", props.product.regular_price, "\u20AC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "10 % moins ch\xE8re"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-dark"
+      }, "En savoir plus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-dark ml-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faCaretRight"]
+      }))));
+    }
+
+    function FullCard(props) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex flex-column flex-md-row"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        className: "my-3 w-50"
+      }, " ", props.product.name, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "ml-auto"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "h3 text-warning"
+      }, " ", props.product.regular_price, "\u20AC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "10 % moins ch\xE8re"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-dark"
+      }, "En savoir plus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-outline-dark ml-4"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faCaretRight"]
+      }))))));
+    }
+
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, this.props.colfull ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(FullCard, {
+      product: this.product
+    }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NormalCard, {
+      product: this.product
+    }));
+  }
+
+}
+
+/***/ }),
+
 /***/ "./src/components/SignForm.jsx":
 /*!*************************************!*\
   !*** ./src/components/SignForm.jsx ***!
@@ -1095,14 +1155,17 @@ function SignForm(props) {
       };
 
       if (props.teacher) {
+        console.log("teacher");
         fetch(`${window.location.origin}/wp-json/so-auto/v1/teachers`, requestOptionsSo).then(response => response.json()).then(result => {
           if (result) {
+            console.log(result);
             props.setConnect(true);
           }
         }).catch(error => console.log('error', error));
-      } else if (!props.teacher) {
+      } else {
         fetch(`${window.location.origin}/wp-json/so-auto/v1/students`, requestOptionsSo).then(response => response.json()).then(result => {
           if (result) {
+            console.log(result);
             props.setConnect(true);
           }
         }).catch(error => console.log('error', error));
@@ -1407,6 +1470,7 @@ function Form(props) {
       };
       postBookings(datasJson);
     });
+    props.hide();
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -1472,6 +1536,7 @@ class Hours extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       onClick: this.hide
     }, "X")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Form, {
       day: this.props.day.format('YYYY-MM-DD'),
+      hide: this.hide,
       hours: this.state.hours
     })) : '');
   }
@@ -1504,9 +1569,6 @@ function AdressForm() {
   const onSubmit = data => {
     var requestOptions = {
       method: 'PUT',
-      headers: {
-        "Content-Type": "application/json"
-      },
       body: JSON.stringify(data),
       redirect: 'follow'
     };
@@ -2410,21 +2472,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext({
   user: [],
   userType: '',
+  codeProducts: [],
+  driveProducts: [],
   updateUser: () => {},
   updateUserType: () => {},
   fetchUser: () => {}
 }));
-
-/***/ }),
-
-/***/ "./src/img/btnArrow.svg":
-/*!******************************!*\
-  !*** ./src/img/btnArrow.svg ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "static/media/btnArrow.b694161f.svg";
 
 /***/ }),
 
@@ -2843,16 +2896,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_spring__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-spring */ "./node_modules/react-spring/web.js");
 /* harmony import */ var _components_SignForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/SignForm */ "./src/components/SignForm.jsx");
 /* harmony import */ var _components_ConnectForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/ConnectForm */ "./src/components/ConnectForm.jsx");
-/* harmony import */ var _api_verifyUsers_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../api/verifyUsers.js */ "./src/api/verifyUsers.js");
 var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/pages/Login.jsx";
-
 
 
 
 
 function Login(props) {
   const teacher = props.location.teacher;
-  const users = Object(_api_verifyUsers_js__WEBPACK_IMPORTED_MODULE_4__["default"])();
+  const [users, setUsers] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    async function fetchUsers() {
+      let responseStud = await fetch(`${window.location.origin}/wp-json/so-auto/v1/students`);
+      let dataStud = await responseStud.json();
+      let responseteach = await fetch(`${window.location.origin}/wp-json/so-auto/v1/teachers`);
+      let dataTeach = await responseteach.json();
+      let users = [];
+      users.students = dataStud;
+      users.teachers = dataTeach;
+      setUsers(users);
+    }
+
+    fetchUsers();
+  }, []);
   const [connect, setConnect] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(teacher ? false : true);
   const propsSpring = Object(react_spring__WEBPACK_IMPORTED_MODULE_1__["useSpring"])({
     config: {
@@ -2917,6 +2982,35 @@ var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/
 
 
 function Site(props) {
+  const [products, setProducts] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    const abortController = new AbortController();
+
+    async function fetchProducts() {
+      let responseCode = await fetch(`${window.location.origin}/wp-json/wc/v3/products?category=37&order=asc&filter[orderby]=meta_value_num&orderby=price`, {
+        headers: {
+          "Authorization": `Bearer ${props.token}`
+        },
+        signal: abortController.signal
+      });
+      let dataCode = await responseCode.json();
+      let responseDrive = await fetch(`${window.location.origin}/wp-json/wc/v3/products?category=38&order=asc&filter[orderby]=meta_value_num&orderby=price`, {
+        headers: {
+          "Authorization": `Bearer ${props.token}`
+        },
+        signal: abortController.signal
+      });
+      let dataDrive = await responseDrive.json();
+      let products = [];
+      products.codeProducts = dataCode;
+      products.driveProducts = dataDrive;
+      setProducts(products);
+    }
+
+    fetchProducts();
+    return () => abortController.abort();
+  }, [props]);
+
   const setUserFormat = userOldFormat => {
     const userKeys = Object.keys(userOldFormat);
     const userOld = [];
@@ -2952,6 +3046,8 @@ function Site(props) {
   const contextValue = {
     user,
     userType: type,
+    codeProducts: products.codeProducts,
+    driveProducts: products.driveProducts,
     updateUser: updateUser,
     updateUserType: setType,
     fetchUser: fetchUser
@@ -2984,21 +3080,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_TextIllus__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/TextIllus */ "./src/components/TextIllus.jsx");
-/* harmony import */ var _context_Context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../context/Context */ "./src/context/Context.js");
-/* harmony import */ var _img_tablet_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../img/tablet.svg */ "./src/img/tablet.svg");
-/* harmony import */ var _img_tablet_svg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_img_tablet_svg__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _img_rousseau_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../img/rousseau.svg */ "./src/img/rousseau.svg");
-/* harmony import */ var _img_rousseau_svg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_img_rousseau_svg__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_Product__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Product */ "./src/components/Product.jsx");
+/* harmony import */ var _context_Context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../context/Context */ "./src/context/Context.js");
+/* harmony import */ var _img_tablet_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../img/tablet.svg */ "./src/img/tablet.svg");
+/* harmony import */ var _img_tablet_svg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_img_tablet_svg__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _img_rousseau_svg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../img/rousseau.svg */ "./src/img/rousseau.svg");
+/* harmony import */ var _img_rousseau_svg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_img_rousseau_svg__WEBPACK_IMPORTED_MODULE_5__);
 var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/Code.jsx";
 
- // import Product from '../components/Product'
+
 
 
 
 
 function Code() {
-  const context = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_Context__WEBPACK_IMPORTED_MODULE_2__["default"]);
-  console.log(context);
+  const context = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_Context__WEBPACK_IMPORTED_MODULE_3__["default"]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "position-relative"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3019,11 +3115,11 @@ function Code() {
     className: "img-tablet-code d-flex flex-column"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "mb-3",
-    src: _img_tablet_svg__WEBPACK_IMPORTED_MODULE_3___default.a,
+    src: _img_tablet_svg__WEBPACK_IMPORTED_MODULE_4___default.a,
     alt: ""
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     className: "ml-auto",
-    src: _img_rousseau_svg__WEBPACK_IMPORTED_MODULE_4___default.a,
+    src: _img_rousseau_svg__WEBPACK_IMPORTED_MODULE_5___default.a,
     alt: ""
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container mb-6"
@@ -3049,7 +3145,17 @@ function Code() {
     className: "container mb-6"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row no-gutters"
-  })));
+  }, context.codeProducts.map((item, index) => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: index,
+      className: "col-12 p-2 " + (index === context.codeProducts.length - 1 ? 'col-md-12' : 'col-md-4')
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "cardProduct p-4 "
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Product__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      product: item,
+      colfull: index === context.codeProducts.length - 1 ? true : false
+    })));
+  }))));
 }
 
 /***/ }),
@@ -3114,19 +3220,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_Map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Map */ "./src/components/Map.jsx");
 /* harmony import */ var _components_Slider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Slider */ "./src/components/Slider.jsx");
-/* harmony import */ var _context_Context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../context/Context */ "./src/context/Context.js");
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var _img_persons_svg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../img/persons.svg */ "./src/img/persons.svg");
-/* harmony import */ var _img_persons_svg__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_img_persons_svg__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _components_Product__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/Product */ "./src/components/Product.jsx");
+/* harmony import */ var _context_Context__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../context/Context */ "./src/context/Context.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _img_persons_svg__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../img/persons.svg */ "./src/img/persons.svg");
+/* harmony import */ var _img_persons_svg__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_img_persons_svg__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/Drive.jsx";
 
 
 
 
 
- // import Product from '../components/Product'
+
 
 
 
@@ -3134,7 +3241,7 @@ var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/
 
 
 function Drive() {
-  const context = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_Context__WEBPACK_IMPORTED_MODULE_6__["default"]);
+  const context = Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(_context_Context__WEBPACK_IMPORTED_MODULE_7__["default"]);
   const [lessons, setLessons] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
   let lessonsToCome = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])([]);
   let lessonsPassed = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])([]);
@@ -3210,7 +3317,7 @@ function Drive() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "img-persons-drive d-none d-md-block"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: _img_persons_svg__WEBPACK_IMPORTED_MODULE_9___default.a,
+    src: _img_persons_svg__WEBPACK_IMPORTED_MODULE_10___default.a,
     alt: ""
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container mb-3"
@@ -3226,7 +3333,17 @@ function Drive() {
     className: "container mb-6 px-0"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row no-gutters"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, context.driveProducts.map((item, index) => {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: index,
+      className: "col-12 p-2 col-md-4"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "cardProduct p-4 "
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Product__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      product: item,
+      colfull: false
+    })));
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container mb-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_TextIllus__WEBPACK_IMPORTED_MODULE_1__["default"], {
     title: "Un moniteur pour<br/>toute votre formation",
@@ -3272,9 +3389,9 @@ function Drive() {
   }, context.user.futurHour ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Voici la future le\xE7ons")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, lessonsToCome.current.length > 0 ? lessonsToCome.current.map((lesson, id) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     key: id,
     className: "d-flex justify-content-between"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('dddd DD MMMM'), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('hh:mm'), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faArrowRight"]
-  }), " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).add(1, 'hours').format('hh:mm')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", lesson.teacher_id, " "))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Vous n'avez pas de le\xE7ons \xE0 venir."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["NavLink"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('dddd DD MMMM'), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('hh:mm'), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faArrowRight"]
+  }), " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).add(1, 'hours').format('hh:mm')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", lesson.teacher_id, " "))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Vous n'avez pas de le\xE7ons \xE0 venir."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__["NavLink"], {
     className: "App-link btn btn-warning text-white",
     exact: true,
     to: "/student/drive/bookings"
@@ -3291,8 +3408,8 @@ function Drive() {
     className: "col-7"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "font-weight-bold"
-  }, moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('hh:mm'), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faArrowRight"]
+  }, moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('hh:mm'), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faArrowRight"]
   }), " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).add(1, 'hours').format('hh:mm')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row px-4 py-3 "
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3425,6 +3542,9 @@ function BuildHour(props) {
       "date_available": moment__WEBPACK_IMPORTED_MODULE_1___default()(book.date).format('YYYY-MM-DD hh:mm'),
       "teacher_id": teacher_id,
       "student_id": student_id,
+      "student_name": context.user.firstname + " " + context.user.lastname,
+      "student_address": context.user.address_number + " " + context.user.address_name,
+      "student_city": context.user.address_zipcode + " " + context.user.address_city,
       "reserved": "1"
     };
     update(jsonData);
@@ -3473,7 +3593,7 @@ function DriveBookings() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "R\xE9server une le\xE7on"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "navFilter mt-4 d-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dropdown mx-2"
+    className: "dropdown d-none mx-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-secondary dropdown-toggle",
     type: "button",
@@ -3497,7 +3617,7 @@ function DriveBookings() {
     type: "checkbox",
     value: "automatique"
   }), "Automatique"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dropdown mx-2"
+    className: "dropdown d-none mx-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-secondary dropdown-toggle",
     type: "button",
@@ -3604,9 +3724,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Followup; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../img/btnArrow.svg */ "./src/img/btnArrow.svg");
-/* harmony import */ var _img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/Followup.jsx";
+
 
 
 function Followup(props) {
@@ -3664,9 +3785,8 @@ function Followup(props) {
     className: "address"
   }, " ", user.addresse, ", ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), " ", user.city, " ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-outline-white ml-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: _img_btnArrow_svg__WEBPACK_IMPORTED_MODULE_1___default.a,
-    alt: ""
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faCaretRight"]
   }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "tab-content",
     id: "v-pills-tabContent"

@@ -1,14 +1,31 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useSpring} from 'react-spring'
 
 import SignForm from '../components/SignForm'
 import ConnectForm from '../components/ConnectForm'
-import verifyUsers from '../api/verifyUsers.js'
 
 export default function Login(props) {
 
   const teacher = props.location.teacher
-  const users = verifyUsers()
+  const [users, setUsers] = useState([])
+
+  useEffect( () => {
+    async function fetchUsers(){
+      
+      let responseStud = await fetch(`${window.location.origin}/wp-json/so-auto/v1/students`)
+      let dataStud = await responseStud.json()
+
+      let responseteach = await fetch(`${window.location.origin}/wp-json/so-auto/v1/teachers`)
+      let dataTeach = await responseteach.json()
+
+      let users = []
+      users.students = dataStud
+      users.teachers = dataTeach
+
+      setUsers(users)
+    }
+    fetchUsers()
+  }, [])
   
   const [connect, setConnect] = useState(teacher ? false : true)
   

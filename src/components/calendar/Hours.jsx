@@ -41,6 +41,8 @@ async function postBookings(datasJson) {
       }
       postBookings(datasJson)
     })
+
+    props.hide()
   }
 
   return (
@@ -100,7 +102,7 @@ export default class Hours extends React.Component {
               <button className="btn btn-outline-dark ml-auto" onClick={this.hide}>X</button>
             </div>
             
-            <Form day={this.props.day.format('YYYY-MM-DD')} hours={this.state.hours}/>
+            <Form day={this.props.day.format('YYYY-MM-DD')} hide={this.hide} hours={this.state.hours}/>
           </div>
         : ''
         }

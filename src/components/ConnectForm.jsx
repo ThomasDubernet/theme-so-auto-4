@@ -6,7 +6,7 @@ import Cookies from 'js-cookie'
 import logoSoAuto from '../img/logo.svg'
 
 export default function ConnectForm(props) {
-
+  
   const { register, handleSubmit} = useForm()
 
   function labelisation(label) {

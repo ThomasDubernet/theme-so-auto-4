@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Route } from 'react-router-dom'
 
 import Context from '../context/Context'
@@ -8,6 +8,42 @@ import Student from '../views/Student';
 import Teacher from '../views/Teacher';
 
 export default function Site(props) {
+
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    const abortController = new AbortController()
+    async function fetchProducts(){
+
+      let responseCode = await fetch(`${window.location.origin}/wp-json/wc/v3/products?category=37&order=asc&filter[orderby]=meta_value_num&orderby=price`, {
+        headers: {
+          "Authorization": `Bearer ${props.token}`
+        },
+        signal: abortController.signal
+      })
+      let dataCode = await responseCode.json()
+
+      let responseDrive = await fetch(`${window.location.origin}/wp-json/wc/v3/products?category=38&order=asc&filter[orderby]=meta_value_num&orderby=price`, {
+        headers: {
+          "Authorization": `Bearer ${props.token}`
+        },
+        signal: abortController.signal
+      })
+      let dataDrive = await responseDrive.json()
+
+      let products = []
+      products.codeProducts = dataCode
+      products.driveProducts = dataDrive
+
+      setProducts(products)
+    }
+
+    fetchProducts()
+
+    return () => (
+      abortController.abort()
+    )
+  }, [props])
 
 
   const setUserFormat = (userOldFormat) => {
@@ -45,6 +81,8 @@ export default function Site(props) {
   const contextValue = {
     user,
     userType: type,
+    codeProducts: products.codeProducts,
+    driveProducts: products.driveProducts,
     updateUser: updateUser,
     updateUserType: setType,
     fetchUser: fetchUser
