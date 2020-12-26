@@ -9,6 +9,9 @@ export default function AdressForm() {
   const onSubmit = (data) => {
     var requestOptions = {
       method: 'PUT',
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify(data),
       redirect: 'follow'
     };

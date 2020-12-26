@@ -49,11 +49,11 @@ export default function CivilForm() {
             <div className="form-group">
               <label className="font-weight-bold">Sexe</label>
               <div className="d-flex">
-                <div className="male-label w-50">
+                <div className={"male-label w-50 " + (context.user.sexe === "homme" ? 'current' : '')}>
                   <input className="form-control input-sexe-male" type="radio" name={"sexe"} value="homme" placeholder="Homme" ref={register}/>
                   <span>Homme</span>
                 </div>
-                <div className="femelle-label w-50">
+                <div className={"femelle-label w-50 " + (context.user.sexe === "femme" ? 'current' : '')}>
                   <input className="form-control input-sexe-femelle" type="radio" name={"sexe"} value="femme" placeholder="Femme"  ref={register}/>
                   <span>Femme</span>
                 </div>
@@ -69,7 +69,7 @@ export default function CivilForm() {
         </div>
         <div className="row">
           <div className="col-md-4">
-            <Input name={"birthday"} label="Date de naissance" type="text" value={context.user.birthday}placeholder="jr/mm/aaaa" />
+            <Input name={"birthday"} label="Date de naissance" type="text" value={context.user.birthday} placeholder="jr/mm/aaaa" />
           </div>
           <div className="col-md-4">
             <Input name={"city_of_birth"} label="Ville de naissance" type="text" value={context.user.city_of_birth} />

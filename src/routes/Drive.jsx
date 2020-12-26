@@ -50,7 +50,6 @@ useEffect(() => {
     }
   })
 }, [lessons])
-  console.log(lessons);
 
   const avisUsers = [
     {
@@ -84,6 +83,21 @@ useEffect(() => {
       description: `"J'ai obtenu mon permis ! Présent pour répondre à mes questions et donner suite à mes interrogations, l'équipe était super !"`
     }
   ]
+
+  async function deleteBooking(id) {
+    const resetStudent = {
+      student_address: "",
+      student_city: "",
+      student_id: "",
+      student_name: ""
+    }
+    let response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/bookings/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(resetStudent)
+    })
+    let data = await response.json()
+    console.log(data);
+  }
 
   return (
     <React.Fragment>
@@ -193,10 +207,11 @@ useEffect(() => {
                 { 
                   lessonsToCome.current.length > 0 ?
                     lessonsToCome.current.map((lesson, id) => (
-                      <div key={id} className="d-flex justify-content-between">
-                        <p> {moment(lesson.date_available).format('dddd DD MMMM')} </p>
-                        <p>{moment(lesson.date_available).format('hh:mm')} <FontAwesomeIcon icon={faArrowRight} /> {moment(lesson.date_available).add(1, 'hours').format('hh:mm')}</p>
-                        <p> {lesson.teacher_id} </p>
+                      <div key={id} className="d-flex justify-content-between align-items-center my-3">
+                        <p className="mb-0"> {moment(lesson.date_available).format('dddd DD MMMM')} </p>
+                        <p className="mb-0">{moment(lesson.date_available).format('hh:mm')} <FontAwesomeIcon icon={faArrowRight} /> {moment(lesson.date_available).add(1, 'hours').format('hh:mm')}</p>
+                        <p className="mb-0"> {lesson.teacher_id} </p>
+                        <button onClick={() => deleteBooking(lesson.id)} className="btn btn-sm btn-outline-dark">X</button>
                       </div>
                     ))
                   : <p>Vous n'avez pas de leçons à venir.</p>

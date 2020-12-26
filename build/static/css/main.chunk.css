@@ -8311,8 +8311,18 @@ input.form-control, select.form-control {
 
 .male-label, .femelle-label {
   position: relative; }
+  .male-label.current input, .femelle-label.current input {
+    background: #FFC909;
+    border-color: black; }
+  .male-label.current span, .femelle-label.current span {
+    color: black;
+    z-index: auto;
+    opacity: 1; }
   .male-label input, .femelle-label input {
     z-index: 9; }
+  .male-label input:focus, .femelle-label input:focus {
+    border-color: #FFC909;
+    box-shadow: 0 0 0 0.2rem rgba(255, 201, 9, 0.25); }
   .male-label span, .femelle-label span {
     z-index: -1;
     position: absolute;
@@ -8424,6 +8434,11 @@ input.form-control, select.form-control {
         background: #FFC909;
         border-radius: 24px;
         margin: 0 auto; }
+      .calendars .calendar .day.passed {
+        cursor: default; }
+        .calendars .calendar .day.passed div {
+          color: #6c757d;
+          opacity: 0.5; }
     .calendars .calendar .hours {
       position: absolute;
       top: 0;

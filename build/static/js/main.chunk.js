@@ -228,8 +228,10 @@ function Calendar() {
   }, [value]);
 
   function setActive(day) {
-    setDayActive(day);
-    setDaySelect(day);
+    if (!day.isBefore(moment__WEBPACK_IMPORTED_MODULE_1___default()(), 'day')) {
+      setDayActive(day);
+      setDaySelect(day);
+    }
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -244,10 +246,10 @@ function Calendar() {
     key: i
   }, week.map((day, ind) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     key: ind,
-    className: "day",
+    className: "day" + (day.isBefore(moment__WEBPACK_IMPORTED_MODULE_1___default()(), 'day') ? ' passed ' : ''),
     onClick: () => setActive(day)
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: daySelect.isSame(day, 'day') ? 'selected' : ''
+    className: daySelect.isSame(day, 'day') ? ' selected ' : ''
   }, day.format('D').toString(), day === dayActive && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_calendar_Hours__WEBPACK_IMPORTED_MODULE_2__["default"], {
     day: day,
     active: true
@@ -1479,23 +1481,23 @@ function Form(props) {
     className: "row"
   }, props.hours.map((hour, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     key: index,
-    className: "col-6 my-2"
+    className: "col-4 my-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex align-items-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "mb-0 mr-auto"
+    className: "mb-0 mr-auto sm"
   }, " ", hour, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    className: "mr-2",
+    className: "ml-auto",
     type: "checkbox",
     name: hour,
     value: true,
     ref: register
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-6 m-auto"
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "mt-3 mx-auto"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "submit",
     className: "btn btn-sm btn-outline-dark sub"
-  }, "Valider"))));
+  }, "Valider")));
 }
 
 class Hours extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
@@ -1517,7 +1519,7 @@ class Hours extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   componentDidMount() {
     const hours = [];
     new Array(24).fill().forEach((acc, index) => {
-      if (index > 7 && index < 19) hours.push(this.props.day.clone().add(index, 'hour').format('k:mm'));
+      if (index > 5 && index < 23) hours.push(this.props.day.clone().add(index, 'hour').format('k:mm'));
     });
     this.setState({
       hours: hours
@@ -1528,10 +1530,10 @@ class Hours extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, this.state.active ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "hours"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "d-flex align-items-center mx-1"
+      className: "d-flex align-items-center mx-1 mb-3"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
-      className: "mb-0"
-    }, this.props.day.format('DD MMMM')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "mb-0 mx-auto"
+    }, this.props.day.format('DD MMM')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "btn btn-outline-dark ml-auto",
       onClick: this.hide
     }, "X")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Form, {
@@ -1569,6 +1571,9 @@ function AdressForm() {
   const onSubmit = data => {
     var requestOptions = {
       method: 'PUT',
+      headers: {
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify(data),
       redirect: 'follow'
     };
@@ -1900,7 +1905,7 @@ function CivilForm() {
   }, "Sexe"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "male-label w-50"
+    className: "male-label w-50 " + (context.user.sexe === "homme" ? 'current' : '')
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "form-control input-sexe-male",
     type: "radio",
@@ -1909,7 +1914,7 @@ function CivilForm() {
     placeholder: "Homme",
     ref: register
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Homme")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "femelle-label w-50"
+    className: "femelle-label w-50 " + (context.user.sexe === "femme" ? 'current' : '')
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     className: "form-control input-sexe-femelle",
     type: "radio",
@@ -2058,7 +2063,7 @@ function DocsStudentForm() {
     name: "id_card",
     label: "Pi\xE8ce d'identit\xE9",
     type: "file",
-    value: context.user.id_card,
+    defaultValue: context.user.id_card,
     placeholder: "Format pdf"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-4"
@@ -2066,7 +2071,7 @@ function DocsStudentForm() {
     name: "jdc",
     label: "Certificat JDC",
     type: "file",
-    value: context.user.jdc,
+    defaultValue: context.user.jdc,
     placeholder: "Format pdf"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-4"
@@ -2074,7 +2079,7 @@ function DocsStudentForm() {
     name: "assr",
     label: "Attestation ASSR ou ASSR2",
     type: "file",
-    value: context.user.assr,
+    defaultValue: context.user.assr,
     placeholder: "Format pdf"
   })))));
 }
@@ -3022,6 +3027,13 @@ function Site(props) {
 
     userKeys.forEach((value, index) => {
       const newValue = value.replace(props.userType + '_', '');
+
+      if (newValue === 'birthday') {
+        let dateArray = userOld[index].split('-');
+        dateArray = dateArray.reverse();
+        userOld[index] = dateArray[0] + '/' + dateArray[1] + '/' + dateArray[2];
+      }
+
       userArr[newValue] = userOld[index];
     });
     return JSON.parse(JSON.stringify(userArr));
@@ -3273,7 +3285,6 @@ function Drive() {
       }
     });
   }, [lessons]);
-  console.log(lessons);
   const avisUsers = [{
     name: "Nelly D.",
     ville: "La Rochelle",
@@ -3300,6 +3311,22 @@ function Drive() {
     comment: "Merdique !",
     description: `"J'ai obtenu mon permis ! Présent pour répondre à mes questions et donner suite à mes interrogations, l'équipe était super !"`
   }];
+
+  async function deleteBooking(id) {
+    const resetStudent = {
+      student_address: "",
+      student_city: "",
+      student_id: "",
+      student_name: ""
+    };
+    let response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/bookings/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(resetStudent)
+    });
+    let data = await response.json();
+    console.log(data);
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, context.user.first_connect === "true" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "container mb-6 position-relative"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_TextIllus__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -3388,10 +3415,19 @@ function Drive() {
     className: "card-lessons p-4 mb-4"
   }, context.user.futurHour ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Voici la future le\xE7ons")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, lessonsToCome.current.length > 0 ? lessonsToCome.current.map((lesson, id) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     key: id,
-    className: "d-flex justify-content-between"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('dddd DD MMMM'), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('hh:mm'), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
+    className: "d-flex justify-content-between align-items-center my-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "mb-0"
+  }, " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('dddd DD MMMM'), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "mb-0"
+  }, moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('hh:mm'), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faArrowRight"]
-  }), " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).add(1, 'hours').format('hh:mm')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", lesson.teacher_id, " "))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Vous n'avez pas de le\xE7ons \xE0 venir."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__["NavLink"], {
+  }), " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).add(1, 'hours').format('hh:mm')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "mb-0"
+  }, " ", lesson.teacher_id, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: () => deleteBooking(lesson.id),
+    className: "btn btn-sm btn-outline-dark"
+  }, "X"))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Vous n'avez pas de le\xE7ons \xE0 venir."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__["NavLink"], {
     className: "App-link btn btn-warning text-white",
     exact: true,
     to: "/student/drive/bookings"
@@ -3493,7 +3529,7 @@ function BuildHour(props) {
         if (book.reserved === "0") {
           const jsonBook = {
             "id": book.id,
-            "date": new Date(book.date_available),
+            "date": moment__WEBPACK_IMPORTED_MODULE_1___default()(book.date_available).format('YYYY-MM-DD hh:mm'),
             "teacher_id": book.teacher_id
           };
           tempBooks.push(jsonBook);
@@ -3561,7 +3597,7 @@ function BuildHour(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: "https://picsum.photos/id/0/80/80",
     alt: ""
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, book.date.getHours(), ":00")))));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, moment__WEBPACK_IMPORTED_MODULE_1___default()(book.date).format('hh:mm'))))));
 }
 
 function DriveBookings() {

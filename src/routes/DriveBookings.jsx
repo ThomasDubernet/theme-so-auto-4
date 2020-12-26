@@ -47,7 +47,7 @@ function BuildHour(props) {
         if (book.reserved === "0") {
           const jsonBook = {
             "id": book.id,
-            "date": new Date(book.date_available),
+            "date": moment(book.date_available).format('YYYY-MM-DD hh:mm'),
             "teacher_id": book.teacher_id
           }
           tempBooks.push(jsonBook)
@@ -112,7 +112,7 @@ function BuildHour(props) {
                 <img src="https://picsum.photos/id/0/80/80" alt=""/>
               </div>
               <div>
-                {book.date.getHours()}:00
+                {moment(book.date).format('hh:mm')}
               </div>
             </div>
           ))

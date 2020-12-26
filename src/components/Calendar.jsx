@@ -38,8 +38,10 @@ export default function Calendar() {
   }, [value])
 
   function setActive(day) {
-    setDayActive(day)
-    setDaySelect(day)
+    if(!day.isBefore(moment(), 'day')) {
+      setDayActive(day)
+      setDaySelect(day)
+    }
   }
 
   return (
@@ -61,8 +63,8 @@ export default function Calendar() {
           {calendarFirst.map((week, i) => (
             <div key={i}>
               {week.map((day, ind) => (
-                <div key={ind} className="day" onClick={()=> setActive(day)}>
-                  <div className={daySelect.isSame(day, 'day') ? 'selected' : ''} >
+                <div key={ind} className={"day" + (day.isBefore(moment(), 'day') ? ' passed ' : '' )} onClick={()=> setActive(day)}>
+                  <div className={daySelect.isSame(day, 'day') ? ' selected ' : ''} >
                     {day.format('D').toString()}
                     {day === dayActive && <Hours day={day} active={true}/>}
                       

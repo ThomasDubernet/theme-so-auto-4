@@ -52,8 +52,24 @@ input.form-control, select.form-control{
 
 .male-label, .femelle-label{
   position: relative;
+
+  &.current{ 
+    input{
+      background: $warning;
+      border-color: black;
+    }
+    span{
+      color: black;
+      z-index: auto;
+      opacity: 1;
+    }
+  }
   input{
     z-index: 9;
+  }
+  input:focus{
+    border-color: $warning;
+    box-shadow: 0 0 0 0.2rem  rgba(255, 201, 9, 0.25);
   }
   span{
     z-index: -1;

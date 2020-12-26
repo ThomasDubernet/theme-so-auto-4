@@ -56,7 +56,13 @@ export default function Site(props) {
     }
     
     userKeys.forEach( (value, index) => {
+      
       const newValue = value.replace(props.userType + '_', '')
+      if(newValue === 'birthday') {
+        let dateArray = userOld[index].split('-')
+        dateArray = dateArray.reverse()
+        userOld[index] = dateArray[0] + '/' + dateArray[1] + '/' + dateArray[2]
+      }
       userArr[newValue] = userOld[index]
     })
     

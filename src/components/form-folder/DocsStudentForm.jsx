@@ -53,13 +53,13 @@ export default function DocsStudentForm() {
         <TitleGroupInput title='Documents complémentaires' text="Ces documents nous permettent de remplir le dossier nécessaire à votre inscription en préfécture.<br/>Rendez-vous sur <span class='font-weight-bold sm'>examen</span> pour plus d’informations !" />
         <div className="row">
           <div className="col-md-4">
-            <Input name={"id_card"} label="Pièce d'identité" type="file" value={context.user.id_card} placeholder="Format pdf" />
+            <Input name={"id_card"} label="Pièce d'identité" type="file" defaultValue={context.user.id_card} placeholder="Format pdf" />
           </div>
           <div className="col-md-4">
-            <Input name={"jdc"} label="Certificat JDC" type="file" value={context.user.jdc} placeholder="Format pdf" />
+            <Input name={"jdc"} label="Certificat JDC" type="file" defaultValue={context.user.jdc} placeholder="Format pdf" />
           </div>
           <div className="col-md-4">
-            <Input name={"assr"} label="Attestation ASSR ou ASSR2" type="file" value={context.user.assr} placeholder="Format pdf" />
+            <Input name={"assr"} label="Attestation ASSR ou ASSR2" type="file" defaultValue={context.user.assr} placeholder="Format pdf" />
           </div>
         </div>
       </form>
