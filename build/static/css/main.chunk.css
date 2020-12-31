@@ -8159,6 +8159,12 @@ button.noStyle {
   button.noStyle:focus {
     outline: none; }
 
+.custom-file-label {
+  border-radius: 27px; }
+  .custom-file-label::after {
+    content: "Choisir" !important;
+    border-radius: 27px; }
+
 @media only screen and (min-width: 768px) {
   .w-md-75 {
     width: 75% !important; } }

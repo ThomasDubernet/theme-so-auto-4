@@ -17,15 +17,15 @@ export default function DocsStudentForm() {
 
     var requestOptions = {
       method: 'POST',
-      body: formData
+      body: formData,
+      redirect: 'follow'
     };
     try {
       const response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s?student_id=${context.user.id}&student_name=${context.user.username}&files=true`, requestOptions)
       const result = await response.json()
-      // context.updateUser(result[0])
-      console.log(result);
+      context.updateUser(result[0])
     } catch (e) {
-      console.log(e);
+      console.log(e)
     }
   }
   const { register, handleSubmit} = useForm()  
@@ -53,13 +53,67 @@ export default function DocsStudentForm() {
         <TitleGroupInput title='Documents complémentaires' text="Ces documents nous permettent de remplir le dossier nécessaire à votre inscription en préfécture.<br/>Rendez-vous sur <span class='font-weight-bold sm'>examen</span> pour plus d’informations !" />
         <div className="row">
           <div className="col-md-4">
-            <Input name={"id_card"} label="Pièce d'identité" type="file" defaultValue={context.user.id_card} placeholder="Format pdf" />
+            {context.user.id_card
+              ?
+                <div>
+                  <p>Pièce d'identité</p>
+                  {context.user.id_card.split('.').pop() === 'pdf'
+                    ? <embed height="350.8" width="248" src={`${window.location.origin}/wp-content/uploads/so_auto/students/${context.user.username}/${context.user.id_card}`} />
+                  
+                    : <img className="w-100" src={`${window.location.origin}/wp-content/uploads/so_auto/students/${context.user.username}/${context.user.id_card}`} alt="" />
+                  }
+                  <div className="input-group mt-4">
+                    <div className="custom-file">
+                      <input className="custom-file-input" id="inputFileid_card" type="file" name="id_card" ref={register} />
+                      <label className="custom-file-label" htmlFor="inputFileid_card">Changer de doc.</label>
+                    </div>
+                  </div>
+                </div>
+              :
+              <Input name={"id_card"} label="Pièce d'identité" type="file" placeholder="Format pdf" />
+            }
           </div>
           <div className="col-md-4">
-            <Input name={"jdc"} label="Certificat JDC" type="file" defaultValue={context.user.jdc} placeholder="Format pdf" />
+            {context.user.jdc
+              ?
+                <div>
+                  <p>Certificat JDC</p>
+                  {context.user.jdc.split('.').pop() === 'pdf'
+                    ? <embed height="350.8" width="248" src={`${window.location.origin}/wp-content/uploads/so_auto/students/${context.user.username}/${context.user.jdc}`}/>
+                  
+                    : <img className="w-100" src={`${window.location.origin}/wp-content/uploads/so_auto/students/${context.user.username}/${context.user.jdc}`} alt=""/>
+                  }
+                  <div className="input-group mt-4">
+                    <div className="custom-file">
+                      <input className="custom-file-input" id="inputFilejdc" type="file" name="jdc" ref={register} />
+                      <label className="custom-file-label" htmlFor="inputFilejdc">Changer de doc.</label>
+                    </div>
+                  </div>
+                </div>
+              :
+              <Input name={"jdc"} label="Certificat JDC" type="file" placeholder="Format pdf" />
+            }
           </div>
           <div className="col-md-4">
-            <Input name={"assr"} label="Attestation ASSR ou ASSR2" type="file" defaultValue={context.user.assr} placeholder="Format pdf" />
+            {context.user.assr
+              ?
+                <div>
+                  <p>Attestation ASSR ou ASSR2</p>
+                  {context.user.assr.split('.').pop() === 'pdf'
+                    ? <embed height="350.8" width="248" src={`${window.location.origin}/wp-content/uploads/so_auto/students/${context.user.username}/${context.user.assr}`}/>
+                  
+                    : <img className="w-100" src={`${window.location.origin}/wp-content/uploads/so_auto/students/${context.user.username}/${context.user.assr}`} alt=""/>
+                  }
+                  <div className="input-group mt-4">
+                    <div className="custom-file">
+                      <input className="custom-file-input" id="inputFileAssr" type="file" name="assr" ref={register} />
+                      <label className="custom-file-label" htmlFor="inputFileAssr">Changer de doc.</label>
+                    </div>
+                  </div>
+                </div>
+              :
+                <Input name={"assr"} label="Attestation ASSR ou ASSR2" type="file" placeholder="Format pdf" />
+            }
           </div>
         </div>
       </form>

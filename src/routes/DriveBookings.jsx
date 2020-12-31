@@ -47,7 +47,7 @@ function BuildHour(props) {
         if (book.reserved === "0") {
           const jsonBook = {
             "id": book.id,
-            "date": moment(book.date_available).format('YYYY-MM-DD hh:mm'),
+            "date": moment(book.date_available).format('YYYY-MM-DD HH:mm'),
             "teacher_id": book.teacher_id
           }
           tempBooks.push(jsonBook)
@@ -90,7 +90,7 @@ function BuildHour(props) {
     }
 
     const jsonData = {
-      "date_available": moment(book.date).format('YYYY-MM-DD hh:mm'),
+      "date_available": moment(book.date).format('YYYY-MM-DD HH:mm'),
       "teacher_id": teacher_id,
       "student_id": student_id,
       "student_name": context.user.firstname + " " + context.user.lastname,
@@ -112,7 +112,7 @@ function BuildHour(props) {
                 <img src="https://picsum.photos/id/0/80/80" alt=""/>
               </div>
               <div>
-                {moment(book.date).format('hh:mm')}
+                {moment(book.date).format('HH:mm')}
               </div>
             </div>
           ))

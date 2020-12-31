@@ -71,13 +71,56 @@ export default function AutoForm() {
         </div>
         <div className="row">
           <div className="col-md-4">
-            <Input name={"gray_card"} label="Carte grise" type="text" value={context.user.gray_card} placeholder="Format pdf" />
+            {context.user.gray_card
+                ?
+                  <div>
+                    <p>Carte grise</p>
+                    <img className="w-100" src={`${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.gray_card}`} alt=""/>
+                    <div className="input-group mt-4">
+                      <div className="custom-file">
+                        <input className="custom-file-input" id="inputFilegray_card" type="file" name="gray_card" defaultValue={context.user.gray_card} ref={register} />
+                        <label className="custom-file-label" htmlFor="inputFilegray_card">Changer de doc.</label>
+                      </div>
+                    </div>
+                  </div>  
+                :
+                  <Input name={"gray_card"} label="Carte grise" type="file" value={context.user.gray_card} placeholder="Format pdf" />
+              }
           </div>
           <div className="col-md-4">
-            <Input name={"technical_control"} label="Contrôle technique" type="text" value={context.user.technical_control} placeholder="Format pdf" />
+            {context.user.technical_control
+                ?
+                  <div>
+                    <p>Contrôle technique</p>
+                    <img className="w-100" src={`${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.technical_control}`} alt=""/>
+                    <div className="input-group mt-4">
+                      <div className="custom-file">
+                        <input className="custom-file-input" id="inputFiletechnical_control" type="file" name="technical_control" defaultValue={context.user.technical_control} ref={register} />
+                        <label className="custom-file-label" htmlFor="inputFiletechnical_control">Changer de doc.</label>
+                      </div>
+                    </div>
+                  </div>  
+                :
+                  <Input name={"technical_control"} label="Contrôle technique" type="file" value={context.user.technical_control} placeholder="Format pdf" />
+              }
           </div>
           <div className="col-md-4">
-            <Input name={"insurance"} label="Assurance" type="text" value={context.user.insurance} placeholder="Format pdf" />
+            {context.user.insurance
+                ?
+                  <div>
+                    <p>Assurance</p>
+                    <img className="w-100" src={`${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.insurance}`} alt=""/>
+                    <div className="input-group mt-4">
+                      <div className="custom-file">
+                        <input className="custom-file-input" id="inputFileinsurance" type="file" name="insurance" ref={register} />
+                        <label className="custom-file-label" htmlFor="inputFileinsurance">Changer de doc.</label>
+                      </div>
+                    </div>
+                  </div>  
+                :
+                  <Input name={"insurance"} label="Assurance" type="file" value={context.user.insurance} placeholder="Format pdf" />
+              }
+            
           </div>
         </div>
       </form>

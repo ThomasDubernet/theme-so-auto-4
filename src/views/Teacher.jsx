@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, NavLink } from 'react-router-dom'
 import Context from '../context/Context'
 
+import Infos from '../routes/Infos';
 import Planning from '../routes/Planning';
 import Folder from '../routes/Folder'
 import Contract from '../routes/Contract';
@@ -27,6 +28,7 @@ export default function Teacher() {
                 <Route exact path="/teacher/contract" component={Contract} />
                 <Route exact path="/teacher/sector" component={Sector} />
                 <Route path="/teacher/students" component={Students} />
+                <Route path="/teacher/infos/:slug" component={Infos} />
               </div>
             </div>
           </div>
@@ -39,9 +41,9 @@ export default function Teacher() {
                 <div className="mx-md-auto">
                   <h2>S<span className="h1 text-warning">o</span>'aut<span className="h1 text-warning">o</span></h2>
                   <ul className="list-unstyled mt-4 pt-2">
-                    <li className="infos my-2">+33 05 46 34 15 25</li>
-                    <li className="infos my-2">contact@so-autoecole.fr</li>
-                    <li className="infos my-2">57 bis Av. Jean Guîton,<br />17 000 La Rochelle</li>
+                    <li className="infos my-2"><a href="tel:+33 05 46 34 15 25">+33 05 46 34 15 25</a> </li>
+                    <li className="infos my-2"><a href="mailto:contact@so-auto-ecole.fr">contact@so-auto-ecole.fr</a></li>
+                    <li className="infos my-2"><a href="https://goo.gl/maps/iGkhJE1iQbZm7PGb7" target="_blank" rel="noopener noreferrer"> 57 bis Av. Jean Guîton,<br />17 000 La Rochelle</a></li>
                   </ul>
                 </div>
               </div>
@@ -53,15 +55,37 @@ export default function Teacher() {
                   <li className="links my-3">Services</li>
                   <li className="links my-3">Carrières</li>
                   <li className="links my-3">Tarifications</li>
-                  <li className="links my-3">Infos</li>
+                  <li className="links my-3">
+                    <NavLink
+                    activeClassName="Active-link"
+                    exact to="/infos/conditions-dutilisation"
+                    >
+                      CGV
+                    </NavLink>
+                  </li>
                 </ul>
               </div>
               <div className="col-md-3">
                 <h5 className="my-4">Services</h5>
                 <ul className="list-unstyled">
-                  <li className="links my-3">Code de la route</li>
-                  <li className="links my-3">Conduite accompagnée</li>
-                  <li className="links my-3">Permis de conduire</li>
+                  <li className="links my-3">
+                    <NavLink
+                      activeClassName="Active-link"
+                      exact to="/teacher/infos/formez-vous-au-code-en-ligne-avec-pass-rousseau"
+                     >Code de la route</NavLink>
+                  </li>
+                  <li className="links my-3">
+                    <NavLink
+                      activeClassName="Active-link"
+                      exact to="/teacher/infos/apprentissage-anticipe-de-la-conduite"
+                     >Conduite accompagnée</NavLink>
+                  </li>
+                  <li className="links my-3">
+                    <NavLink
+                      activeClassName="Active-link"
+                      exact to="/teacher/infos/passer-son-permis-b"
+                     >Permis de conduire</NavLink>
+                  </li>
                   <li className="links my-3">Devenir moniteur</li>
                 </ul>
               </div>

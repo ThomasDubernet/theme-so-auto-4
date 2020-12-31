@@ -209,7 +209,7 @@ useEffect(() => {
                     lessonsToCome.current.map((lesson, id) => (
                       <div key={id} className="d-flex justify-content-between align-items-center my-3">
                         <p className="mb-0"> {moment(lesson.date_available).format('dddd DD MMMM')} </p>
-                        <p className="mb-0">{moment(lesson.date_available).format('hh:mm')} <FontAwesomeIcon icon={faArrowRight} /> {moment(lesson.date_available).add(1, 'hours').format('hh:mm')}</p>
+                        <p className="mb-0">{moment(lesson.date_available).format('HH:mm')} <FontAwesomeIcon icon={faArrowRight} /> {moment(lesson.date_available).add(1, 'hours').format('HH:mm')}</p>
                         <p className="mb-0"> {lesson.teacher_id} </p>
                         <button onClick={() => deleteBooking(lesson.id)} className="btn btn-sm btn-outline-dark">X</button>
                       </div>
@@ -231,7 +231,7 @@ useEffect(() => {
                     <p className="font-weight-bold"> {moment(lesson.date_available).format('dddd DD MMMM')} </p>
                   </div>
                   <div className="col-7">
-                    <p className="font-weight-bold">{moment(lesson.date_available).format('hh:mm')} <FontAwesomeIcon icon={faArrowRight} /> {moment(lesson.date_available).add(1, 'hours').format('hh:mm')}</p>
+                    <p className="font-weight-bold">{moment(lesson.date_available).format('HH:mm')} <FontAwesomeIcon icon={faArrowRight} /> {moment(lesson.date_available).add(1, 'hours').format('HH:mm')}</p>
                   </div>
                 </div>
                 <div className="row px-4 py-3 ">

@@ -2,7 +2,7 @@
   $TEMPLATE_PATH = parse_url(get_template_directory_uri(), PHP_URL_PATH);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <?php $BRC_TEMPLATE_PATH = parse_url(get_template_directory_uri(), PHP_URL_PATH); ?>
 <script src='<?php echo $BRC_TEMPLATE_PATH; ?>/react-src/node_modules/@devloco/create-react-wptheme-utils/wpThemeClient.js'></script>
@@ -38,8 +38,8 @@
         work correctly both with client-side routing and a non-root public URL.
         Learn how to configure a non-root public URL by running `npm run wpbuild`.
     -->
-    <title>React WordPress Theme</title>
-<link href="/wp-content/themes/so_auto_v4/static/css/0.chunk.css?625b588ec808e96da605" rel="stylesheet"><link href="/wp-content/themes/so_auto_v4/static/css/main.chunk.css?625b588ec808e96da605" rel="stylesheet"></head>
+    <title>So auto</title>
+<link href="/wp-content/themes/so_auto_v4/static/css/0.chunk.css?1c16d36628d9c33acc02" rel="stylesheet"><link href="/wp-content/themes/so_auto_v4/static/css/main.chunk.css?1c16d36628d9c33acc02" rel="stylesheet"></head>
     <body>
     <noscript>
         You need to enable JavaScript to run this app.
@@ -55,5 +55,5 @@
         To begin the development, run `npm run wpstart` or `yarn wpstart`.
         To create a production bundle, use `npm run wpbuild` or `yarn wpbuild`.
     -->
-    <script src="/wp-content/themes/so_auto_v4/static/js/bundle.js?625b588ec808e96da605"></script><script src="/wp-content/themes/so_auto_v4/static/js/0.chunk.js?625b588ec808e96da605"></script><script src="/wp-content/themes/so_auto_v4/static/js/main.chunk.js?625b588ec808e96da605"></script></body>
+    <script src="/wp-content/themes/so_auto_v4/static/js/bundle.js?1c16d36628d9c33acc02"></script><script src="/wp-content/themes/so_auto_v4/static/js/0.chunk.js?1c16d36628d9c33acc02"></script><script src="/wp-content/themes/so_auto_v4/static/js/main.chunk.js?1c16d36628d9c33acc02"></script></body>
 </html>

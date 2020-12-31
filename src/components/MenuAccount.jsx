@@ -201,7 +201,10 @@ export default class MenuAccount extends React.Component{
                     this.context.userType === "student" ? <NavLink className={"verticalText pbtn btn btn-outline-dark " + (this.state.openMenu ? ' m-auto' : 'mx-auto my-md-2 py-md-4 px-md-2 verticalActive' )} activeClassName="Active-link btn-dark" exact to="/student/livret" >Mon livret</NavLink> : <NavLink className={"verticalText pbtn btn btn-outline-dark " + (this.state.openMenu ? ' m-auto' : 'mx-auto my-md-2 py-md-4 px-md-2 verticalActive' )} activeClassName="Active-link btn-dark" exact to={this.context.user.activated > 0 ? "/teacher/planning" : "/teacher/folder"} >Mon planning</NavLink>
                   }
                   
-                  <NavLink className={"verticalText pbtn btn btn-outline-dark " + (this.state.openMenu ? ' m-auto' : 'mx-auto my-md-2 py-md-4 px-md-2 verticalActive' )} activeClassName="Active-link btn-dark" exact to="/teacher/help" >Aide</NavLink>
+                  {
+                    this.context.userType === "student" ? <NavLink className={"verticalText pbtn btn btn-outline-dark " + (this.state.openMenu ? ' m-auto' : 'mx-auto my-md-2 py-md-4 px-md-2 verticalActive' )} activeClassName="Active-link btn-dark" exact to="/student/exams" >Examens</NavLink> : <NavLink className={"verticalText pbtn btn btn-outline-dark " + (this.state.openMenu ? ' m-auto' : 'mx-auto my-md-2 py-md-4 px-md-2 verticalActive' )} activeClassName="Active-link btn-dark" exact to="/teacher/help" >Aide</NavLink>
+                  }
+                  
                   <button className={"btn btn-outline-dark mx-auto m-md-auto "} onClick={() => this.setState({openMenu: !this.state.openMenu})}>
                     <FontAwesomeIcon icon={faCaretRight} />
                   </button>

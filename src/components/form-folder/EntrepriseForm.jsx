@@ -52,7 +52,21 @@ export default function EntrepriseForm() {
             <Input name={"createdAt"} label="Date de création" type="text" value={context.user.createdAt} />
           </div>
           <div className="col-md-4">
-            <Input name={"rc_pro"} label="Attestion RC Pro" type="text" value={context.user.rc_pro} placeholder="Format pdf" />
+            {context.user.rc_pro
+              ?
+                <div>
+                  <p>Attestion RC Pro</p>
+                  <img className="w-100" src={`${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.rc_pro}`} alt=""/>
+                  <div className="input-group mt-4">
+                    <div className="custom-file">
+                      <input className="custom-file-input" id="inputFilerc_pro" type="file" name="rc_pro" defaultValue={context.user.rc_pro} ref={register} />
+                      <label className="custom-file-label" htmlFor="inputFilerc_pro">Changer de doc.</label>
+                    </div>
+                  </div>
+                </div> 
+              :  
+                <Input name={"rc_pro"} label="Attestion RC Pro" type="file"  placeholder="Format pdf" />
+            }
           </div>
         </div>
         <div className="row">
@@ -63,7 +77,21 @@ export default function EntrepriseForm() {
             <Input name={"tva"} label="Numéro de TVA" type="text" value={context.user.tva} />
           </div>
           <div className="col-md-4">
-            <Input name={"insee"} label="Certificat insee" type="text" value={context.user.insee} placeholder="Format pdf" />
+            {context.user.insee
+              ?
+              <div>
+                <p>Certificat insee</p>
+                <img className="w-100" src={`${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.insee}`} alt=""/>
+                <div className="input-group mt-4">
+                  <div className="custom-file">
+                    <input className="custom-file-input" id="inputFileinsee" type="file" name="insee" defaultValue={context.user.insee} ref={register} />
+                    <label className="custom-file-label" htmlFor="inputFileinsee">Changer de doc.</label>
+                  </div>
+                </div>
+              </div> 
+              :  
+              <Input name={"insee"} label="Certificat insee" type="file" value={context.user.insee} placeholder="Format pdf" />
+            }
           </div>
         </div>
       </form>

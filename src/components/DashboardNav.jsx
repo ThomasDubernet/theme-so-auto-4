@@ -59,7 +59,7 @@ export default class DashboardNav extends Component {
 
   render() {
 
-    function TeacherNav(props) {
+    function TeacherNav() {
       return (
         <React.Fragment>
           <NavLink className="App-link my-2 my-md-0 btn btn-outline-warning link-d-none activeShow" activeClassName="Active-link btn-warning" exact to="/teacher/sector" >Secteur</NavLink>
@@ -83,12 +83,12 @@ export default class DashboardNav extends Component {
 
     return (
       <React.Fragment>
-        <div className="my-auto mx-auto ml-md-4 mr-md-auto">
+        <div className="d-flex flex-column flex-lg-row my-auto">
             <button className={"App-link " + (this.state.openNav ? 'bg-warning link-circle' : '')} onClick={this.state.openNav ? () => this.setState({openNav: !this.state.openNav}) : null}>
               {this.state.openNav ? '' : <NavLink className="App-link btn btn-outline-warning " activeClassName="Active-link btn-warning" exact to={`/${this.context.userType}/folder`}>Mon dossier </NavLink>}  
             </button>
 
-            <button className={"App-link " + (this.state.openNav ? 'bg-warning link-circle' : '')} onClick={this.state.openNav ? () => this.setState({openNav: !this.state.openNav}) : null}>
+            <button className={"App-link my-2 my-lg-0" + (this.state.openNav ? 'bg-warning link-circle' : '')} onClick={this.state.openNav ? () => this.setState({openNav: !this.state.openNav}) : null}>
               {this.state.openNav ? '' : <NavLink className="App-link btn btn-outline-warning " activeClassName="Active-link btn-warning" exact to={`/${this.context.userType}/contract`}>Mon contrat </NavLink>}
             </button>
           
@@ -102,29 +102,6 @@ export default class DashboardNav extends Component {
             <div className="burger-icon"></div>
           </div>
         </button>
-        
-        {/* <div className="nav-right ml-md-auto mx-auto mx-md-0 d-flex flex-column flex-md-row d-block">
-          {this.context.userType === "student" ? <StudentNav openNav={this.state.openNav} /> : (
-            this.context.user.activated > 0 ? <TeacherNav  openNav={this.state.openNav} /> : ''
-          )}
-        </div>
-        {
-          this.context.userType === "student" ?
-            <button className="navbar-burger my-auto" onClick={this.activeNav}>
-              <div className="burger">
-                <div className="burger-icon"></div>
-              </div>
-            </button> 
-          : (
-            this.context.user.activated > 0 ? 
-              <button className="navbar-burger my-auto" onClick={this.activeNav}>
-                <div className="burger">
-                  <div className="burger-icon"></div>
-                </div>
-              </button>
-            : ''
-            )
-        } */}
         
       </React.Fragment>
     )

@@ -37,7 +37,14 @@ body {
     &:focus {
       outline: none;
     }
-  }  
+  }
+  .custom-file-label {
+    border-radius: 27px;
+    &::after{
+      content: "Choisir" !important;
+      border-radius: 27px;
+    }
+  }
 
   @media #{$medium-up}{
     .w-md-75{

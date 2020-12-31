@@ -19,10 +19,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var moment_locale_fr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! moment/locale/fr */ "./node_modules/moment/locale/fr.js");
 /* harmony import */ var moment_locale_fr__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(moment_locale_fr__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _pages_Home__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/Home */ "./src/pages/Home.jsx");
-/* harmony import */ var _pages_Login__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/Login */ "./src/pages/Login.jsx");
-/* harmony import */ var _pages_Site__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/Site */ "./src/pages/Site.jsx");
+/* harmony import */ var _routes_Infos__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./routes/Infos */ "./src/routes/Infos.jsx");
+/* harmony import */ var _pages_Home__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/Home */ "./src/pages/Home.jsx");
+/* harmony import */ var _pages_Login__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/Login */ "./src/pages/Login.jsx");
+/* harmony import */ var _pages_Site__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/Site */ "./src/pages/Site.jsx");
 var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/App.jsx";
+
 
 
 
@@ -115,18 +117,21 @@ function App() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
       exact: true,
       path: "/",
-      component: () => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Home__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      component: () => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Home__WEBPACK_IMPORTED_MODULE_6__["default"], {
         gps: gpsInfos
       })
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
       exact: true,
       path: "/log",
-      component: props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Login__WEBPACK_IMPORTED_MODULE_6__["default"], Object.assign({}, props, {
+      component: props => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Login__WEBPACK_IMPORTED_MODULE_7__["default"], Object.assign({}, props, {
         setUser: fetchUser
       }))
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+      path: "/infos/:slug",
+      component: _routes_Infos__WEBPACK_IMPORTED_MODULE_5__["default"]
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProtectedRoute, {
       path: ["/student", "/teacher"],
-      component: () => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Site__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      component: () => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Site__WEBPACK_IMPORTED_MODULE_8__["default"], {
         user: user,
         userType: user_type,
         gps: gpsInfos,
@@ -493,7 +498,7 @@ class DashboardNav extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   }
 
   render() {
-    function TeacherNav(props) {
+    function TeacherNav() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
         className: "App-link my-2 my-md-0 btn btn-outline-warning link-d-none activeShow",
         activeClassName: "Active-link btn-warning",
@@ -525,7 +530,7 @@ class DashboardNav extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     }
 
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "my-auto mx-auto ml-md-4 mr-md-auto"
+      className: "d-flex flex-column flex-lg-row my-auto"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "App-link " + (this.state.openNav ? 'bg-warning link-circle' : ''),
       onClick: this.state.openNav ? () => this.setState({
@@ -537,7 +542,7 @@ class DashboardNav extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       exact: true,
       to: `/${this.context.userType}/folder`
     }, "Mon dossier ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: "App-link " + (this.state.openNav ? 'bg-warning link-circle' : ''),
+      className: "App-link my-2 my-lg-0" + (this.state.openNav ? 'bg-warning link-circle' : ''),
       onClick: this.state.openNav ? () => this.setState({
         openNav: !this.state.openNav
       }) : null
@@ -923,7 +928,12 @@ class MenuAccount extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component
       activeClassName: "Active-link btn-dark",
       exact: true,
       to: this.context.user.activated > 0 ? "/teacher/planning" : "/teacher/folder"
-    }, "Mon planning"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    }, "Mon planning"), this.context.userType === "student" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+      className: "verticalText pbtn btn btn-outline-dark " + (this.state.openMenu ? ' m-auto' : 'mx-auto my-md-2 py-md-4 px-md-2 verticalActive'),
+      activeClassName: "Active-link btn-dark",
+      exact: true,
+      to: "/student/exams"
+    }, "Examens") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
       className: "verticalText pbtn btn btn-outline-dark " + (this.state.openMenu ? ' m-auto' : 'mx-auto my-md-2 py-md-4 px-md-2 verticalActive'),
       activeClassName: "Active-link btn-dark",
       exact: true,
@@ -1394,8 +1404,10 @@ class TextIllus extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       }
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "d-flex mt-4"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: 'btn btn-outline-white ' + (typeof this.props.btnClasse == 'undefined' ? '' : this.props.btnClasse)
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+      className: 'btn btn-outline-white ' + (typeof this.props.btnClasse == 'undefined' ? '' : this.props.btnClasse),
+      exact: true,
+      to: this.props.linkBtn
     }, typeof this.props.textBtn == 'undefined' ? 'En savoir plus' : this.props.textBtn), typeof this.props.secondBtn == 'undefined' ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: typeof this.props.secondBtnClasse == 'undefined' ? '' : this.props.secondBtnClasse
     }, typeof this.props.textSecondBtn == 'undefined' ? '' : typeof this.props.linkSecondBtn != 'undefined' ? '' : this.props.textSecondBtn, typeof this.props.linkSecondBtn == 'undefined' ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
@@ -1789,26 +1801,79 @@ function AutoForm() {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
+  }, context.user.gray_card ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Carte grise"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "w-100",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.gray_card}`,
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "custom-file"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "custom-file-input",
+    id: "inputFilegray_card",
+    type: "file",
+    name: "gray_card",
+    defaultValue: context.user.gray_card,
+    ref: register
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "custom-file-label",
+    htmlFor: "inputFilegray_card"
+  }, "Changer de doc.")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "gray_card",
     label: "Carte grise",
-    type: "text",
+    type: "file",
     value: context.user.gray_card,
     placeholder: "Format pdf"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
+  }, context.user.technical_control ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Contr\xF4le technique"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "w-100",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.technical_control}`,
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "custom-file"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "custom-file-input",
+    id: "inputFiletechnical_control",
+    type: "file",
+    name: "technical_control",
+    defaultValue: context.user.technical_control,
+    ref: register
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "custom-file-label",
+    htmlFor: "inputFiletechnical_control"
+  }, "Changer de doc.")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "technical_control",
     label: "Contr\xF4le technique",
-    type: "text",
+    type: "file",
     value: context.user.technical_control,
     placeholder: "Format pdf"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
+  }, context.user.insurance ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Assurance"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "w-100",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.insurance}`,
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "custom-file"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "custom-file-input",
+    id: "inputFileinsurance",
+    type: "file",
+    name: "insurance",
+    ref: register
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "custom-file-label",
+    htmlFor: "inputFileinsurance"
+  }, "Changer de doc.")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "insurance",
     label: "Assurance",
-    type: "text",
+    type: "file",
     value: context.user.insurance,
     placeholder: "Format pdf"
   })))));
@@ -1997,14 +2062,14 @@ function DocsStudentForm() {
 
     var requestOptions = {
       method: 'POST',
-      body: formData
+      body: formData,
+      redirect: 'follow'
     };
 
     try {
       const response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s?student_id=${context.user.id}&student_name=${context.user.username}&files=true`, requestOptions);
-      const result = await response.json(); // context.updateUser(result[0])
-
-      console.log(result);
+      const result = await response.json();
+      context.updateUser(result[0]);
     } catch (e) {
       console.log(e);
     }
@@ -2059,27 +2124,87 @@ function DocsStudentForm() {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
+  }, context.user.id_card ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Pi\xE8ce d'identit\xE9"), context.user.id_card.split('.').pop() === 'pdf' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("embed", {
+    height: "350.8",
+    width: "248",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/students/${context.user.username}/${context.user.id_card}`
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "w-100",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/students/${context.user.username}/${context.user.id_card}`,
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "custom-file"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "custom-file-input",
+    id: "inputFileid_card",
+    type: "file",
+    name: "id_card",
+    ref: register
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "custom-file-label",
+    htmlFor: "inputFileid_card"
+  }, "Changer de doc.")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "id_card",
     label: "Pi\xE8ce d'identit\xE9",
     type: "file",
-    defaultValue: context.user.id_card,
     placeholder: "Format pdf"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
+  }, context.user.jdc ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Certificat JDC"), context.user.jdc.split('.').pop() === 'pdf' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("embed", {
+    height: "350.8",
+    width: "248",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/students/${context.user.username}/${context.user.jdc}`
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "w-100",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/students/${context.user.username}/${context.user.jdc}`,
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "custom-file"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "custom-file-input",
+    id: "inputFilejdc",
+    type: "file",
+    name: "jdc",
+    ref: register
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "custom-file-label",
+    htmlFor: "inputFilejdc"
+  }, "Changer de doc.")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "jdc",
     label: "Certificat JDC",
     type: "file",
-    defaultValue: context.user.jdc,
     placeholder: "Format pdf"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
+  }, context.user.assr ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Attestation ASSR ou ASSR2"), context.user.assr.split('.').pop() === 'pdf' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("embed", {
+    height: "350.8",
+    width: "248",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/students/${context.user.username}/${context.user.assr}`
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "w-100",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/students/${context.user.username}/${context.user.assr}`,
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "custom-file"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "custom-file-input",
+    id: "inputFileAssr",
+    type: "file",
+    name: "assr",
+    ref: register
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "custom-file-label",
+    htmlFor: "inputFileAssr"
+  }, "Changer de doc.")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "assr",
     label: "Attestation ASSR ou ASSR2",
     type: "file",
-    defaultValue: context.user.assr,
     placeholder: "Format pdf"
   })))));
 }
@@ -2118,14 +2243,14 @@ function DocsTeacherForm() {
 
     var requestOptions = {
       method: 'POST',
-      body: formData
+      body: formData,
+      redirect: 'follow'
     };
 
     try {
       const response = await fetch(`${window.location.origin}/wp-json/so-auto/v1/${context.userType}s?teacher_id=${context.user.id}&teacher_name=${context.user.username}&files=true`, requestOptions);
-      const result = await response.json(); // context.updateUser(result[0])
-
-      console.log(result);
+      const result = await response.json();
+      context.updateUser(result[0]);
     } catch (e) {
       console.log(e);
     }
@@ -2179,53 +2304,174 @@ function DocsTeacherForm() {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
+  }, context.user.id_card ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Pi\xE8ce d'identit\xE9"), context.user.id_card.split('.').pop() === 'pdf' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("embed", {
+    height: "",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.id_card}`,
+    type: "application/pdf"
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "w-100",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.id_card}`,
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "custom-file"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "custom-file-input",
+    id: "inputFileid_card",
+    type: "file",
+    name: "id_card",
+    ref: register
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "custom-file-label",
+    htmlFor: "inputFileid_card"
+  }, "Changer de doc.")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "id_card",
     label: "Pi\xE8ce d'identit\xE9",
     type: "file",
-    value: context.user.id_card,
     placeholder: "Format pdf"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
+  }, context.user.permis ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Permis de conduire"), context.user.permis.split('.').pop() === 'pdf' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("embed", {
+    height: "350.8",
+    width: "248",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.permis}`,
+    type: "application/pdf"
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "w-100",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.permis}`,
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "custom-file"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "custom-file-input",
+    id: "inputFilepermis",
+    type: "file",
+    name: "permis",
+    ref: register
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "custom-file-label",
+    htmlFor: "inputFilepermis"
+  }, "Changer de doc.")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "permis",
     label: "Permis de conduire",
     type: "file",
-    value: context.user.permis,
     placeholder: "Format pdf"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
+  }, context.user.auth_work ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Autorisation d'enseigner"), context.user.auth_work.split('.').pop() === 'pdf' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("embed", {
+    height: "",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.auth_work}`,
+    type: "application/pdf"
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "w-100",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.auth_work}`,
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "custom-file"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "custom-file-input",
+    id: "inputFileauth_work",
+    type: "file",
+    name: "auth_work",
+    ref: register
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "custom-file-label",
+    htmlFor: "inputFileauth_work"
+  }, "Changer de doc.")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "auth_work",
     label: "Autorisation d'enseigner",
     type: "file",
-    value: context.user.auth_work,
     placeholder: "Format pdf"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
+  }, context.user.criminal_record ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Casier judiciaire"), context.user.criminal_record.split('.').pop() === 'pdf' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("embed", {
+    height: "",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.criminal_record}`,
+    type: "application/pdf"
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "w-100",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.criminal_record}`,
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "custom-file"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "custom-file-input",
+    id: "inputFilecriminal_record",
+    type: "file",
+    name: "criminal_record",
+    ref: register
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "custom-file-label",
+    htmlFor: "inputFilecriminal_record"
+  }, "Changer de doc.")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "criminal_record",
     label: "Casier judiciaire",
     type: "file",
-    value: context.user.criminal_record,
     placeholder: "Format pdf"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
+  }, context.user.statement_infos ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Relev\xE9 d'information"), context.user.statement_infos.split('.').pop() === 'pdf' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("embed", {
+    height: "",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.statement_infos}`,
+    type: "application/pdf"
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "w-100",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.statement_infos}`,
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "custom-file"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "custom-file-input",
+    id: "inputFilestatement_infos",
+    type: "file",
+    name: "statement_infos",
+    ref: register
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "custom-file-label",
+    htmlFor: "inputFilestatement_infos"
+  }, "Changer de doc.")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "statement_infos",
     label: "Relev\xE9 d'information",
     type: "file",
-    value: context.user.statement_infos,
     placeholder: "Format pdf"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
+  }, context.user.auth_medical ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Autorisation m\xE9dicale"), context.user.auth_medical.split('.').pop() === 'pdf' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("embed", {
+    height: "",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.auth_medic}`,
+    type: "application/pdf"
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "w-100",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.auth_medical}`,
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "custom-file"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "custom-file-input",
+    id: "inputFileauth_medical",
+    type: "file",
+    name: "auth_medical",
+    ref: register
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "custom-file-label",
+    htmlFor: "inputFileauth_medical"
+  }, "Changer de doc.")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "auth_medical",
     label: "Autorisation m\xE9dicale",
     type: "file",
-    value: context.user.auth_medical,
     placeholder: "Format pdf"
   })))));
 }
@@ -2328,11 +2574,28 @@ function EntrepriseForm() {
     value: context.user.createdAt
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
+  }, context.user.rc_pro ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Attestion RC Pro"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "w-100",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.rc_pro}`,
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "custom-file"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "custom-file-input",
+    id: "inputFilerc_pro",
+    type: "file",
+    name: "rc_pro",
+    defaultValue: context.user.rc_pro,
+    ref: register
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "custom-file-label",
+    htmlFor: "inputFilerc_pro"
+  }, "Changer de doc.")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "rc_pro",
     label: "Attestion RC Pro",
-    type: "text",
-    value: context.user.rc_pro,
+    type: "file",
     placeholder: "Format pdf"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
@@ -2352,10 +2615,28 @@ function EntrepriseForm() {
     value: context.user.tva
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-4"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
+  }, context.user.insee ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Certificat insee"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "w-100",
+    src: `${window.location.origin}/wp-content/uploads/so_auto/teachers/${context.user.username}/${context.user.insee}`,
+    alt: ""
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-group mt-4"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "custom-file"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "custom-file-input",
+    id: "inputFileinsee",
+    type: "file",
+    name: "insee",
+    defaultValue: context.user.insee,
+    ref: register
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "custom-file-label",
+    htmlFor: "inputFileinsee"
+  }, "Changer de doc.")))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Input, {
     name: "insee",
     label: "Certificat insee",
-    type: "text",
+    type: "file",
     value: context.user.insee,
     placeholder: "Format pdf"
   })))));
@@ -2640,7 +2921,6 @@ var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/
 
 
 function Home(props) {
-  // const [avisUser, setAvisUser] = useState([])
   const avisUser = [{
     name: "Nelly D.",
     ville: "La Rochelle",
@@ -2719,8 +2999,10 @@ function Home(props) {
     className: "h3 text-warning"
   }, "29,90 \u20AC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "10 % moins ch\xE8re"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-outline-white"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    className: "btn btn-outline-white font-weight-bold",
+    exact: true,
+    to: "/infos/formez-vous-au-code-en-ligne-avec-pass-rousseau"
   }, "En savoir plus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-outline-white ml-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_5__["FontAwesomeIcon"], {
@@ -2735,8 +3017,10 @@ function Home(props) {
     className: "text-line-through"
   }, "1 099 \u20AC")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-outline-white"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    className: "btn btn-outline-white font-weight-bold",
+    exact: true,
+    to: "/infos/apprentissage-anticipe-de-la-conduite"
   }, "En savoir plus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-outline-white ml-4"
   }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_5__["FontAwesomeIcon"], {
@@ -2749,8 +3033,10 @@ function Home(props) {
     className: "h3 text-warning"
   }, "749 \u20AC"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "30 % moins ch\xE8re"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-outline-white"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    className: "btn btn-outline-white font-weight-bold",
+    exact: true,
+    to: "/infos/passer-son-permis-b"
   }, "En savoir plus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "btn btn-outline-white ml-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_5__["FontAwesomeIcon"], {
@@ -2774,6 +3060,8 @@ function Home(props) {
     textWarning: "R\xE9viser votre code partout en illimit\xE9 gr\xE2ce \xE0 notre formation en ligne.",
     content: "2000 questions d'entra\xEEnements, cours, et s\xE9ries th\xE9matiques \xE0 votre disposition, histoire de se pr\xE9parer en toute s\xE9curit\xE9.",
     contentClasse: "d-none d-md-block",
+    btnClasse: "font-weight-bold",
+    linkBtn: "/infos/formez-vous-au-code-en-ligne-avec-pass-rousseau",
     btnPlayClasse: "d-none d-md-block"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "my-6 my-md-8"
@@ -2784,6 +3072,8 @@ function Home(props) {
     textWarning: "Apprenez \xE0 conduire selon votre planning, avec un moniteur qui accompagnera jusqu'\xE0 obtention de votre permis.",
     content: "Un plan de formation et un livret p\xE9dagogique s\xFBr-mesure, une \xE9quipe \xE0 votre \xE9coute, pour favoriser votre r\xE9sussite.",
     contentClasse: "d-none d-md-block",
+    btnClasse: "font-weight-bold",
+    linkBtn: "/infos/passer-son-permis-b",
     btnPlayClasse: "d-none d-md-block"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "percent d-flex flex-column flex-md-row justify-content-center"
@@ -2822,11 +3112,19 @@ function Home(props) {
     className: "list-unstyled mt-4 pt-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "infos my-2"
-  }, "+33 05 46 34 15 25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "tel:0546341525"
+  }, "05 46 34 15 25"), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "infos my-2"
-  }, "contact@so-autoecole.fr"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "mailto:contact@so-auto-ecole.fr"
+  }, "contact@so-auto-ecole.fr")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "infos my-2"
-  }, "57 bis Av. Jean Gu\xEEton,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "17 000 La Rochelle")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://goo.gl/maps/iGkhJE1iQbZm7PGb7",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, " 57 bis Av. Jean Gu\xEEton,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "17 000 La Rochelle"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "my-4"
@@ -2844,7 +3142,11 @@ function Home(props) {
     className: "links my-3"
   }, "Tarifications"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "links my-3"
-  }, "Infos"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    activeClassName: "Active-link",
+    exact: true,
+    to: "/infos/conditions-dutilisation"
+  }, "CGV")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "my-4"
@@ -2852,11 +3154,23 @@ function Home(props) {
     className: "list-unstyled"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "links my-3"
-  }, "Code de la route"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    activeClassName: "Active-link",
+    exact: true,
+    to: "/infos/formez-vous-au-code-en-ligne-avec-pass-rousseau"
+  }, "Code de la route")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "links my-3"
-  }, "Conduite accompagn\xE9e"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    activeClassName: "Active-link",
+    exact: true,
+    to: "/infos/apprentissage-anticipe-de-la-conduite"
+  }, "Conduite accompagn\xE9e")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "links my-3"
-  }, "Permis de conduire"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    activeClassName: "Active-link",
+    exact: true,
+    to: "/infos/passer-son-permis-b"
+  }, "Permis de conduire")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "links my-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
     activeClassName: "Active-link",
@@ -3420,9 +3734,9 @@ function Drive() {
     className: "mb-0"
   }, " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('dddd DD MMMM'), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "mb-0"
-  }, moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('hh:mm'), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
+  }, moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('HH:mm'), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faArrowRight"]
-  }), " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).add(1, 'hours').format('hh:mm')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+  }), " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).add(1, 'hours').format('HH:mm')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "mb-0"
   }, " ", lesson.teacher_id, " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: () => deleteBooking(lesson.id),
@@ -3444,9 +3758,9 @@ function Drive() {
     className: "col-7"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     className: "font-weight-bold"
-  }, moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('hh:mm'), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
+  }, moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).format('HH:mm'), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faArrowRight"]
-  }), " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).add(1, 'hours').format('hh:mm')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), " ", moment__WEBPACK_IMPORTED_MODULE_3___default()(lesson.date_available).add(1, 'hours').format('HH:mm')))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row px-4 py-3 "
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-5"
@@ -3529,7 +3843,7 @@ function BuildHour(props) {
         if (book.reserved === "0") {
           const jsonBook = {
             "id": book.id,
-            "date": moment__WEBPACK_IMPORTED_MODULE_1___default()(book.date_available).format('YYYY-MM-DD hh:mm'),
+            "date": moment__WEBPACK_IMPORTED_MODULE_1___default()(book.date_available).format('YYYY-MM-DD HH:mm'),
             "teacher_id": book.teacher_id
           };
           tempBooks.push(jsonBook);
@@ -3575,7 +3889,7 @@ function BuildHour(props) {
     }
 
     const jsonData = {
-      "date_available": moment__WEBPACK_IMPORTED_MODULE_1___default()(book.date).format('YYYY-MM-DD hh:mm'),
+      "date_available": moment__WEBPACK_IMPORTED_MODULE_1___default()(book.date).format('YYYY-MM-DD HH:mm'),
       "teacher_id": teacher_id,
       "student_id": student_id,
       "student_name": context.user.firstname + " " + context.user.lastname,
@@ -3597,7 +3911,7 @@ function BuildHour(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: "https://picsum.photos/id/0/80/80",
     alt: ""
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, moment__WEBPACK_IMPORTED_MODULE_1___default()(book.date).format('hh:mm'))))));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, moment__WEBPACK_IMPORTED_MODULE_1___default()(book.date).format('HH:mm'))))));
 }
 
 function DriveBookings() {
@@ -3696,6 +4010,26 @@ function DriveBookings() {
   }, day.format('DD MMM').toString()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BuildHour, {
     day: day.format('YYYY-MM-DD')
   })))));
+}
+
+/***/ }),
+
+/***/ "./src/routes/Examens.jsx":
+/*!********************************!*\
+  !*** ./src/routes/Examens.jsx ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Examens; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/Examens.jsx";
+
+function Examens() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Examens"));
 }
 
 /***/ }),
@@ -3833,6 +4167,43 @@ function Followup(props) {
     "aria-labelledby": "v-pills-" + index + "-tab"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Livret de ", user.name, " 1"))))));
 }
+
+/***/ }),
+
+/***/ "./src/routes/Infos.jsx":
+/*!******************************!*\
+  !*** ./src/routes/Infos.jsx ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/routes/Infos.jsx";
+
+
+function Infos(props) {
+  const [content, setContent] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    async function fetchContent(slug) {
+      let response = await fetch(`${window.location.origin}/wp-json/wp/v2/pages?slug=${slug}`);
+      let data = await response.json();
+      setContent(data[0].content.rendered);
+    }
+
+    fetchContent(props.match.params.slug);
+  }, [props]);
+  console.log(content);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    dangerouslySetInnerHTML: {
+      __html: content
+    }
+  });
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Infos);
 
 /***/ }),
 
@@ -4324,16 +4695,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _context_Context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../context/Context */ "./src/context/Context.js");
 /* harmony import */ var _routes_Livret__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../routes/Livret */ "./src/routes/Livret.jsx");
-/* harmony import */ var _routes_Folder__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../routes/Folder */ "./src/routes/Folder.jsx");
-/* harmony import */ var _routes_Contract__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../routes/Contract */ "./src/routes/Contract.jsx");
-/* harmony import */ var _routes_Code__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../routes/Code */ "./src/routes/Code.jsx");
-/* harmony import */ var _routes_Drive__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../routes/Drive */ "./src/routes/Drive.jsx");
-/* harmony import */ var _routes_DriveBookings__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../routes/DriveBookings */ "./src/routes/DriveBookings.jsx");
+/* harmony import */ var _routes_Infos__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../routes/Infos */ "./src/routes/Infos.jsx");
+/* harmony import */ var _routes_Folder__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../routes/Folder */ "./src/routes/Folder.jsx");
+/* harmony import */ var _routes_Contract__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../routes/Contract */ "./src/routes/Contract.jsx");
+/* harmony import */ var _routes_Code__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../routes/Code */ "./src/routes/Code.jsx");
+/* harmony import */ var _routes_Drive__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../routes/Drive */ "./src/routes/Drive.jsx");
+/* harmony import */ var _routes_Examens__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../routes/Examens */ "./src/routes/Examens.jsx");
+/* harmony import */ var _routes_DriveBookings__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../routes/DriveBookings */ "./src/routes/DriveBookings.jsx");
 var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/views/Student.jsx";
 
 
 
+
  // import Help from '../routes/Help';
+
 
 
 
@@ -4365,23 +4740,30 @@ function Student() {
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/student/folder",
-    component: _routes_Folder__WEBPACK_IMPORTED_MODULE_4__["default"]
+    component: _routes_Folder__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/student/contract",
-    component: _routes_Contract__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _routes_Contract__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/student/code",
-    component: _routes_Code__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _routes_Code__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/student/drive",
-    component: _routes_Drive__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _routes_Drive__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/student/exams",
+    component: _routes_Examens__WEBPACK_IMPORTED_MODULE_9__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/student/drive/bookings",
-    component: _routes_DriveBookings__WEBPACK_IMPORTED_MODULE_8__["default"]
+    component: _routes_DriveBookings__WEBPACK_IMPORTED_MODULE_10__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/student/infos/:slug",
+    component: _routes_Infos__WEBPACK_IMPORTED_MODULE_4__["default"]
   }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
     className: "App-footer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -4400,11 +4782,19 @@ function Student() {
     className: "list-unstyled mt-4 pt-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "infos my-2"
-  }, "+33 05 46 34 15 25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "tel:+33 05 46 34 15 25"
+  }, "+33 05 46 34 15 25"), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "infos my-2"
-  }, "contact@so-autoecole.fr"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "mailto:contact@so-auto-ecole.fr"
+  }, "contact@so-auto-ecole.fr")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "infos my-2"
-  }, "57 bis Av. Jean Gu\xEEton,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "17 000 La Rochelle")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://goo.gl/maps/iGkhJE1iQbZm7PGb7",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, " 57 bis Av. Jean Gu\xEEton,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "17 000 La Rochelle"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "my-4"
@@ -4425,8 +4815,8 @@ function Student() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
     activeClassName: "Active-link",
     exact: true,
-    to: "/infos-test"
-  }, "Infos")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    to: "/infos/conditions-dutilisation"
+  }, "CGV")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "my-4"
@@ -4434,13 +4824,23 @@ function Student() {
     className: "list-unstyled"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "links my-3"
-  }, "Code de la route"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    activeClassName: "Active-link",
+    exact: true,
+    to: "/student/infos/formez-vous-au-code-en-ligne-avec-pass-rousseau"
+  }, "Code de la route")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "links my-3"
-  }, "Conduite accompagn\xE9e"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    activeClassName: "Active-link",
+    exact: true,
+    to: "/student/infos/apprentissage-anticipe-de-la-conduite"
+  }, "Conduite accompagn\xE9e")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "links my-3"
-  }, "Permis de conduire"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "links my-3"
-  }, "Devenir moniteur"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    activeClassName: "Active-link",
+    exact: true,
+    to: "/student/infos/passer-son-permis-b"
+  }, "Permis de conduire")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "my-4"
@@ -4475,12 +4875,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _context_Context__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../context/Context */ "./src/context/Context.js");
-/* harmony import */ var _routes_Planning__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../routes/Planning */ "./src/routes/Planning.jsx");
-/* harmony import */ var _routes_Folder__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../routes/Folder */ "./src/routes/Folder.jsx");
-/* harmony import */ var _routes_Contract__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../routes/Contract */ "./src/routes/Contract.jsx");
-/* harmony import */ var _routes_Sector__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../routes/Sector */ "./src/routes/Sector.jsx");
-/* harmony import */ var _routes_Students__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../routes/Students */ "./src/routes/Students.jsx");
+/* harmony import */ var _routes_Infos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../routes/Infos */ "./src/routes/Infos.jsx");
+/* harmony import */ var _routes_Planning__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../routes/Planning */ "./src/routes/Planning.jsx");
+/* harmony import */ var _routes_Folder__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../routes/Folder */ "./src/routes/Folder.jsx");
+/* harmony import */ var _routes_Contract__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../routes/Contract */ "./src/routes/Contract.jsx");
+/* harmony import */ var _routes_Sector__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../routes/Sector */ "./src/routes/Sector.jsx");
+/* harmony import */ var _routes_Students__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../routes/Students */ "./src/routes/Students.jsx");
 var _jsxFileName = "/Users/thomasdubernet/Projects/so_auto_v4/wp-content/themes/so_auto_v4/react-src/src/views/Teacher.jsx";
+
 
 
 
@@ -4509,22 +4911,25 @@ function Teacher() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/teacher/planning",
-    component: _routes_Planning__WEBPACK_IMPORTED_MODULE_3__["default"]
+    component: _routes_Planning__WEBPACK_IMPORTED_MODULE_4__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/teacher/folder",
-    component: _routes_Folder__WEBPACK_IMPORTED_MODULE_4__["default"]
+    component: _routes_Folder__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/teacher/contract",
-    component: _routes_Contract__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _routes_Contract__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/teacher/sector",
-    component: _routes_Sector__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _routes_Sector__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     path: "/teacher/students",
-    component: _routes_Students__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _routes_Students__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/teacher/infos/:slug",
+    component: _routes_Infos__WEBPACK_IMPORTED_MODULE_3__["default"]
   }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
     className: "App-footer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -4543,11 +4948,19 @@ function Teacher() {
     className: "list-unstyled mt-4 pt-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "infos my-2"
-  }, "+33 05 46 34 15 25"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "tel:+33 05 46 34 15 25"
+  }, "+33 05 46 34 15 25"), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "infos my-2"
-  }, "contact@so-autoecole.fr"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "mailto:contact@so-auto-ecole.fr"
+  }, "contact@so-auto-ecole.fr")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "infos my-2"
-  }, "57 bis Av. Jean Gu\xEEton,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "17 000 La Rochelle")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://goo.gl/maps/iGkhJE1iQbZm7PGb7",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, " 57 bis Av. Jean Gu\xEEton,", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), "17 000 La Rochelle"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "my-4"
@@ -4565,7 +4978,11 @@ function Teacher() {
     className: "links my-3"
   }, "Tarifications"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "links my-3"
-  }, "Infos"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    activeClassName: "Active-link",
+    exact: true,
+    to: "/infos/conditions-dutilisation"
+  }, "CGV")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-3"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "my-4"
@@ -4573,11 +4990,23 @@ function Teacher() {
     className: "list-unstyled"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "links my-3"
-  }, "Code de la route"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    activeClassName: "Active-link",
+    exact: true,
+    to: "/teacher/infos/formez-vous-au-code-en-ligne-avec-pass-rousseau"
+  }, "Code de la route")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "links my-3"
-  }, "Conduite accompagn\xE9e"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    activeClassName: "Active-link",
+    exact: true,
+    to: "/teacher/infos/apprentissage-anticipe-de-la-conduite"
+  }, "Conduite accompagn\xE9e")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "links my-3"
-  }, "Permis de conduire"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    activeClassName: "Active-link",
+    exact: true,
+    to: "/teacher/infos/passer-son-permis-b"
+  }, "Permis de conduire")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "links my-3"
   }, "Devenir moniteur"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-md-2"

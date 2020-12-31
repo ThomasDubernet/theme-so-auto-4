@@ -21,9 +21,16 @@ export default class TextIllus extends Component {
 
             <div className="d-flex mt-4">
 
-              <button className={'btn btn-outline-white ' + (typeof this.props.btnClasse == 'undefined' ? '' : this.props.btnClasse)}>
+
+            <NavLink
+            className={'btn btn-outline-white ' + (typeof this.props.btnClasse == 'undefined' ? '' : this.props.btnClasse)}
+            exact to={this.props.linkBtn}>
+              {typeof this.props.textBtn == 'undefined' ? 'En savoir plus' : this.props.textBtn}
+            </NavLink>
+
+              {/* <button className={'btn btn-outline-white ' + (typeof this.props.btnClasse == 'undefined' ? '' : this.props.btnClasse)}>
                 {typeof this.props.textBtn == 'undefined' ? 'En savoir plus' : this.props.textBtn}
-              </button>
+              </button> */}
 
               { typeof this.props.secondBtn == 'undefined' ? '' :  
                 <button className={(typeof this.props.secondBtnClasse == 'undefined' ? '' : this.props.secondBtnClasse)}>

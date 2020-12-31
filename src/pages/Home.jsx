@@ -13,8 +13,7 @@ import tablet from '../img/tablet.svg'
 import code from '../img/code.svg'
 
 export default function Home(props) {
-  
-  // const [avisUser, setAvisUser] = useState([])
+
   const avisUser = [
     {
       name: "Nelly D.",
@@ -90,7 +89,7 @@ export default function Home(props) {
                 <p className="h3 text-warning">29,90 €</p>
                 <p>10 % moins chère</p>
                 <div className="d-flex">
-                  <button className="btn btn-outline-white">En savoir plus</button>
+                  <NavLink className="btn btn-outline-white font-weight-bold" exact to="/infos/formez-vous-au-code-en-ligne-avec-pass-rousseau">En savoir plus</NavLink>
                   <button className="btn btn-outline-white ml-4"><FontAwesomeIcon icon={faCaretRight} /></button>
                 </div>
               </div>
@@ -100,7 +99,7 @@ export default function Home(props) {
                 <p className="h3 text-warning">999 €</p>
                 <p>Au lieu de <span className="text-line-through">1 099 €</span></p>
                 <div className="d-flex">
-                  <button className="btn btn-outline-white">En savoir plus</button>
+                  <NavLink className="btn btn-outline-white font-weight-bold" exact to="/infos/apprentissage-anticipe-de-la-conduite">En savoir plus</NavLink>
                   <button className="btn btn-outline-white ml-4"> <FontAwesomeIcon icon={faCaretRight} /> </button>
                 </div>
               </div>
@@ -110,7 +109,7 @@ export default function Home(props) {
                 <p className="h3 text-warning">749 €</p>
                 <p>30 % moins chère</p>
                 <div className="d-flex">
-                  <button className="btn btn-outline-white">En savoir plus</button>
+                  <NavLink className="btn btn-outline-white font-weight-bold" exact to="/infos/passer-son-permis-b">En savoir plus</NavLink>
                   <button className="btn btn-outline-white ml-4"><FontAwesomeIcon icon={faCaretRight} /></button>
                 </div>
               </div>
@@ -137,6 +136,8 @@ export default function Home(props) {
             textWarning = "Réviser votre code partout en illimité grâce à notre formation en ligne."
             content = "2000 questions d'entraînements, cours, et séries thématiques à votre disposition, histoire de se préparer en toute sécurité."
             contentClasse="d-none d-md-block"
+            btnClasse="font-weight-bold"
+            linkBtn="/infos/formez-vous-au-code-en-ligne-avec-pass-rousseau"
             btnPlayClasse="d-none d-md-block"
           />
         </div>
@@ -148,6 +149,8 @@ export default function Home(props) {
             textWarning = "Apprenez à conduire selon votre planning, avec un moniteur qui accompagnera jusqu'à obtention de votre permis."
             content = "Un plan de formation et un livret pédagogique sûr-mesure, une équipe à votre écoute, pour favoriser votre résussite."
             contentClasse="d-none d-md-block"
+            btnClasse="font-weight-bold"
+            linkBtn="/infos/passer-son-permis-b"
             btnPlayClasse="d-none d-md-block"
           />
         </div>
@@ -174,9 +177,9 @@ export default function Home(props) {
               <div className="mx-md-auto">
                 <h2>S<span className="h1 text-warning">o</span>'aut<span className="h1 text-warning">o</span></h2>
                 <ul className="list-unstyled mt-4 pt-2">
-                  <li className="infos my-2">+33 05 46 34 15 25</li>
-                  <li className="infos my-2">contact@so-autoecole.fr</li>
-                  <li className="infos my-2">57 bis Av. Jean Guîton,<br />17 000 La Rochelle</li>
+                  <li className="infos my-2"><a href="tel:0546341525">05 46 34 15 25</a> </li>
+                  <li className="infos my-2"><a href="mailto:contact@so-auto-ecole.fr">contact@so-auto-ecole.fr</a></li>
+                  <li className="infos my-2"><a href="https://goo.gl/maps/iGkhJE1iQbZm7PGb7" target="_blank" rel="noopener noreferrer"> 57 bis Av. Jean Guîton,<br />17 000 La Rochelle</a></li>
                 </ul>
               </div>
             </div>
@@ -188,15 +191,38 @@ export default function Home(props) {
                 <li className="links my-3">Services</li>
                 <li className="links my-3">Carrières</li>
                 <li className="links my-3">Tarifications</li>
-                <li className="links my-3">Infos</li>
+                <li className="links my-3">
+                <NavLink
+                  activeClassName="Active-link"
+                  exact to="/infos/conditions-dutilisation"
+                  >
+                    CGV
+                  </NavLink>
+                </li>
               </ul>
             </div>
             <div className="col-md-3">
               <h5 className="my-4">Services</h5>
               <ul className="list-unstyled">
-                <li className="links my-3">Code de la route</li>
-                <li className="links my-3">Conduite accompagnée</li>
-                <li className="links my-3">Permis de conduire</li>
+                <li className="links my-3">
+                  <NavLink
+                    activeClassName="Active-link"
+                    exact to="/infos/formez-vous-au-code-en-ligne-avec-pass-rousseau"
+                    >Code de la route</NavLink>
+                </li>
+                <li className="links my-3">
+                  <NavLink
+                    activeClassName="Active-link"
+                    exact to="/infos/apprentissage-anticipe-de-la-conduite"
+                    >Conduite accompagnée</NavLink>
+                </li>
+                <li className="links my-3">
+                  <NavLink
+                    activeClassName="Active-link"
+                    exact to="/infos/passer-son-permis-b"
+                    >Permis de conduire</NavLink>
+                  
+                </li>
                 <li className="links my-3">
                   <NavLink
                     activeClassName="Active-link"

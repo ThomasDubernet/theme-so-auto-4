@@ -5,7 +5,7 @@ import moment from 'moment'
 import localization from 'moment/locale/fr';
 
 
-
+import Infos from './routes/Infos'
 import Home from './pages/Home'
 import Login from "./pages/Login";
 import Site from "./pages/Site";
@@ -106,6 +106,8 @@ export default function App() {
           exact path="/log"
           component={(props) => <Login {...props} setUser={fetchUser} />}
         />
+
+        <Route path="/infos/:slug" component={Infos} />
         <ProtectedRoute path={["/student", "/teacher"]} component={() => <Site user={user} userType={user_type} gps={gpsInfos} token={token} />} />
       </Switch>
     )
